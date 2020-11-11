@@ -1,0 +1,17 @@
+CONFIRM!!playback_device!!@	on @
+CONFIRM!!song_name!!@	play @
+GOODBYE	Have a good day.
+INFORM!!album!!@	It's from album @.
+INFORM!!artist!!@	It's a song of @.
+INFORM!!genre!!@	It is a @ song.
+INFORM_COUNT!!LookupMusic!!count!!@	I found @ songs you may like.
+NOTIFY_FAILURE!!LookupMusic	Sorry, I could not find anything that matches your preferences.
+NOTIFY_FAILURE!!PlayMedia	Sorry, playing the song failed.
+NOTIFY_SUCCESS!!PlayMedia	Started playing the song.
+OFFER!!album!!@	in album @?
+OFFER!!artist!!@	by @
+OFFER!!playback_device!!@	Playing it on @?
+OFFER!!song_name!!@	What do you think about @
+OFFER_INTENT!!PlayMedia	Do you want to play the music now?
+REQUEST!!song_name	Which song do you want to play?
+REQ_MORE	What else can I help?

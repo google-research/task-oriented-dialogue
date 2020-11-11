@@ -1,0 +1,9 @@
+GOODBYE	Happy to have helped.
+INFORM!!cast!!@	@ acted in the movie.
+INFORM!!directed_by!!@	The movie is directed by @.
+INFORM!!genre!!@	It is a @ movie.
+INFORM_COUNT!!FindMovies!!count!!@	I found @ movies for you.
+NOTIFY_FAILURE!!FindMovies	Sorry, I couldn't find any movies.
+OFFER!!movie_title!!@	How about @?
+OFFER!!percent_rating!!@	The movie has an average rating of @ out of 100.
+REQ_MORE	Anything else I can help with?

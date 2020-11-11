@@ -1,0 +1,29 @@
+CONFIRM!!city!!@	The event is in @.
+CONFIRM!!date!!@	The event takes place on @.
+CONFIRM!!event_name!!@	Booking tickets for @.
+CONFIRM!!number_of_tickets!!@	The number of tickets is @.
+GOODBYE	Have a great day.
+INFORM!!category!!@	This is a @ event.
+INFORM!!event_type!!@	The type of this event is @.
+INFORM!!time!!@	The event starts at @.
+INFORM!!venue!!@	The event is at @.
+INFORM!!venue_address!!@	The venue is located at @.
+INFORM_COUNT!!FindEvents!!count!!@	I found @ events which suit your taste.
+INFORM_COUNT!!GetEventDates!!count!!@	I found the event on @ days.
+NOTIFY_FAILURE!!BuyEventTickets	Sorry I failed to buy tickets for the event.
+NOTIFY_FAILURE!!FindEvents	Sorry I could not find any events matching your preferences.
+NOTIFY_FAILURE!!GetEventDates	Sorry, I could not find any dates for this event.
+NOTIFY_SUCCESS!!BuyEventTickets	Your reservation has been made. Have fun there!
+OFFER!!date!!@	There's an event on @.
+OFFER!!event_name!!@	The event is @
+OFFER!!time!!@	The event is at @.
+OFFER!!venue!!@	and it is at @.
+OFFER_INTENT!!BuyEventTickets	Do you want to buy tickets for this event?
+REQUEST!!city	Do you have a preference on the city I should look in?
+REQUEST!!date	Do you have a preferred date for the event?
+REQUEST!!date!!@	How about events on @?
+REQUEST!!event_name	Do you know the event you are interested in?
+REQUEST!!event_type	What are you interested in?
+REQUEST!!event_type!!@@	Do you have a prefered type of events? You can say @ or @ or anything else too.
+REQUEST!!number_of_tickets	How many tickets should I get?
+REQ_MORE	Can I help you with anything else?

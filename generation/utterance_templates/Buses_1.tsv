@@ -1,0 +1,25 @@
+CONFIRM!!from_location!!@	You want a ticket on the bus leaving from @.
+CONFIRM!!leaving_date!!@	The bus leaves on @.
+CONFIRM!!leaving_time!!@	It leaves at @.
+CONFIRM!!to_location!!@	The destination is @.
+CONFIRM!!travelers!!@	It is for @ people.
+GOODBYE	Have a great day.
+INFORM!!fare!!@	It costs @.
+INFORM!!from_station!!@	The origin station is @.
+INFORM!!to_station!!@	The destination station is @.
+INFORM!!transfers!!@	It has @ transfers.
+INFORM_COUNT!!FindBus!!count!!@	I found @ buses for you.
+NOTIFY_FAILURE!!BuyBusTicket	Sorry, I couldn't buy that ticket.
+NOTIFY_FAILURE!!FindBus	Sorry I couldn't find a bus for you.
+NOTIFY_SUCCESS!!BuyBusTicket	Your ticket is confirmed.
+OFFER!!fare!!@	and it costs @.
+OFFER!!leaving_time!!@	How about the bus departing at @?
+OFFER!!transfers!!@	It has @ transfers.
+OFFER_INTENT!!BuyBusTicket	Do you want to buy tickets on this bus?
+REQUEST!!from_location	Where are you leaving from?
+REQUEST!!leaving_date	When do you plan to leave?
+REQUEST!!leaving_date!!@	Do you plan to leave on @?
+REQUEST!!leaving_time	What time do you want to leave?
+REQUEST!!to_location	Where are you going?
+REQUEST!!travelers	How many tickets do you need?
+REQ_MORE	Can I help you with anything else?

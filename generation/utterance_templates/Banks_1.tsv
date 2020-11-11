@@ -1,0 +1,17 @@
+CONFIRM!!account_type!!@	From my @ account,
+CONFIRM!!amount!!@	Transfer @.
+CONFIRM!!recipient_account_name!!@	Transfer the money to @.
+CONFIRM!!recipient_account_type!!@	Send it to their @ account.
+GOODBYE	Have a great day.
+INFORM_COUNT!!CheckBalance!!count!!@	You have @ accounts.
+NOTIFY_FAILURE!!CheckBalance	Sorry, I was unable to access your account.
+NOTIFY_FAILURE!!TransferMoney	Sorry, I was unable to make a transfer.
+NOTIFY_SUCCESS!!TransferMoney	Your transfer is successful.
+OFFER!!account_type!!@	This is from your @ account.
+OFFER!!balance!!@	The balance is @.
+OFFER_INTENT!!TransferMoney	Would you like to make a transfer?
+REQUEST!!account_type	Which account should I use?
+REQUEST!!account_type!!@@	Should I use @ or @ account?
+REQUEST!!amount	What amount would you like to transfer?
+REQUEST!!recipient_account_name	Who would you like to send money to?
+REQ_MORE	Is there anything else I can help you with?

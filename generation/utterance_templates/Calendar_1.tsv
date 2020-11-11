@@ -1,0 +1,26 @@
+CONFIRM!!event_date!!@	The scheduled date for the event is @.
+CONFIRM!!event_location!!@	The location of the event is @.
+CONFIRM!!event_name!!@	The event name is @.
+CONFIRM!!event_time!!@	The scheduled time for the event is @.
+GOODBYE	Have a good day.
+INFORM_COUNT!!GetAvailableTime!!count!!@	There are @ empty slots on your calendar.
+INFORM_COUNT!!GetEvents!!count!!@	You have @ events scheduled on the calendar.
+NOTIFY_FAILURE!!AddEvent	Sorry, I failed to add the event to your calendar.
+NOTIFY_FAILURE!!GetAvailableTime	You don't have any other available time.
+NOTIFY_FAILURE!!GetEvents	You don't have any events scheduled for this day.
+NOTIFY_SUCCESS!!AddEvent	Successfully added the event to your calendar.
+OFFER!!available_end_time!!@	The empty slot ends @.
+OFFER!!available_start_time!!@	You have an empty slot starting @.
+OFFER!!event_date!!@	The date is @.
+OFFER!!event_location!!@	The location for the event is @.
+OFFER!!event_name!!@	You have a @.
+OFFER!!event_time!!@	The event is going to start at @.
+OFFER_INTENT!!AddEvent	Would you like to add an event to your calendar?
+REQUEST!!event_date	Which date do you want to know?
+REQUEST!!event_date!!@	Do you want to know your event on @?
+REQUEST!!event_location	Where is the event happening?
+REQUEST!!event_location!!@	Is the event happening at @?
+REQUEST!!event_name	What name should I use for the event?
+REQUEST!!event_time	What time is the event?
+REQ_MORE	Can I help with anything else?
+REQ_MORE	Can I help you with anything else?

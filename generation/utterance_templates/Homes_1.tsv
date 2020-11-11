@@ -1,0 +1,29 @@
+CONFIRM!!property_name!!@	You are scheduling a visit to @
+CONFIRM!!visit_date!!@	and you want to visit the property on @.
+GOODBYE	Have a great day.
+INFORM!!address!!@	The property is located at @.
+INFORM!!furnished!!False	The apartment is not furnished.
+INFORM!!furnished!!True	The apartment is furnished.
+INFORM!!number_of_baths!!@	It has @ bathrooms.
+INFORM!!number_of_beds!!@	It has @ bed rooms.
+INFORM!!pets_allowed!!False	Unfortunately, pets are not allowed in the apartment.
+INFORM!!pets_allowed!!True	Yes, pets are allowed in the apartment.
+INFORM!!phone_number!!@	The property's phone number is @.
+INFORM!!rent!!@	The montly rent is @.
+INFORM_COUNT!!FindApartment!!count!!@	I found @ nice apartments.
+NOTIFY_FAILURE!!FindApartment	Sorry I couldn't find a suitable apartment.
+NOTIFY_FAILURE!!ScheduleVisit	Sorry I couldn't schedule the visit.
+NOTIFY_SUCCESS!!ScheduleVisit	Your visit to the apartment is scheduled.
+OFFER!!address!!@	located at @.
+OFFER!!number_of_baths!!@	@ baths.
+OFFER!!number_of_beds!!@	The property has @ bed rooms and
+OFFER!!property_name!!@	@ is a very good property
+OFFER!!rent!!@	The rent for the apartment is @ per month.
+OFFER!!visit_date!!@	It is available on @ for a visit.
+OFFER_INTENT!!ScheduleVisit	Do you want to schedule a visit to the property?
+REQUEST!!area	Which area do you want the property in?
+REQUEST!!number_of_beds	How many bed rooms do you want in the apartment?
+REQUEST!!property_name	Do you know the name of the apartment you want to visit?
+REQUEST!!visit_date	When do you want to schedule your visit?
+REQUEST!!visit_date!!@	Would you like to schedule your visit on @?
+REQ_MORE	Can I help you with anything else?

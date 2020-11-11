@@ -1,0 +1,13 @@
+CONFIRM!!device!!@	in @
+CONFIRM!!track!!@	playing the song @
+GOODBYE	Have a good day.
+INFORM!!genre!!@	It is a @ song.
+INFORM!!year!!@	It is from the year @.
+INFORM_COUNT!!LookupMusic!!count!!@	I found @ songs for you.
+NOTIFY_FAILURE!!LookupMusic	Sorry, I couldn't find any song that matches your preferences.
+NOTIFY_SUCCESS!!PlayMedia	Enjoy your music.
+OFFER!!album!!@	from the album @.
+OFFER!!artist!!@	by @
+OFFER!!track!!@	What do you think about @
+OFFER_INTENT!!PlayMedia	Would you like to play this song?
+REQ_MORE	Is there anything else I can help you with?

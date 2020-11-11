@@ -1,0 +1,24 @@
+CONFIRM!!appointment_date!!@	on @
+CONFIRM!!appointment_time!!@	at @.
+CONFIRM!!therapist_name!!@	Booking an appointment with @
+GOODBYE	Glad to be of help.
+INFORM!!address!!@	Their address is @.
+INFORM!!phone_number!!@	You can call them on @.
+INFORM_COUNT!!FindProvider!!count!!@	I found @ therapists that could work.
+NOTIFY_FAILURE!!BookAppointment	Sorry, something went wrong. I couldn't book an appointment.
+NOTIFY_FAILURE!!FindProvider	Sorry, I could not find any therapists matching your preferences.
+NOTIFY_SUCCESS!!BookAppointment	Your appointment was successfully booked. You should get an email confirmation soon.
+OFFER!!appointment_date!!@	You can possibly get an appointment on @.
+OFFER!!appointment_time!!@	An appointment for @.
+OFFER!!city!!@	They're in @.
+OFFER!!therapist_name!!@	You may want to try @.
+OFFER!!type!!@	They are a @.
+OFFER_INTENT!!BookAppointment	Do you want to book an appointment with the therapist?
+REQUEST!!appointment_date	What date would you like the appointment for?
+REQUEST!!appointment_date!!@	Do you want to make the appointment on @?
+REQUEST!!appointment_time	What is your preferred time for the appointment?
+REQUEST!!city	Which city should I look in?
+REQUEST!!city!!@	Should I find someone in @?
+REQUEST!!type	What kind of therapist do you need?
+REQUEST!!type!!@@	Do you need a @ or a @ or perhaps another kind?
+REQ_MORE	Anything else I can help with?

@@ -1,0 +1,12 @@
+GOODBYE	Cheers.
+INFORM!!date!!@	This is the forecast for @.
+INFORM!!humidity!!@	The humidity is around @ percent.
+INFORM!!wind!!@	The average wind speed should be @ miles per hour.
+INFORM_COUNT!!GetWeather!!count!!@	I fetched @ result.
+NOTIFY_FAILURE!!GetWeather	Sorry, couldn't find any results.
+OFFER!!precipitation!!@	There is a @ percent chance of rain.
+OFFER!!temperature!!@	The average temperature for the day should be @ degrees Fahrenheit.
+REQUEST!!city	Which city do you want to check the weather for?
+REQUEST!!city!!@	Do you want to check the weather for @?
+REQUEST!!date	What date are you looking at?
+REQ_MORE	Anything else you'd like?

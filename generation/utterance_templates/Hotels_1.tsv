@@ -1,0 +1,30 @@
+CONFIRM!!check_in_date!!@	the check in date is @,
+CONFIRM!!destination!!@	The hotel is in @.
+CONFIRM!!hotel_name!!@	The name of the hotel is @,
+CONFIRM!!number_of_days!!@	the reservation is for @ days
+CONFIRM!!number_of_rooms!!@	and the number of rooms in the reservation is @.
+GOODBYE	Have a good day.
+INFORM!!destination!!@	The hotel is located in @.
+INFORM!!has_wifi!!False	The hotel does not have wifi.
+INFORM!!has_wifi!!True	The hotel has wifi.
+INFORM!!phone_number!!@	Their phone number is @.
+INFORM!!price_per_night!!@	The room costs @ per night.
+INFORM!!star_rating!!@	The hotel has a @ star rating.
+INFORM!!street_address!!@	Their address is @.
+INFORM_COUNT!!SearchHotel!!count!!@	I found @ hotels matching your requirements.
+NOTIFY_FAILURE!!ReserveHotel	Sorry there is no room matching your requirements at that time.
+NOTIFY_SUCCESS!!ReserveHotel	Your reservation is successful.
+OFFER!!check_in_date!!@	The check-in date is @.
+OFFER!!hotel_name!!@	@ is a nice hotel.
+OFFER!!number_of_days!!@	The reservation is for @ days.
+OFFER!!number_of_rooms!!@	The reservation is for @ rooms.
+OFFER!!price_per_night!!@	The price of the room per night is @.
+OFFER!!star_rating!!@	It is a @ star hotel.
+OFFER_INTENT!!ReserveHotel	Would you like to reserve a room at the hotel?
+REQUEST!!check_in_date	What is your check in date?
+REQUEST!!check_in_date!!@	Do you want to check in on @?
+REQUEST!!destination	Which city should I search for a hotel in?
+REQUEST!!destination!!@	Are you planning to stay in @?
+REQUEST!!hotel_name	Which hotel do you want me to reserve?
+REQUEST!!number_of_days	How many days is the reservation for?
+REQ_MORE	Can I help you with anything else?

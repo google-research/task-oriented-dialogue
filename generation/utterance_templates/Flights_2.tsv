@@ -1,0 +1,27 @@
+GOODBYE	Have a good day.
+INFORM!!destination_airport!!@	The flight is for @.
+INFORM!!inbound_arrival_time!!@	The returning flight arrives at @.
+INFORM!!is_redeye!!False	It is not an overnight flight.
+INFORM!!is_redeye!!True	It is an overnight flight.
+INFORM!!number_stops!!@	The flight has @ stops.
+INFORM!!origin_airport!!@	It takes off from @.
+INFORM!!outbound_arrival_time!!@	The flight arrives at @.
+INFORM!!passengers!!@	It is for @ travellers.
+INFORM!!seating_class!!@	It is a @ seat.
+INFORM_COUNT!!SearchOnewayFlight!!count!!@	I found @ flights for you.
+INFORM_COUNT!!SearchRoundtripFlights!!count!!@	I found @ flights for you.
+NOTIFY_FAILURE!!SearchOnewayFlight	Sorry, I couldn't find a flight.
+NOTIFY_FAILURE!!SearchRoundtripFlights	Sorry, I couldn't find a flight.
+OFFER!!airlines!!@	Would you like to fly with @?
+OFFER!!fare!!@	The ticket costs @
+OFFER!!inbound_departure_time!!@	The returning flight takes off at @.
+OFFER!!number_stops!!@	The flight has @ stops.
+OFFER!!outbound_departure_time!!@	The flight takes off at @.
+REQUEST!!departure_date	What date would you like to travel?
+REQUEST!!departure_date!!@	Are you leaving on @?
+REQUEST!!departure_date!!@@	Do you want to leave on @, or @, or some day else?
+REQUEST!!destination	Where are you planning to go?
+REQUEST!!origin	Which city do you want to depart from?
+REQUEST!!return_date	Which day do you want to take the return flight?
+REQUEST!!return_date!!@	Are you returning on @?
+REQ_MORE	Can I help you with something else?

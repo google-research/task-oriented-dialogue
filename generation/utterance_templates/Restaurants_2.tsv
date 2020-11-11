@@ -1,0 +1,32 @@
+CONFIRM!!date!!@	The date is @.
+CONFIRM!!location!!@	The city is @.
+CONFIRM!!number_of_seats!!@	The reservation is for @ people.
+CONFIRM!!restaurant_name!!@	Booking a table at @.
+CONFIRM!!time!!@	The reservation is at @.
+GOODBYE	Have a good day.
+INFORM!!address!!@	Their street address is @.
+INFORM!!category!!@	They serve @.
+INFORM!!has_seating_outdoors!!False	They do not have outdoor seating.
+INFORM!!has_seating_outdoors!!True	They do have outdoor seating.
+INFORM!!has_vegetarian_options!!False	They don't have vegetarian options.
+INFORM!!has_vegetarian_options!!True	They have good options for vegetarians.
+INFORM!!phone_number!!@	Their phone number is @.
+INFORM!!price_range!!@	They are a @ restaurant.
+INFORM!!rating!!@	Their user rating is around @.
+INFORM_COUNT!!FindRestaurants!!count!!@	I found @ restaurants you may like.
+NOTIFY_FAILURE!!FindRestaurants	Sorry, I could not find any restaurants that you would like.
+NOTIFY_FAILURE!!ReserveRestaurant	Sorry, I was unable to make a reservation.
+NOTIFY_SUCCESS!!ReserveRestaurant	Your reservation is successful.
+OFFER!!date!!@	How about on @?
+OFFER!!location!!@	It's located in @.
+OFFER!!number_of_seats!!@	Shall I try a reservation for @ people
+OFFER!!restaurant_name!!@	@ is a nice restaurant.
+OFFER!!time!!@	at @?
+OFFER_INTENT!!ReserveRestaurant	Would you like to reserve a table here?
+REQUEST!!category	What kind of food are you looking for?
+REQUEST!!location	Which location should I search in?
+REQUEST!!location!!@	Should I search in @?
+REQUEST!!restaurant_name	Which restaurant are you looking for?
+REQUEST!!restaurant_name	Which restaurant would you want to book a table at?
+REQUEST!!time	What time should I try to reserve for?
+REQ_MORE	Can I help you with anything else?

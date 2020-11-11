@@ -1,0 +1,21 @@
+CONFIRM!!alarm_name!!@	Adding an alarm called @.
+CONFIRM!!alarm_time!!@	Alarm time would be @.
+CONFIRM!!new_alarm_name!!@	with name @.
+CONFIRM!!new_alarm_time!!@	Creating an alarm at @
+GOODBYE	Thank you.
+INFORM!!new_alarm_name!!@	I put @ for the alarm name.
+INFORM_COUNT!!GetAlarms!!count!!@	You have @ alarms currently set.
+NOTIFY_FAILURE!!AddAlarm	Sorry, I wasn't able to set the alarm.
+NOTIFY_FAILURE!!GetAlarms	Sorry, I could not find any alarms on your device.
+NOTIFY_SUCCESS!!AddAlarm	Alarm added successfully.
+OFFER!!alarm_name!!@	with name @.
+OFFER!!alarm_time!!@	There is an alarm for @
+OFFER!!alarm_time!!@@	You have alarms set for @ and @.
+OFFER!!new_alarm_name!!@	You can call it @.
+OFFER!!new_alarm_time!!@	How about for @?
+OFFER_INTENT!!AddAlarm	Do you want to add an alarm?
+REQUEST!!alarm_name	What do you want to call it?
+REQUEST!!alarm_time	What time is the alarm for?
+REQUEST!!new_alarm_name	And what would be the name of the new alarm?
+REQUEST!!new_alarm_time	What time should I set the new alarm for?
+REQ_MORE	Anything else I can help with?

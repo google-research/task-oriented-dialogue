@@ -1,0 +1,27 @@
+CONFIRM!!class!!@	It is a @ ticket.
+CONFIRM!!date_of_journey!!@	The train leaves on @.
+CONFIRM!!from!!@	you want a ticket on the train leaving from @.
+CONFIRM!!journey_start_time!!@	It leaves at @.
+CONFIRM!!number_of_adults!!@	It is for @ people.
+CONFIRM!!to!!@	The destination is @.
+CONFIRM!!trip_protection!!False	It doesn't have trip insurance.
+CONFIRM!!trip_protection!!True	It comes with trip insurance.
+GOODBYE	See you again.
+INFORM!!from_station!!@	The train is leaving from @.
+INFORM!!to_station!!@	The train arrives at @.
+INFORM_COUNT!!FindTrains!!count!!@	There are @ trains that could work.
+NOTIFY_FAILURE!!FindTrains	Unfortunately, I couldn't find any other trains matching your preferences.
+NOTIFY_FAILURE!!GetTrainTickets	Apologies, I couldn't book the train tickets.
+NOTIFY_SUCCESS!!GetTrainTickets	Your tickets were booked successfully.
+OFFER!!date_of_journey!!@	What about the one departing on @
+OFFER!!journey_start_time!!@	What about the train departing at @?
+OFFER!!to!!@	going to @?
+OFFER!!total!!@	It costs @ in total.
+OFFER_INTENT!!GetTrainTickets	Do you want me to book tickets?
+REQUEST!!date_of_journey	What date do you want to travel?
+REQUEST!!date_of_journey!!@	Do you want to start travelling on @?
+REQUEST!!from	Which city are you looking to depart from?
+REQUEST!!number_of_adults	How many tickets do you need?
+REQUEST!!to	Which city are you going to?
+REQUEST!!trip_protection	Do you want to have travel insurance?
+REQ_MORE	Anything else I can help with?

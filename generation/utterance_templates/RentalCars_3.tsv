@@ -1,0 +1,33 @@
+CONFIRM!!add_insurance!!False	It does not come with insurance.
+CONFIRM!!add_insurance!!True	It comes with insurance.
+CONFIRM!!car_type!!@	It is a @ car.
+CONFIRM!!end_date!!@	The drop-off date is @.
+CONFIRM!!pickup_location!!@	You are picking up the car from @.
+CONFIRM!!pickup_time!!@	The time of the pickup is @.
+CONFIRM!!start_date!!@	The pickup date is @.
+GOODBYE	Have a good day.
+INFORM!!car_name!!@	The name of the car is @.
+INFORM!!price_per_day!!@	It costs @ per day.
+INFORM_COUNT!!GetCarsAvailable!!count!!@	There are @ cars available.
+NOTIFY_FAILURE!!GetCarsAvailable	Sorry, I can't find a car matching your preference.
+NOTIFY_FAILURE!!ReserveCar	Sorry, the reservation failed.
+NOTIFY_SUCCESS!!ReserveCar	Your car has been reserved.
+OFFER!!car_name!!@	@.
+OFFER!!car_type!!@	It is a @
+OFFER!!pickup_location!!@	There is a nice car available at @.
+OFFER!!price_per_day!!@	It costs @ per day.
+OFFER!!start_date!!@	It's available for pick up on @.
+OFFER_INTENT!!ReserveCar	Do you want to book the car?
+REQUEST!!add_insurance	Do you want to add insurance?
+REQUEST!!car_type	What kind of car do you like?
+REQUEST!!car_type!!@@	Do you like @, @, or something else?
+REQUEST!!city	Where do you want to rent the car from?
+REQUEST!!city!!@	Do you want to pick it up from @?
+REQUEST!!end_date	Until when do you want the car?
+REQUEST!!end_date!!@	Do you want to rent the car until @?
+REQUEST!!pickup_location	Where do you want to pick up the car?
+REQUEST!!pickup_time	What time do you want to pick up the car?
+REQUEST!!start_date	When do you want to start the car rental?
+REQUEST!!start_date!!@	Do you want to have the car from @?
+REQUEST!!start_date!!@@	When do you want it from? @ or @ or some day else?
+REQ_MORE	Is there something else I can help with?

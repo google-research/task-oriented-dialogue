@@ -1,0 +1,12 @@
+GOODBYE	Enjoy!
+INFORM!!free_entry!!False	No, entry to this place is not free.
+INFORM!!free_entry!!True	Yes, entry is free.
+INFORM!!good_for_kids!!False	No, this place isn't exactly good for kids.
+INFORM!!good_for_kids!!True	Yes, the place is pretty nice to take your kids to.
+INFORM!!phone_number!!@	Their phone number is @.
+INFORM_COUNT!!FindAttractions!!count!!@	There are @ attractions that could interest you.
+NOTIFY_FAILURE!!FindAttractions	Sorry, can't find anything for your constraints.
+OFFER!!attraction_name!!@	You should check out @.
+OFFER!!category!!@	This is a @.
+REQUEST!!location	Where should I search for attractions in?
+REQ_MORE	Anything else I could assist with?

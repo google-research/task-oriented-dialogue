@@ -1,0 +1,29 @@
+CONFIRM!!address!!@	The address is @.
+CONFIRM!!check_in_date!!@	The check in date is @.
+CONFIRM!!check_out_date!!@	The check out date is @.
+CONFIRM!!number_of_adults!!@	There are @ people in your group.
+CONFIRM!!where_to!!@	The location is @.
+GOODBYE	It's my pleasure to help you. Bye.
+INFORM!!address!!@	The house is located at @.
+INFORM!!has_laundry_service!!False	This place does not have laundry service.
+INFORM!!has_laundry_service!!True	This place has laundry service.
+INFORM!!phone_number!!@	The phone number is @.
+INFORM!!rating!!@	The rating is @.
+INFORM!!total_price!!@	The total price is @.
+INFORM!!where_to!!@	It is located in @.
+INFORM_COUNT!!SearchHouse!!count!!@	There are @ houses available for your search.
+NOTIFY_FAILURE!!BookHouse	your reservation failed.
+NOTIFY_FAILURE!!SearchHouse	Sorry, I could not find a house for your preferences.
+NOTIFY_SUCCESS!!BookHouse	your reservation is successful.
+OFFER!!address!!@	There's a nice house located at @.
+OFFER!!rating!!@	The rating is @.
+OFFER_INTENT!!BookHouse	Would you like to make a reservation for this house?
+REQUEST!!address	what is the address?
+REQUEST!!check_in_date	which day are you checking in?
+REQUEST!!check_in_date!!@	Would you like to check in on @?
+REQUEST!!check_out_date	which day are you checking out?
+REQUEST!!check_out_date!!@	Are you checking out on @, or some other date?
+REQUEST!!number_of_adults	How many people are there in your group?
+REQUEST!!number_of_adults!!@@	Are there @ people in your group? Or @ people?
+REQUEST!!where_to	Which city are you planning to stay in?
+REQ_MORE	Is there anything else I can do for you?

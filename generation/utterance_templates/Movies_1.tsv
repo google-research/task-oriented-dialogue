@@ -1,0 +1,36 @@
+CONFIRM!!location!!@	in @
+CONFIRM!!movie_name!!@	You want to watch @
+CONFIRM!!number_of_tickets!!@	You want to purchase @ tickets.
+CONFIRM!!show_date!!@	on @
+CONFIRM!!show_time!!@	starting at @
+CONFIRM!!show_type!!@	It is a @ movie.
+GOODBYE	Have a good day.
+INFORM!!genre!!@	It is a @ movie.
+INFORM!!price!!@	The price is @ per person.
+INFORM!!street_address!!@	The theatre's address is @.
+INFORM!!theater_name!!@	The theatre's name is @.
+INFORM_COUNT!!FindMovies!!count!!@	I found @ movies.
+INFORM_COUNT!!GetTimesForMovie!!count!!@	I found @ showtimes for the movie.
+NOTIFY_FAILURE!!BuyMovieTickets	Unfortunately, the purchase failed.
+NOTIFY_FAILURE!!FindMovies	Sorry, I can't find any movie matching your requirements.
+NOTIFY_FAILURE!!GetTimesForMovie	Sorry, there're no other show times of this movie.
+NOTIFY_SUCCESS!!BuyMovieTickets	The tickets are bought.
+OFFER!!movie_name!!@	How about @?
+OFFER!!movie_name!!@@	How about @ or @?
+OFFER!!movie_name!!@@@	How about @, @ or @?
+OFFER!!show_time!!@	There's one show at @
+OFFER!!theater_name!!@	in @.
+OFFER_INTENT!!BuyMovieTickets	Would you like to buy tickets?
+OFFER_INTENT!!GetTimesForMovie	Do you want to know when it is playing?
+REQUEST!!location	What is your location?
+REQUEST!!location!!@	Do you want to look for movies in @?
+REQUEST!!location!!@@	Should I look for movies in @ or @?
+REQUEST!!movie_name	What movie do you want to watch?
+REQUEST!!number_of_tickets	How many tickets do you want?
+REQUEST!!show_date	What date do you want to watch it on?
+REQUEST!!show_date!!@	Do you want to watch it on @?
+REQUEST!!show_date!!@@	Do you want to watch it on @ or @?
+REQUEST!!show_time	When do you want to watch the show?
+REQUEST!!show_type	What show type are you looking for?
+REQUEST!!show_type!!@@	Do you want to watch a @ or @ show?
+REQ_MORE	Can I help you with anything else?

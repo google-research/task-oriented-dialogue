@@ -1,0 +1,24 @@
+CONFIRM!!check_in_date!!@	You're checking in on @.
+CONFIRM!!location!!@	It's located in @.
+CONFIRM!!number_of_rooms!!@	You want @ rooms.
+CONFIRM!!place_name!!@	You want to find a hotel in @.
+CONFIRM!!stay_length!!@	You will be staying for @ days.
+GOODBYE	Bye, have a good day!
+INFORM!!phone_number!!@	Their phone number is @.
+INFORM!!price_per_night!!@	It costs @ per night.
+INFORM!!smoking_allowed!!False	No, smoking is not allowed on the property.
+INFORM!!smoking_allowed!!True	Yes, smoking is permitted.
+INFORM!!street_address!!@	Their address is @.
+INFORM_COUNT!!SearchHotel!!count!!@	I found @ hotels matching your criteria.
+NOTIFY_FAILURE!!ReserveHotel	Sorry, something went wrong. I was unable to book your hotel.
+NOTIFY_FAILURE!!SearchHotel	I failed to find any hotels that meet your requirements.
+NOTIFY_SUCCESS!!ReserveHotel	Successfully booked the hotel.
+OFFER!!place_name!!@	There is a hotel called @.
+OFFER!!price_per_night!!@	This will be @ per night.
+OFFER!!star_rating!!@	It is a @ star hotel.
+OFFER_INTENT!!ReserveHotel	Would you like to reserve the hotel?
+REQUEST!!check_in_date	When do you plan to check in?
+REQUEST!!check_in_date!!@	Do you want to check in on @?
+REQUEST!!location	Which city should I look for hotels in?
+REQUEST!!stay_length	How long will you be staying?
+REQ_MORE	Is there anything else I can help with?

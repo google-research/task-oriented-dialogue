@@ -1,0 +1,28 @@
+CONFIRM!!property_name!!@	You are scheduling a visit to @
+CONFIRM!!visit_date!!@	and you want to visit the property on @.
+GOODBYE	Have a great day.
+INFORM!!address!!@	The property is located at @.
+INFORM!!has_garage!!False	It doesn't have a garage.
+INFORM!!has_garage!!True	It has a garage.
+INFORM!!in_unit_laundry!!False	It doesn't have laundry machines inside the house.
+INFORM!!in_unit_laundry!!True	It has in-unit laundry.
+INFORM!!number_of_baths!!@	It has @ bathrooms.
+INFORM!!number_of_beds!!@	It has @ bed rooms.
+INFORM!!phone_number!!@	The property's phone number is @.
+INFORM!!price!!@	It costs @.
+INFORM_COUNT!!FindHomeByArea!!count!!@	I found @ nice houses.
+NOTIFY_FAILURE!!FindHomeByArea	Sorry I couldn't find a suitable property.
+NOTIFY_SUCCESS!!ScheduleVisit	Your visit to the property is scheduled.
+OFFER!!address!!@	located at @.
+OFFER!!price!!@	It costs @.
+OFFER!!property_name!!@	@ is a very good property
+OFFER_INTENT!!ScheduleVisit	Do you want to schedule a visit to the property?
+REQUEST!!area	Which area do you want the property in?
+REQUEST!!intent	Are you looking to rent or buy?
+REQUEST!!intent!!@@	Do you want to find a place to @ or @?
+REQUEST!!number_of_baths	How many baths do you want?
+REQUEST!!number_of_beds	How many bed rooms do you want in the property?
+REQUEST!!property_name	Which property do you like?
+REQUEST!!visit_date	When do you want to schedule the visit?
+REQUEST!!visit_date!!@	Do you want to visit on @?
+REQ_MORE	What else can I help with?

@@ -1,0 +1,16 @@
+CONFIRM!!amount!!@	The amount is @.
+CONFIRM!!payment_method!!@	This will be from your @.
+CONFIRM!!private_visibility!!False	Your transaction is public.
+CONFIRM!!private_visibility!!True	The transaction is private.
+CONFIRM!!receiver!!@	You are making a transaction with @.
+GOODBYE	That will be all, bye!
+NOTIFY_FAILURE!!MakePayment	Sorry, the transfer failed due to unexpected errors.
+NOTIFY_FAILURE!!RequestPayment	Sorry, the request for payment could not be made.
+NOTIFY_SUCCESS!!MakePayment	Your payment was made successfully. The recipient should see the money soon.
+NOTIFY_SUCCESS!!RequestPayment	Your payment request was made successfully.
+REQUEST!!amount	What is the amount?
+REQUEST!!payment_method	Which account should I transfer from?
+REQUEST!!payment_method!!@@	Should I transfer the money from @ or @?
+REQUEST!!private_visibility	Is it fine to make the transaction public?
+REQUEST!!receiver	What is the name of the contact?
+REQ_MORE	Anything else I can help with?

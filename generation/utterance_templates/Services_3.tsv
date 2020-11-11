@@ -1,0 +1,27 @@
+CONFIRM!!appointment_date!!@	on @.
+CONFIRM!!appointment_time!!@	appointment is at @
+CONFIRM!!doctor_name!!@	Scheduling appointment with @,
+GOODBYE	Have a great day.
+INFORM!!average_rating!!@	Their rating is @.
+INFORM!!city!!@	They are located in @.
+INFORM!!phone_number!!@	You can reach them on @.
+INFORM!!street_address!!@	They are located at @.
+INFORM!!type!!@	They are a @.
+INFORM_COUNT!!FindProvider!!count!!@	I found @ results.
+NOTIFY_FAILURE!!BookAppointment	Sorry, I was unable to book an appointment.
+NOTIFY_FAILURE!!FindProvider	Sorry, I didn't get any results.
+NOTIFY_SUCCESS!!BookAppointment	Your appointment is successfully booked.
+OFFER!!appointment_date!!@	on @
+OFFER!!appointment_time!!@	at @
+OFFER!!city!!@	located in @?
+OFFER!!doctor_name!!@	How about @
+OFFER!!type!!@	They are a @.
+OFFER_INTENT!!BookAppointment	Would you like to schedule a visit?
+REQUEST!!appointment_date	What is the date of your visit?
+REQUEST!!appointment_date!!@	How about an appointment on @?
+REQUEST!!appointment_time	What time works best for you?
+REQUEST!!city	Which city should I search in?
+REQUEST!!doctor_name	Do you have a preferred doctor?
+REQUEST!!type	What kind of doctor are you looking for?
+REQUEST!!type!!@@	Are you looking for a @, @ or something else?
+REQ_MORE	Can I help you with anything else?

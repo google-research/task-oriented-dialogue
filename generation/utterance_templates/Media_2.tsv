@@ -1,0 +1,18 @@
+CONFIRM!!movie_name!!@	The movie you want to watch is @.
+CONFIRM!!subtitle_language!!@	You want @ subtitles.
+GOODBYE	Bye, have a good day.
+INFORM!!actors!!@	@ acted in the movie.
+INFORM!!director!!@	@ directed the movie.
+INFORM!!genre!!@	It is a @ movie.
+INFORM!!price!!@	This will be @ to rent.
+INFORM_COUNT!!FindMovies!!count!!@	I found @ movies that would interest you.
+NOTIFY_FAILURE!!FindMovies	Sorry, I could not find any movies for you.
+NOTIFY_FAILURE!!RentMovie	Sorry, something went wrong and I was unable to rent the movie.
+NOTIFY_SUCCESS!!RentMovie	Movie rented successfully. You should watch it within 3 days.
+OFFER!!movie_name!!@	How about movie @?
+OFFER!!movie_name!!@@	I found movies @ and @.
+OFFER!!movie_name!!@@@	I found the following movies: @, @, and @
+OFFER_INTENT!!RentMovie	Would you like to rent the movie?
+REQUEST!!genre	What genre are you looking for?
+REQUEST!!movie_name	Which movie do you want?
+REQ_MORE	Can I help with something else?

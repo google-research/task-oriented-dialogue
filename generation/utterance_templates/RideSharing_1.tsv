@@ -1,0 +1,14 @@
+CONFIRM!!destination!!@	You want to go to @.
+CONFIRM!!number_of_riders!!@	The cab is for @ people.
+CONFIRM!!shared_ride!!True	You want a shared ride.
+GOODBYE	Have a great day!
+INFORM!!approximate_ride_duration!!@	The ride will last about @ minutes.
+INFORM!!ride_fare!!@	It costs @.
+NOTIFY_FAILURE!!GetRide	I'm sorry, I could not find a ride for you.
+NOTIFY_SUCCESS!!GetRide	Your ride is booked and the cab is on its way.
+REQUEST!!destination	Where is the ride to?
+REQUEST!!destination!!@	Are you going to @?
+REQUEST!!destination!!@@	Where do you want to go? @ or @ or somewhere else?
+REQUEST!!number_of_riders	How many people is the cab for?
+REQUEST!!shared_ride	Do you want a shared ride?
+REQ_MORE	Do you need anything else?

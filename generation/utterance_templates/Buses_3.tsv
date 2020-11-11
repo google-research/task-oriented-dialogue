@@ -1,0 +1,27 @@
+CONFIRM!!additional_luggage!!False	You don't have extra luggage.
+CONFIRM!!additional_luggage!!True	You have extra luggage to carry on the bus.
+CONFIRM!!departure_date!!@	The bus leaves on @.
+CONFIRM!!departure_time!!@	It leaves at @.
+CONFIRM!!from_city!!@	You want a ticket on the bus leaving from @.
+CONFIRM!!num_passengers!!@	It is for @ people.
+CONFIRM!!to_city!!@	The destination is @.
+GOODBYE	Have a great day.
+INFORM!!category!!@	It is a @ bus.
+INFORM!!from_station!!@	It departs from @.
+INFORM!!price!!@	It costs @.
+INFORM!!to_station!!@	It arrives at @.
+INFORM_COUNT!!FindBus!!count!!@	I found @ buses for you.
+NOTIFY_FAILURE!!BuyBusTicket	Sorry, the purchase failed due to unexpected errors.
+NOTIFY_FAILURE!!FindBus	I can't find buses that match your preferences.
+NOTIFY_SUCCESS!!BuyBusTicket	Your ticket is confirmed.
+OFFER!!departure_time!!@	How about the bus departing at @?
+OFFER!!price!!@	It costs @.
+OFFER_INTENT!!BuyBusTicket	Do you want to buy tickets for this bus?
+REQUEST!!departure_date	When do you plan to leave?
+REQUEST!!departure_date!!@	Do you plan to leave on @?
+REQUEST!!departure_date!!@@	When do you plan to leave? Is it @, @, or some day else?
+REQUEST!!departure_time	What time do you want to leave?
+REQUEST!!from_city	Where are you leaving from?
+REQUEST!!num_passengers	How many tickets do you want?
+REQUEST!!to_city	Where are you going?
+REQ_MORE	Can I help you with anything else?

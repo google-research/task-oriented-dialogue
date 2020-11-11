@@ -1,0 +1,26 @@
+CONFIRM!!appointment_date!!@	on @.
+CONFIRM!!appointment_time!!@	appointment is at @
+CONFIRM!!dentist_name!!@	Booking appointment with @,
+GOODBYE	Have a good day. Thank you.
+INFORM!!address!!@	They are located at @.
+INFORM!!city!!@	They are located in @.
+INFORM!!offers_cosmetic_services!!False	Unfortunately, they don't offer cosmetic services.
+INFORM!!offers_cosmetic_services!!True	Yes, they do offer cosmetic services.
+INFORM!!phone_number!!@	Their phone number is @.
+INFORM_COUNT!!FindProvider!!count!!@	I found @ dentists.
+NOTIFY_FAILURE!!BookAppointment	Sorry, I was unable to book the appointment you requested.
+NOTIFY_FAILURE!!FindProvider	Sorry, I could not find a dentist matching your request.
+NOTIFY_SUCCESS!!BookAppointment	Congratulations, your dentist appointment is successfully booked.
+OFFER!!appointment_date!!@	on @
+OFFER!!appointment_time!!@	at @.
+OFFER!!city!!@	located in @.
+OFFER!!dentist_name!!@	How about @
+OFFER_INTENT!!BookAppointment	Would you like to book an appointment as well?
+REQUEST!!appointment_date	What date would you like to book it on?
+REQUEST!!appointment_date!!@	Do you want to make an appointment on @?
+REQUEST!!appointment_time	What time works for you?
+REQUEST!!city	Which city should I search in?
+REQUEST!!city!!@	Should I search in @?
+REQUEST!!city!!@@	Do you want me to search in @ or @?
+REQUEST!!dentist_name	Which dentist would you like to visit?
+REQ_MORE	Is there anything else that I can help you with?

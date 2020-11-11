@@ -1,0 +1,26 @@
+CONFIRM!!appointment_date!!@	and the appointment is on @.
+CONFIRM!!appointment_time!!@	the appointment is at @
+CONFIRM!!stylist_name!!@	The name of the hair stylist is @,
+GOODBYE	Have a pleasant day.
+INFORM!!average_rating!!@	Its average rating is @.
+INFORM!!city!!@	The salon is located in @.
+INFORM!!is_unisex!!False	It is not a unisex salon.
+INFORM!!is_unisex!!True	It is a unisex salon.
+INFORM!!phone_number!!@	Its phone number is @.
+INFORM!!street_address!!@	Its address is @.
+INFORM_COUNT!!FindProvider!!count!!@	I found @ salons you may like.
+NOTIFY_FAILURE!!BookAppointment	Sorry I could not book the appointment.
+NOTIFY_FAILURE!!FindProvider	Sorry I could not find a salon for your preferences.
+NOTIFY_SUCCESS!!BookAppointment	Your appointment is confirmed.
+OFFER!!appointment_date!!@	How about an appointment on @
+OFFER!!appointment_time!!@	at @?
+OFFER!!city!!@	in @.
+OFFER!!stylist_name!!@	@ is a nice salon
+OFFER_INTENT!!BookAppointment	Shall I book an appointment here?
+REQUEST!!appointment_date	What date do you want your appointment on?
+REQUEST!!appointment_date!!@	Do you want your appointment on @?
+REQUEST!!appointment_time	At what time would you like your appointment?
+REQUEST!!city	Which city should I search in?
+REQUEST!!city!!@	Do you want to find a salon in @?
+REQUEST!!stylist_name	What is the name of the salon?
+REQ_MORE	Can I help you with anything else?

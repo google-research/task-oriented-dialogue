@@ -1,0 +1,18 @@
+CONFIRM!!subtitles!!False	without subtitles.
+CONFIRM!!subtitles!!True	with subtitles.
+CONFIRM!!title!!@	playing @
+GOODBYE	Have a good day.
+INFORM!!directed_by!!@	It's directed by @.
+INFORM!!genre!!@	It is a @ movie.
+INFORM_COUNT!!FindMovies!!count!!@	There're @ movies you may like.
+NOTIFY_FAILURE!!FindMovies	I failed to find any movies matching your preference.
+NOTIFY_FAILURE!!PlayMovie	Failed to play the movie.
+NOTIFY_SUCCESS!!PlayMovie	Started playing the movie.
+OFFER!!subtitles!!False	It doesn't have subtitles.
+OFFER!!title!!@	What about @?
+OFFER!!title!!@@	What about @ or @?
+OFFER!!title!!@@@	Do you like @, @ or @?
+OFFER_INTENT!!PlayMovie	Do you want to play the movie?
+REQUEST!!genre	What kind of movies do you like?
+REQUEST!!title	Which movie do you want to watch?
+REQ_MORE	What else can I help?

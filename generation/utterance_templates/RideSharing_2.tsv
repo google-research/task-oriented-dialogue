@@ -1,0 +1,15 @@
+CONFIRM!!destination!!@	You want a ride to @.
+CONFIRM!!number_of_seats!!@	You need @ seats.
+CONFIRM!!ride_type!!@	You prefer a @ ride.
+GOODBYE	Have a wonderful day.
+INFORM!!ride_fare!!@	The ride costs @.
+INFORM!!wait_time!!@	The cab is expected in @ minutes.
+NOTIFY_FAILURE!!GetRide	I'm sorry, I could not find a ride for you at this time.
+NOTIFY_SUCCESS!!GetRide	I booked your ride and the cab is on its way.
+REQUEST!!destination	Where do you want to go to?
+REQUEST!!destination!!@	Are you going to @?
+REQUEST!!destination!!@@	Are you going to @ or @?
+REQUEST!!number_of_seats	How many seats do you need?
+REQUEST!!ride_type	Do you have a preferred type of ride?
+REQUEST!!ride_type!!@@	Which type of ride would you prefer? You can take @ or @ or anything else.
+REQ_MORE	Can I help you with anything else?

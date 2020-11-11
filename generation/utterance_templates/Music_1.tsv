@@ -1,0 +1,20 @@
+CONFIRM!!playback_device!!@	playing the song on @
+CONFIRM!!song_name!!@	play the song @
+CONFIRM!!year!!@	from the year @
+GOODBYE	Have a good day.
+INFORM!!genre!!@	It is a @ song.
+INFORM!!year!!@	It is from the year @.
+INFORM!!album!!@	It's from the album @.
+INFORM!!artist!!@	This is a song by @.
+INFORM_COUNT!!LookupSong!!count!!@	I found @ songs for you.
+NOTIFY_FAILURE!!LookupSong	Sorry, I couldn't find any song that matches your preferences.
+NOTIFY_FAILURE!!PlaySong	Sorry, I am unable to play the song.
+NOTIFY_SUCCESS!!PlaySong	Enjoy your music.
+OFFER!!album!!@	in the album @.
+OFFER!!artist!!@	by @
+OFFER!!song_name!!@	What do you think about @
+OFFER_INTENT!!PlaySong	Would you like to play this song?
+REQUEST!!song_name	Do you have a song in mind?
+REQUEST!!album	Do you like any particular album?
+REQ_MORE	Is there anything else I can help you with?
+REQUEST!!song_name	What song do you want to listen to?

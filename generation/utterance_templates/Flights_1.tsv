@@ -1,0 +1,58 @@
+CONFIRM!!airlines!!@	the airlines is @.
+CONFIRM!!departure_date!!@	the departure date is @.
+CONFIRM!!destination_airport!!@	the flight lands at @.
+CONFIRM!!destination_city!!@	the flight goes to @.
+CONFIRM!!inbound_departure_time!!@	the return flight leaves at @.
+CONFIRM!!origin_airport!!@	the origin is @.
+CONFIRM!!origin_city!!@	the flight is from @.
+CONFIRM!!outbound_departure_time!!@	the onward flight leaves at @.
+CONFIRM!!passengers!!@	the number of passengers is @.
+CONFIRM!!refundable!!True	This is a refundable ticket.
+CONFIRM!!return_date!!@	the return date is @.
+CONFIRM!!seating_class!!@	The seating class is @.
+GOODBYE	Have a wonderful day.
+INFORM!!destination_airport!!@	The destination is @.
+INFORM!!inbound_arrival_time!!@	The return flight arrives at @.
+INFORM!!inbound_departure_time!!@	The return flight leaves at @.
+INFORM!!number_stops!!@	Number of stops is @.
+INFORM!!origin_airport!!@	The flight departs from @.
+INFORM!!outbound_arrival_time!!@	The onward flight arrives at @.
+INFORM!!outbound_departure_time!!@	The onward flight departs at @.
+INFORM!!price!!@	The price for the ticket is @.
+INFORM!!refundable!!False	Unfortunately the ticket is not refundable.
+INFORM!!refundable!!True	The ticket is refundable.
+INFORM!!return_date!!@	The return date is @.
+INFORM_COUNT!!SearchOnewayFlight!!count!!@	I found @ suitable flights for you.
+INFORM_COUNT!!SearchRoundtripFlights!!count!!@	I found @ convenient flights for your trip.
+NOTIFY_FAILURE!!ReserveOnewayFlight	Sorry I couldn't book the ticket.
+NOTIFY_FAILURE!!ReserveRoundtripFlights	Sorry I couldn't book your ticket.
+NOTIFY_FAILURE!!SearchOnewayFlight	Sorry, I wasn't able to find the requested flight.
+NOTIFY_FAILURE!!SearchRoundtripFlights	Sorry, I wasn't able to find the requested flights.
+NOTIFY_SUCCESS!!ReserveOnewayFlight	Your oneway ticket is confirmed.
+NOTIFY_SUCCESS!!ReserveRoundtripFlights	Your ticket is confirmed.
+OFFER!!airlines!!@	There is a @ flight.
+OFFER!!departure_date!!@	The flight departs on @.
+OFFER!!destination_city!!@	The flight is going to @.
+OFFER!!inbound_departure_time!!@	The return flight leaves at @.
+OFFER!!number_stops!!@	and it has @ stops.
+OFFER!!origin_city!!@	The flight originates from @.
+OFFER!!outbound_departure_time!!@	The outbound flight leaves at @.
+OFFER!!passengers!!@	for @ passengers.
+OFFER!!price!!@	The price of the ticket is @.
+OFFER!!return_date!!@	the return flight is on @.
+OFFER_INTENT!!ReserveOnewayFlight	Do you want to buy tickets for it?
+OFFER_INTENT!!ReserveRoundtripFlights	Should I buy the tickets for it?
+REQUEST!!airlines	Do you have a preferred aitlines?
+REQUEST!!airlines!!@@	Do you have a preferred airlines? May be @, @ or any other airline.
+REQUEST!!departure_date	When do you plan to leave?
+REQUEST!!departure_date!!@	Do you want to leave on @?
+REQUEST!!departure_date!!@@	When do you want to leave? May be @, @ or other date?
+REQUEST!!destination_airport	Where are you planning to visit?
+REQUEST!!destination_city	Where are you planning to visit?
+REQUEST!!inbound_departure_time	When do you want the return flight to leave?
+REQUEST!!origin_airport	Where will you be leaving from?
+REQUEST!!origin_city	Where will you be leaving from?
+REQUEST!!outbound_departure_time	What time do you want to leave?
+REQUEST!!return_date	When are you coming back?
+REQUEST!!return_date!!@	Will you come back on @?
+REQ_MORE	Shall I help you with anything else?

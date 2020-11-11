@@ -1,0 +1,35 @@
+CONFIRM!!check_in_date!!@	The check-in date is @.
+CONFIRM!!check_out_date!!@	The check-out date is @.
+CONFIRM!!hotel_name!!@	making a reservation at @.
+CONFIRM!!location!!@	The hotel is in @.
+CONFIRM!!number_of_rooms!!@	You want to book @ rooms.
+GOODBYE	Have a good day.
+INFORM!!average_rating!!@	The average rating is @.
+INFORM!!location!!@	It's located in @.
+INFORM!!pets_welcome!!False	It doesn't allow pets.
+INFORM!!pets_welcome!!True	It welcomes pets.
+INFORM!!phone_number!!@	The phone number is @.
+INFORM!!price!!@	It costs @ in total.
+INFORM!!street_address!!@	It's address is @.
+INFORM_COUNT!!SearchHotel!!count!!@	I found @ hotels.
+NOTIFY_FAILURE!!ReserveHotel	There's no available room matching your requirements.
+NOTIFY_FAILURE!!SearchHotel	Sorry, I was unable to find a hotel matching your requirements.
+NOTIFY_SUCCESS!!ReserveHotel	You've successfully made the reservation.
+OFFER!!average_rating!!@	Its rating is @.
+OFFER!!check_in_date!!@	from @
+OFFER!!check_out_date!!@	to @
+OFFER!!hotel_name!!@	What about @?
+OFFER!!number_of_rooms!!@	for @ rooms.
+OFFER!!price!!@	The room is @ per night.
+OFFER_INTENT	What else can I help?
+OFFER_INTENT!!ReserveHotel	Do you want to continue to reserve the hotel?
+REQUEST!!check_in_date	What's your expected check-in date?
+REQUEST!!check_in_date!!@	Do you want to check in on @?
+REQUEST!!check_in_date!!@@	Do you want to check in on @ or @? Or some othe date?
+REQUEST!!check_out_date	What's your expected check-out date?
+REQUEST!!check_out_date!!@	Do you want to check out on @?
+REQUEST!!check_out_date!!@@	Do you want to check out on @ or @ or some time else?
+REQUEST!!hotel_name	Which hotel do you want to stay in?
+REQUEST!!location	Which area do you want to search in?
+REQUEST!!location!!@	Do you want a hotel in @?
+REQ_MORE	What else can I help?

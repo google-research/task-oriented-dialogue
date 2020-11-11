@@ -1,0 +1,30 @@
+CONFIRM!!city!!@	The city is @.
+CONFIRM!!date!!@	The date is @.
+CONFIRM!!party_size!!@	The reservation is for @ people.
+CONFIRM!!restaurant_name!!@	Booking a table at @.
+CONFIRM!!time!!@	The reservation is at @.
+GOODBYE	Have a good day.
+INFORM!!cuisine!!@	They serve @ kind of food.
+INFORM!!has_live_music!!False	They do not have live music.
+INFORM!!has_live_music!!True	They have live music.
+INFORM!!phone_number!!@	Their phone number is @.
+INFORM!!price_range!!@	Their price range is @.
+INFORM!!serves_alcohol!!False	They do not serve alcohol.
+INFORM!!serves_alcohol!!True	They serve alcohol.
+INFORM!!street_address!!@	Their street address is @.
+INFORM_COUNT!!FindRestaurants!!count!!@	I found @ restaurants.
+NOTIFY_FAILURE!!FindRestaurants	Sorry, I could not find any restaurants matching your preferences.
+NOTIFY_FAILURE!!ReserveRestaurant	Sorry, I was unable to make a reservation.
+NOTIFY_SUCCESS!!ReserveRestaurant	Your reservation is successful.
+OFFER!!city!!@	located in @
+OFFER!!date!!@	on @
+OFFER!!party_size!!@	Shall I try a reservation for @ people
+OFFER!!restaurant_name!!@	@ is a nice restaurant
+OFFER!!time!!@	at @?
+OFFER_INTENT!!ReserveRestaurant	Would you like to reserve a table here?
+REQUEST!!city	Which city should I search in?
+REQUEST!!cuisine	What kind of food are you looking for?
+REQUEST!!cuisine!!@@	What kind of food are you looking for? You can say @, @ or anything else.
+REQUEST!!restaurant_name	Do you have a preferred restaurant?
+REQUEST!!time	What time is the reservation for?
+REQ_MORE	Can I help you with anything else?

@@ -1,0 +1,10 @@
+CONFIRM!!contact_name!!@	with @.
+CONFIRM!!location!!@	You're sharing the location @
+GOODBYE	Have a nice day!
+NOTIFY_FAILURE!!ShareLocation	Sorry, I could not share the location now.
+NOTIFY_SUCCESS!!ShareLocation	You've successfully shared the location.
+REQUEST!!contact_name	Who do you want to share it with?
+REQUEST!!location	What location do you want to send?
+REQUEST!!location!!@	Do you want to share this address @?
+REQUEST!!location!!@@	Which address do you want to share? @, @ or something else?
+REQ_MORE	Is there something else I can help?
