@@ -23,7 +23,7 @@ from t5.evaluation import metrics
 
 # This is the value of the flag `output_dir` used while executing
 # `prepare_dataset.py`.
-SGD_DATA_DIR = "/tmp/test_nlg"
+TSV_DATA_DIR = "/tmp/test_nlg"
 
 for input_version in ["naive", "schema_guided", "t2g2"]:
   for kshot in ["5_shot", "10_shot", "20_shot", "40_shot", "80_shot", "all"]:
@@ -33,8 +33,8 @@ for input_version in ["naive", "schema_guided", "t2g2"]:
         text_preprocessor=functools.partial(
             preprocessors.preprocess_tsv, num_fields=3),
         split_to_filepattern={
-            "train": f"{SGD_DATA_DIR}/train/{input_version}_{kshot}",
-            "dev": f"{SGD_DATA_DIR}/dev/{input_version}_all.tsv",
-            "test": f"{SGD_DATA_DIR}/test/{input_version}_all.tsv",
+            "train": f"{TSV_DATA_DIR}/train/{input_version}_{kshot}.tsv",
+            "dev": f"{TSV_DATA_DIR}/dev/{input_version}_all.tsv",
+            "test": f"{TSV_DATA_DIR}/test/{input_version}_all.tsv",
         },
         metric_fns=[metrics.bleu, metrics.sequence_accuracy])
