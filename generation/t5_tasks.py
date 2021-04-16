@@ -31,7 +31,7 @@ for input_version in ["naive", "schema_guided", "t2g2"]:
         f"{input_version}_{kshot}",
         t5.data.TextLineTask,
         text_preprocessor=functools.partial(
-            preprocessors.preprocess_tsv, num_fields=3),
+            preprocessors.preprocess_tsv, num_fields=5),
         split_to_filepattern={
             "train": f"{TSV_DATA_DIR}/train/{input_version}_{kshot}.tsv",
             "dev": f"{TSV_DATA_DIR}/dev/{input_version}_all.tsv",

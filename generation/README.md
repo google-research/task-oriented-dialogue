@@ -66,6 +66,13 @@ t5_mesh_transformer \
   --module_import="generation.t5_tasks" \
 ```
 
+Example to calculate the slot error rate (SER) :
+
+```
+python ser.py --predictions_path=""  --inputs_path="" --data_dir=""
+```
+
+```inputs_path``` should point to a TSV file generated using ```prepare_dataset.py```. The ```predictions_path``` flag should contain one prediction per line, in the same order as ```inputs_path```.  The ```data_dir``` flag should point to the SGD dataset directory.
 
 ## How to Cite
 
