@@ -1,4 +1,4 @@
-# Copyright 2020 Google Research.
+# Copyright 2021 Google Research.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,20 +21,22 @@ import random
 
 from absl import app
 from absl import flags
-
+from schema_guided_dialogue.generation import utterance_generator
 import tensorflow as tf
 
-from generation import utterance_generator
 
 flags.DEFINE_string("sgd_dir", None, "Directory containing the SGD dataset.")
 flags.DEFINE_string("output_dir", None,
                     "Directory where datasets will be created.")
+flags.DEFINE_boolean("delexicalize", False,
+                     "Whether to delexicalize non-categorical slots")
+flags.DEFINE_string("templates_dir", None,
+                    "Directory contains utterance templates.")
 
 FLAGS = flags.FLAGS
 
 SEPARATOR = " | "
 _CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-UTTERANCE_TEMPLATE_DIR = f"{_CURRENT_DIR}/utterance_templates"
 FEWSHOT_IDS_DIR = f"{_CURRENT_DIR}/fewshot_splits"
 
 
@@ -65,13 +67,20 @@ class Preprocessor:
     self.add_slot_desc = (self.input_representation_type == "schema_guided")
     self.schemas_str_repr = self.preprocess_schemas(schemas_path)
     self._utterance_gen = utterance_generator.TemplateUtteranceGenerator(
-        UTTERANCE_TEMPLATE_DIR)
+        FLAGS.templates_dir)
 
   def preprocess_slot(self, slot):
     slot_str = f"name={slot['name']},description={slot['description']}"
     if slot["possible_values"]:
       slot_str = f"{slot_str},examples ={','.join(slot['possible_values'])}"
     return slot_str
+
+  def load_schema(self, schemas_path, service):
+    schemas = json.load(tf.io.gfile.GFile(schemas_path))
+    for schema in schemas:
+      if schema["service_name"] == service:
+        return schema
+    return schemas
 
   def preprocess_schemas(self, schemas_path):
     schemas = json.load(tf.io.gfile.GFile(schemas_path))
@@ -98,10 +107,16 @@ class Preprocessor:
     schema_str = SEPARATOR.join(schema_str_parts).lower()
     return schema_str
 
-  def preprocess_turn(self, turn):
+  def preprocess_target_utterance(self, turn, schema=None):
+    if FLAGS.delexicalize:
+      return self._utterance_gen.get_delexicalized_utterance(turn, schema)
+    else:
+      return turn["utterance"]
+
+  def preprocess_turn(self, turn, schema=None):
     """Convert a dialog turn into a textual representation."""
     if self.input_representation_type == "t2g2":
-      robot_utterance = self._utterance_gen.get_robot_utterance(turn)
+      robot_utterance = self._utterance_gen.get_robot_utterance(turn, schema)
       return turn["speaker"] + SEPARATOR + robot_utterance
     turn_str_parts = [turn["speaker"]]
     for frame in turn["frames"]:
@@ -150,6 +165,8 @@ class Preprocessor:
           continue
         services = dialog["services"]
         turns = dialog["turns"]
+        # add turn number
+        turn_id = 0
         for turn in turns:
           if turn["speaker"] == "USER":
             continue
@@ -157,11 +174,15 @@ class Preprocessor:
           if len(services) > 1 and self.input_representation_type != "t2g2":
             raise ValueError("found turn with multiple services. exiting.")
           service = services[0]
-          text = _remove_newline_and_tabs(turn["utterance"])
-          structured_data = self.preprocess_turn(turn)
+          schema = self.load_schema(self.schemas_path,
+                                    service) if FLAGS.delexicalize else None
+          text = _remove_newline_and_tabs(
+              self.preprocess_target_utterance(turn, schema))
+          structured_data = self.preprocess_turn(turn, schema)
           structured_data = _remove_newline_and_tabs(structured_data)
           metadata = _remove_newline_and_tabs(json.dumps(turn))
-          writer.writerow([structured_data, text, metadata])
+          writer.writerow([structured_data, text, metadata, dialog_id, turn_id])
+          turn_id += 1
 
 
 def create_fewshot_splits(dialogs, data_processor, output_dir, encoding_scheme):

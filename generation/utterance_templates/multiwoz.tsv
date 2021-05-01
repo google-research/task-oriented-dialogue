@@ -1,0 +1,240 @@
+Attraction-Inform	Yes
+Attraction-Inform!!Addr!!@	address is @
+Attraction-Inform!!Area!!@	in the @ side of town
+Attraction-Inform!!Choice!!@	I highly recommend checking out @
+Attraction-Inform!!Fee!!?	their entrance fee is ?
+Attraction-Inform!!Fee!!@	the entrance fee is @
+Attraction-Inform!!Name!!@	It is @
+Attraction-Inform!!Open!!@	they open at @
+Attraction-Inform!!Phone!!@	phone number is @
+Attraction-Inform!!Post!!@	their postcode is @
+Attraction-Inform!!Price!!@	the price is @
+Attraction-Inform!!Type!!@	there are a few @
+Attraction-NoOffer	Unfortunately, there aren't any.
+Attraction-NoOffer!!Addr!!@	i don't see any attractions at @
+Attraction-NoOffer!!Area!!@	There aren't any in @ side of town
+Attraction-NoOffer!!Choice!!@	I have no @ available.
+Attraction-NoOffer!!Fee!!@	There are none with @ fee
+Attraction-NoOffer!!Name!!@	Sorry, I could not find @
+Attraction-NoOffer!!Type!!@	Sorry, I could not find any @
+Attraction-Recommend	I highly recommend it
+Attraction-Recommend!!Addr!!@	address is @
+Attraction-Recommend!!Area!!@	in the @ side of town
+Attraction-Recommend!!Choice!!@	I highly recommend checking out @
+Attraction-Recommend!!Fee!!@	the entrance fee is @
+Attraction-Recommend!!Name!!@	It is @
+Attraction-Recommend!!Open!!@	they open at @
+Attraction-Recommend!!Phone!!@	phone number is @
+Attraction-Recommend!!Post!!@	their postcode is @
+Attraction-Recommend!!Price!!@	the price is @
+Attraction-Recommend!!Type!!@	there are a few @
+Attraction-Request!!Area!!?	would you like to try another area?
+Attraction-Request!!Name!!?	would you like to try any other place.
+Attraction-Request!!Price!!?	are you looking for one with no entrace fees?
+Attraction-Request!!Type!!?	what type of attraction would you like to see?
+Attraction-Select	would you like to visit that?
+Attraction-Select!!Addr!!@	located at @
+Attraction-Select!!Area!!@	located in @ of town
+Attraction-Select!!Choice!!@	how about @
+Attraction-Select!!Fee!!@	the fees are @
+Attraction-Select!!Name!!@	you can try @
+Attraction-Select!!Phone!!@	their phone number is @
+Attraction-Select!!Price!!@	their entrance fee is @
+Attraction-Select!!Type!!@	would you like to visit a @
+Booking-Book	The booking was successful.
+Booking-Book!!Day!!@	on @
+Booking-Book!!Name!!@	I was able to book @
+Booking-Book!!People!!@	for @ people
+Booking-Book!!Ref!!@	reference @
+Booking-Book!!Stay!!@	stay for @ nights
+Booking-Book!!Time!!@	booking at @
+Booking-Inform	Can I book this?
+Booking-Inform!!Day!!@	reservation on @
+Booking-Inform!!Name!!@	The reservation is at @
+Booking-Inform!!People!!@	for @ people
+Booking-Inform!!Ref!!@	reference @
+Booking-Inform!!Stay!!@	stay for @ nights
+Booking-Inform!!Time!!@	booking at @
+Booking-NoBook	I am sorry. I was unable to book.
+Booking-NoBook!!Day!!@	@ is not available
+Booking-NoBook!!Name!!@	@ is not available
+Booking-NoBook!!People!!@	they can't accommodate @ people
+Booking-NoBook!!Ref!!@	booking reference is @
+Booking-NoBook!!Stay!!@	they don't have anything for @ nights
+Booking-NoBook!!Time!!@	the time @ is not available
+Booking-Request!!Day!!?	what day would you like for the hotel?
+Booking-Request!!People!!?	How many people will be staying?
+Booking-Request!!Stay!!?	What is the duration of your stay?
+Booking-Request!!Time!!?	What time would you like for the booking?
+Hospital-Inform!!Addr!!@	their address is @
+Hospital-Inform!!Department!!@	they have a @
+Hospital-Inform!!Phone!!@	their phone number is @
+Hospital-Inform!!Post!!@	their postcode is @
+Hospital-Request!!Department!!?	Is there a specific department you would like?
+Hotel-Inform	Can I help you find a hotel?
+Hotel-Inform!!Addr!!@	located at @
+Hotel-Inform!!Area!!@	in the @ side of town
+Hotel-Inform!!Choice!!@	I have @ hotels
+Hotel-Inform!!Internet!!@	with @ wifi
+Hotel-Inform!!Name!!@	stay at @
+Hotel-Inform!!Parking!!@	with @ parking
+Hotel-Inform!!Phone!!@	their phone number is @
+Hotel-Inform!!Post!!@	their postcode is @
+Hotel-Inform!!Price!!@	It is @ priced
+Hotel-Inform!!Ref!!@	the booking reference is @
+Hotel-Inform!!Stars!!@	has @ stars
+Hotel-Inform!!Type!!@	property type is @
+Hotel-NoOffer	I am sorry, I couldn't find anything
+Hotel-NoOffer!!Area!!@	there are no hotels in the @ part of town
+Hotel-NoOffer!!Choice!!@	Unfortunately there are no other @
+Hotel-NoOffer!!Internet!!@	Unfortunately, there are no hotels with @
+Hotel-NoOffer!!Name!!@	Sorry I could not find @
+Hotel-NoOffer!!Parking!!@	I can't find hotels with @ parking
+Hotel-NoOffer!!Price!!@	I couldn't find any @ priced hotels
+Hotel-NoOffer!!Stars!!@	I couldn't find anything with @ stars
+Hotel-NoOffer!!Type!!@	I couldn't find any @
+Hotel-Recommend	Would you like me to make a recommendation?
+Hotel-Recommend!!Addr!!@	located at @
+Hotel-Recommend!!Area!!@	in the @ side of town
+Hotel-Recommend!!Choice!!@	I recommend @
+Hotel-Recommend!!Internet!!@	it has @
+Hotel-Recommend!!Name!!@	I suggest @
+Hotel-Recommend!!Parking!!@	it has @
+Hotel-Recommend!!Phone!!@	its phone number is @
+Hotel-Recommend!!Post!!@	post code is @
+Hotel-Recommend!!Price!!@	It is @ priced
+Hotel-Recommend!!Stars!!@	has @ stars
+Hotel-Recommend!!Type!!@	is a nice @
+Hotel-Request!!Area!!?	Which part of town should I search in?
+Hotel-Request!!Internet!!?	any preferences for internet?
+Hotel-Request!!Name!!?	Are you looking for a specific property?
+Hotel-Request!!Parking!!?	any preferences for parking?
+Hotel-Request!!Price!!?	What is your preferred price range?
+Hotel-Request!!Stars!!?	What star rating do you want?
+Hotel-Request!!Type!!?	What kind of property are you looking for?
+Hotel-Select	Do you have any preference?
+Hotel-Select!!Addr!!@	located at @
+Hotel-Select!!Area!!@	in the @ side of town
+Hotel-Select!!Choice!!@	how does @ sound?
+Hotel-Select!!Internet!!@	Looking for a hotel with @
+Hotel-Select!!Name!!@	how does @ sound?
+Hotel-Select!!Parking!!@	it has @
+Hotel-Select!!Phone!!@	its phone number is @
+Hotel-Select!!Price!!@	It is @ priced
+Hotel-Select!!Stars!!@	it has @ stars
+Hotel-Select!!Type!!@	Looking for a @
+Police-Inform!!Addr!!@	the address is @
+Police-Inform!!Name!!@	Contact the @ station
+Police-Inform!!Phone!!@	their phone number is @
+Police-Inform!!Post!!@	their post code is @
+Restaurant-Inform	I found a restaurant.
+Restaurant-Inform!!Addr!!@	located at @
+Restaurant-Inform!!Area!!@	in the @ of town
+Restaurant-Inform!!Choice!!@	There are @ restaurants.
+Restaurant-Inform!!Food!!@	They serve @ food.
+Restaurant-Inform!!Name!!@	The @ is available
+Restaurant-Inform!!Phone!!@	phone number is @
+Restaurant-Inform!!Post!!@	the postcode is @
+Restaurant-Inform!!Price!!@	It is @ priced
+Restaurant-Inform!!Ref!!@	The booking reference is @
+Restaurant-NoOffer	I am sorry, I couldn't find any retaurants.
+Restaurant-NoOffer!!Area!!@	I couldn't find any restaurants in @ of town
+Restaurant-NoOffer!!Choice!!@	Sorry I found @ restaurants
+Restaurant-NoOffer!!Food!!@	there aren't any @ restaurants
+Restaurant-NoOffer!!Name!!@	I cannot find details for @
+Restaurant-NoOffer!!Price!!@	I couldn't find any @ priced restaurants.
+Restaurant-Recommend	How about this restaurant?
+Restaurant-Recommend!!Addr!!@	located at @
+Restaurant-Recommend!!Area!!@	in the @ of town
+Restaurant-Recommend!!Choice!!@	The @ restaurant
+Restaurant-Recommend!!Food!!@	There is a great @ restaurant
+Restaurant-Recommend!!Name!!@	@ meets your criteria
+Restaurant-Recommend!!Phone!!@	phone number is @
+Restaurant-Recommend!!Post!!@	their postcode is @
+Restaurant-Recommend!!Price!!@	with a @ price range
+Restaurant-Request!!Area!!?	Which part of town?
+Restaurant-Request!!Food!!?	What kind of food?
+Restaurant-Request!!Name!!?	Which restaurant would you like?
+Restaurant-Request!!Price!!?	What is your preferred price range?
+Restaurant-Select	Does it work for you?
+Restaurant-Select!!Addr!!@	at @
+Restaurant-Select!!Area!!@	in the @ of town
+Restaurant-Select!!Choice!!@	There are @ restaurants.
+Restaurant-Select!!Food!!@	serving @ food
+Restaurant-Select!!Name!!@	How about @?
+Restaurant-Select!!Price!!@	would you like @ price?
+Taxi-Inform	Your taxi is coming.
+Taxi-Inform!!Arrive!!@	will arrive by @
+Taxi-Inform!!Car!!@	I have a @ picking you up.
+Taxi-Inform!!Depart!!@	it will pick you up at @
+Taxi-Inform!!Dest!!@	taxi to @
+Taxi-Inform!!Leave!!@	picking you up at @
+Taxi-Inform!!Phone!!@	their phone number is @
+Taxi-Request!!Arrive!!?	When would you like to arrive?
+Taxi-Request!!Depart!!?	When would you like to leave?
+Taxi-Request!!Dest!!?	What is your destination?
+Taxi-Request!!Leave!!?	When would you like to leave?
+Train-Inform	I can book the train for you.
+Train-Inform!!Arrive!!@	arrives at @
+Train-Inform!!Choice!!@	How about the @ train.
+Train-Inform!!Day!!@	on @
+Train-Inform!!Depart!!@	departing from @
+Train-Inform!!Dest!!@	train for @
+Train-Inform!!Id!!@	the train id is @
+Train-Inform!!Leave!!@	the train departs at @
+Train-Inform!!People!!@	@ train tickets
+Train-Inform!!Ref!!@	the reference number for train is @
+Train-Inform!!Ticket!!@	priced @ per ticket
+Train-Inform!!Time!!@	the travel time is @
+Train-NoOffer	Sorry I couldn't find any trains
+Train-NoOffer!!Arrive!!@	Sorry I couldn't find trains arriving at @
+Train-NoOffer!!Choice!!@	May I suggest @
+Train-NoOffer!!Day!!@	Sorry I couldn't find a train for @
+Train-NoOffer!!Depart!!@	There are no trains departing @
+Train-NoOffer!!Dest!!@	There are no trains to @
+Train-NoOffer!!Id!!@	Train @ is not available.
+Train-NoOffer!!Leave!!@	no trains leaving at @
+Train-OfferBook	Should I book this one?
+Train-OfferBook!!Arrive!!@	arrives at @
+Train-OfferBook!!Choice!!@	Do you prefer @?
+Train-OfferBook!!Day!!@	it leaves on @
+Train-OfferBook!!Depart!!@	departing from @
+Train-OfferBook!!Dest!!@	going to @
+Train-OfferBook!!Id!!@	How about train @
+Train-OfferBook!!Leave!!@	it departs at @
+Train-OfferBook!!People!!@	for @ people
+Train-OfferBook!!Ref!!@	the reference number for train is @
+Train-OfferBook!!Ticket!!@	cost you @
+Train-OfferBook!!Time!!@	the travel time is @
+Train-OfferBooked	Do you need something else?
+Train-OfferBooked!!Arrive!!@	arriving in @
+Train-OfferBooked!!Choice!!@	I booked you @
+Train-OfferBooked!!Day!!@	on @
+Train-OfferBooked!!Depart!!@	departing from @
+Train-OfferBooked!!Dest!!@	going to @
+Train-OfferBooked!!Id!!@	the reference number for train is @
+Train-OfferBooked!!Leave!!@	leaving at @
+Train-OfferBooked!!People!!@	I got @ tickets
+Train-OfferBooked!!Ref!!@	The booking reference is @
+Train-OfferBooked!!Ticket!!@	The ticket price is @
+Train-OfferBooked!!Time!!@	the travel time is @
+Train-Request!!Arrive!!?	What time do you need to arrive by?
+Train-Request!!Day!!?	What is your day of departure?
+Train-Request!!Depart!!?	Where do you want to take the train from?
+Train-Request!!Dest!!?	What is your destination?
+Train-Request!!Leave!!?	What time would you like to take the train?
+Train-Request!!People!!?	How many tickets do you need?
+Train-Select	Would this train work?
+Train-Select!!Arrive!!@	arrive by @
+Train-Select!!Choice!!@	the @ train
+Train-Select!!Day!!@	on @
+Train-Select!!Depart!!@	departure station is @
+Train-Select!!Dest!!@	arriving to @
+Train-Select!!Id!!@	train number @
+Train-Select!!Leave!!@	leaving at @
+Train-Select!!People!!@	It is for @ people.
+Train-Select!!Ticket!!@	costs @
+general-bye	Goodbye!
+general-greet	Have a great day!
+general-reqmore	Is there anything else I can do for you?
+general-welcome	Thank you, have a good time.

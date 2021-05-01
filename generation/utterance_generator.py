@@ -1,4 +1,4 @@
-# Copyright 2020 Google Research.
+# Copyright 2021 Google Research.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -104,13 +104,19 @@ class TemplateUtteranceGenerator:
         act_key_to_template[act_key] = template_str
     self._templates_for_service[service] = act_key_to_template
 
-  def _get_utterance_for_action(self, service, intent, action):
+  def _get_intent(self, action, frame):
+    if action["act"] == "OFFER_INTENT" and action["slot"] == "intent":
+      return action["values"][0]
+    return frame.get("service_call", {}).get("method", None)
+
+  def _get_utterance_for_action(self, service, intent, action, schema=None):
     """Converts an action to an utterance and also identifies slot spans.
 
     Args:
       service: The service corresponding to the action.
       intent: The intent corresponding to the action.
       action: A json object containing a dialogue action.
+      schema: if given API schema, do lexicalization based on the schema
 
     Returns:
       The robot utterance corresponding to the action.
@@ -128,9 +134,19 @@ class TemplateUtteranceGenerator:
     for idx, char in enumerate(template):
       if char == VALUE_CHAR:
         if self._use_canonical_values:
-          replacement = action["canonical_values"][value_idx]
+          value = action["canonical_values"][value_idx]
         else:
-          replacement = action["values"][value_idx]
+          value = action["values"][value_idx]
+        if schema:
+          matched_slot = None
+          for slot in schema["slots"]:
+            if slot["name"] == action["slot"]:
+              matched_slot = slot
+          is_categorical = matched_slot[
+              "is_categorical"] if matched_slot else True
+          replacement = value if is_categorical else f"<{action['slot']}>"
+        else:
+          replacement = value
         value_idx += 1
       else:
         continue
@@ -140,12 +156,38 @@ class TemplateUtteranceGenerator:
       offset += len(replacement) - 1
     return template
 
-  def _get_intent(self, action, frame):
-    if action["act"] == "OFFER_INTENT" and action["slot"] == "intent":
-      return action["values"][0]
-    return frame.get("service_call", {}).get("method", None)
+  def get_delexicalized_utterance(self, turn, schema=None):
+    """Delexicalize target utterances.
 
-  def get_robot_utterance(self, turn):
+    Delexicalize the turn utterance based on given service schema, now only
+    non-categorical slots would be delexicalized.
+    For example, the utterance 'The restaurant is PizzaHut.' will be converted
+    into 'The restaurant is <reataurant_name>.'
+
+    Args:
+      turn: turn object, containing utterance, action, slots information
+      schema: SGD service schema, indicating if the slot is categorical
+
+    Returns:
+      delexicalized utterance.
+    """
+    delexicalized_utterance = turn["utterance"]
+    for frame in turn["frames"]:
+      for action in sorted(frame["actions"], key=self._act_key_fn):
+        for value in action["values"]:
+          matched_slot = None
+          for slot in schema["slots"]:
+            if slot["name"] == action["slot"]:
+              matched_slot = slot
+          is_categorical = matched_slot[
+              "is_categorical"] if matched_slot else True
+          replacement = value if is_categorical else f"<{action['slot']}>"
+          delexicalized_utterance = delexicalized_utterance.replace(
+              value, replacement)
+
+      return delexicalized_utterance
+
+  def get_robot_utterance(self, turn, schema):
     """Get the robot utterance corresponding to a turn."""
     # Use templates to generate an utterance for each action. All utterances are
     # then concatenated to give the resulting system utterance.
@@ -160,6 +202,7 @@ class TemplateUtteranceGenerator:
         # Get the active intent corresponding to this action.
         intent = self._get_intent(action, frame)
         utterance = self._get_utterance_for_action(frame["service"], intent,
-                                                   action)
+                                                   action, schema)
+
         utterances.append(utterance)
     return " ".join(utterances)
