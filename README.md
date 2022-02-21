@@ -44,7 +44,6 @@ which are not present in the training set.
 The baseline model for LU and DST was released along with the Schema-Guided
 Dialogue Dataset. The model is described in [our paper](https://arxiv.org/pdf/1909.05855.pdf)
 and code is available [here](https://github.com/google-research/google-research/tree/master/schema_guided_dst).
-The code will be moved to this repository soon.
 
 ### Dialogue System Technology Challenge (DSTC)
 
@@ -68,6 +67,7 @@ model. The code may be found in the directory `generation/`.
 
 ## Citations
 
+The schema-guided dialogue dataset and baseline model for DST.
 ```
 @inproceedings{rastogi2019scalable,
   title={{Towards Scalable Multi-domain Conversational Agents: The Schema-Guided Dialogue Dataset}},
@@ -76,7 +76,10 @@ model. The code may be found in the directory `generation/`.
   booktitle={{Proceedings of the AAAI Conference on Artificial Intelligence}},
   url="https://doi.org/10.1609/aaai.v34i05.6394",
 }
+```
 
+Template guided text generation.
+```
 @inproceedings{kale-rastogi-2020-template,
     title = "Template Guided Text Generation for Task Oriented Dialogue",
     author = "Kale, Mihir  and Rastogi, Abhinav",

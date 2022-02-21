@@ -21,7 +21,7 @@ import random
 
 from absl import app
 from absl import flags
-from schema_guided_dialogue.generation import utterance_generator
+from generation import utterance_generator
 import tensorflow as tf
 
 
