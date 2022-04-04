@@ -30,6 +30,10 @@ domains. The evaluation sets contain some domains and APIs which are not present
 in the training set in order to test the zero-shot generalization capability of
 the dialogue systems.
 
+## Dialogue Simulator
+
+The dialogue simulator is a tool to generate annotated task-oriented dialogues
+involving interactions with a custom API or service.
 
 ## Language Understanding and Dialogue State Tracking
 
