@@ -1,5 +1,9 @@
-# Template Guided Text Generation
+# Template Guided Text Generation for Task-Oriented Dialogue
 
+Template Guided Text Generation for Task-Oriented Dialogue ([Kale et. al, 2020](paper)) investigates three different apporaches to building a multi-domain NLG system
+without any domain or API dependent parameters, by using a pre-trained
+[T5](https://github.com/google-research/text-to-text-transfer-transformer)
+model.
 
 ## Usage
 
@@ -91,4 +95,4 @@ If you extend or use this work, please cite the following [paper][paper]:
     pages = "6505--6520",
 }
 ```
-[paper]: https://www.aclweb.org/anthology/2020.emnlp-main.527.pdf
+[paper]: https://arxiv.org/abs/2004.15006
