@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Lint as: python3
 """Validates all utterance templates added to this directory.
 
 Verifies that all rows have 2 columns separated by tabs and the number of slot
