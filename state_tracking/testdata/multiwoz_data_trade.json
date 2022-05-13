@@ -1,0 +1,355 @@
+[
+    {
+        "dialogue_idx": "MUL0708.json",
+        "domains": [
+            "hotel",
+            "train"
+        ],
+        "dialogue": [
+            {
+                "system_transcript": "",
+                "turn_idx": 0,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [
+                    [
+                        "train-departure",
+                        "cambridge"
+                    ]
+                ],
+                "transcript": "hi , can you help me find a train departing from cambridge ?",
+                "system_acts": [],
+                "domain": "train"
+            },
+            {
+                "system_transcript": "what is your destination ?",
+                "turn_idx": 1,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "train-destination",
+                                "leicester"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [
+                    [
+                        "train-destination",
+                        "leicester"
+                    ]
+                ],
+                "transcript": "i am going to leicester",
+                "system_acts": [
+                    "dest"
+                ],
+                "domain": "train"
+            },
+            {
+                "system_transcript": "it looks like trains run along that route every hour . is there a certain day and time you would like to know about ?",
+                "turn_idx": 2,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "train-leaveat",
+                                "20:15"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-destination",
+                                "leicester"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [
+                    [
+                        "train-leaveat",
+                        "20:15"
+                    ]
+                ],
+                "transcript": "i would like to leave after 20:15 .",
+                "system_acts": [
+                    "day",
+                    "leave"
+                ],
+                "domain": "train"
+            },
+            {
+                "system_transcript": "there are 28 trains that leave after 20:15 , what time would you like to arrive by or does it matter ?",
+                "turn_idx": 3,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "train-book people",
+                                "4"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-leaveat",
+                                "20:15"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-destination",
+                                "leicester"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [
+                    [
+                        "train-book people",
+                        "4"
+                    ]
+                ],
+                "transcript": "no , the arrival time does not matter . i need to book 4 tickets .",
+                "system_acts": [
+                    [
+                        "choice",
+                        "28"
+                    ],
+                    [
+                        "leave",
+                        "20:15"
+                    ],
+                    "arrive"
+                ],
+                "domain": "train"
+            },
+            {
+                "system_transcript": "alright , i booked you 4 tickets on tr5159 , leaving cambridge at 20:21 and arriving in leicester at 22:06 on friday . your reference number is vkvt7ctt .",
+                "turn_idx": 4,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "hotel-name",
+                                "ashley hotel"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-book people",
+                                "4"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-leaveat",
+                                "20:15"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-destination",
+                                "leicester"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [
+                    [
+                        "hotel-name",
+                        "ashley hotel"
+                    ]
+                ],
+                "transcript": "great ! also , i am looking for the ashley hotel . can you give me their phone number please ?",
+                "system_acts": [],
+                "domain": "hotel"
+            },
+            {
+                "system_transcript": "the phone number for the ashley hotel is 01223350059 . is there anything else i can help you with ?",
+                "turn_idx": 5,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "hotel-name",
+                                "ashley hotel"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-book people",
+                                "4"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-leaveat",
+                                "20:15"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-destination",
+                                "leicester"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [],
+                "transcript": "okay . great . that is all i needed .",
+                "system_acts": [
+                    [
+                        "name",
+                        "the ashley hotel"
+                    ],
+                    [
+                        "phone",
+                        "01223350059"
+                    ]
+                ],
+                "domain": "hotel"
+            },
+            {
+                "system_transcript": "okay perfect ! have a great trip and please let us know if you need assistance with anything else !",
+                "turn_idx": 6,
+                "belief_state": [
+                    {
+                        "slots": [
+                            [
+                                "hotel-name",
+                                "ashley hotel"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-book people",
+                                "4"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-leaveat",
+                                "20:15"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-destination",
+                                "leicester"
+                            ]
+                        ],
+                        "act": "inform"
+                    },
+                    {
+                        "slots": [
+                            [
+                                "train-departure",
+                                "cambridge"
+                            ]
+                        ],
+                        "act": "inform"
+                    }
+                ],
+                "turn_label": [],
+                "transcript": "thank you for your help , have a great day .",
+                "system_acts": [],
+                "domain": "hotel"
+            }
+        ]
+    }
+]

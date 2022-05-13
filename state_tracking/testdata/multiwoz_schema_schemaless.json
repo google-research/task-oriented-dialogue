@@ -1,0 +1,374 @@
+[
+  {
+    "service_name": "hotel",
+    "description": "",
+    "slots": [
+      {
+        "name": "hotel-pricerange",
+        "description": "price range of the hotel",
+        "possible_values": [
+          "cheap",
+          "moderate",
+          "expensive"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-type",
+        "description": "type of the hotel",
+        "possible_values": [
+          "hotel",
+          "guesthouse"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-parking",
+        "description": "if the hotel has parking",
+        "possible_values": [
+          "yes",
+          "no",
+          "free"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-stay",
+        "description": "number of days to book the hotel for",
+        "possible_values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-day",
+        "description": "day of week to book the hotel for",
+        "possible_values": [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-people",
+        "description": "number of people to book the hotel for",
+        "possible_values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-area",
+        "description": "area that the hotel is located in",
+        "possible_values": [
+          "east",
+          "north",
+          "centre",
+          "south",
+          "west"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-stars",
+        "description": "star rating of the hotel",
+        "possible_values": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-internet",
+        "description": "if the hotel has internet",
+        "possible_values": [
+          "yes",
+          "no"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "hotel-name",
+        "description": "name of the hotel",
+        "possible_values": [],
+        "is_categorical": false
+      }
+    ]
+  },
+  {
+    "service_name": "train",
+    "description": "",
+    "slots": [
+      {
+        "name": "train-destination",
+        "description": "destination location of the train",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "train-day",
+        "description": "day of week to book the train for",
+        "possible_values": [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "train-departure",
+        "description": "departure location of the train",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "train-arriveBy",
+        "description": "time the train arrives by",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "train-people",
+        "description": "number of people to book the train for",
+        "possible_values": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "train-leaveAt",
+        "description": "time the train leaves at",
+        "possible_values": [],
+        "is_categorical": false
+      }
+    ]
+  },
+  {
+    "service_name": "attraction",
+    "description": "",
+    "slots": [
+      {
+        "name": "attraction-area",
+        "description": "area that the attraction is located in",
+        "possible_values": [
+          "centre",
+          "north",
+          "east",
+          "west",
+          "south",
+          "cambridge"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "attraction-name",
+        "description": "name of the attraction",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "attraction-type",
+        "description": "type of the attraction",
+        "possible_values": [],
+        "is_categorical": false
+      }
+    ]
+  },
+  {
+    "service_name": "restaurant",
+    "description": "",
+    "slots": [
+      {
+        "name": "restaurant-food",
+        "description": "type of the restaurant food",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "restaurant-pricerange",
+        "description": "price range of the restaurant",
+        "possible_values": [
+          "cheap",
+          "moderate",
+          "expensive"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "restaurant-area",
+        "description": "area that the restaurant is located in",
+        "possible_values": [
+          "centre",
+          "north",
+          "east",
+          "west",
+          "south"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "restaurant-name",
+        "description": "name of the restaurant",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "restaurant-time",
+        "description": "time to book the restaurant for",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "restaurant-day",
+        "description": "day of week to book the restaurant for",
+        "possible_values": [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday"
+        ],
+        "is_categorical": true
+      },
+      {
+        "name": "restaurant-people",
+        "description": "number of people to book the restaurant for",
+        "possible_values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "is_categorical": true
+      }
+    ]
+  },
+  {
+    "service_name": "hospital",
+    "description": "",
+    "slots": [
+      {
+        "name": "hospital-department",
+        "description": "hospital department",
+        "possible_values": [],
+        "is_categorical": false
+      }
+    ]
+  },
+  {
+    "service_name": "taxi",
+    "description": "",
+    "slots": [
+      {
+        "name": "taxi-leaveAt",
+        "description": "time the taxi leaves at",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "taxi-destination",
+        "description": "destination location of the taxi",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "taxi-departure",
+        "description": "departure location of the taxi",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "taxi-arriveBy",
+        "description": "time the taxi arrives by",
+        "possible_values": [],
+        "is_categorical": false
+      }
+    ]
+  },
+  {
+    "service_name": "bus",
+    "description": "",
+    "slots": [
+      {
+        "name": "bus-departure",
+        "description": "departure location of the bus",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "bus-destination",
+        "description": "destination location of the bus",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "bus-leaveAt",
+        "description": "time the bus leaves at",
+        "possible_values": [],
+        "is_categorical": false
+      },
+      {
+        "name": "bus-day",
+        "description": "day of week to book the bus for",
+        "possible_values": [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday"
+        ],
+        "is_categorical": true
+      }
+    ]
+  }
+]

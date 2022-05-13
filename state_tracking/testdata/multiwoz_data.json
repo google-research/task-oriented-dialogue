@@ -1,0 +1,980 @@
+{
+  "MUL0708.json": {
+    "goal": {
+      "taxi": {},
+      "police": {},
+      "hospital": {},
+      "hotel": {
+        "info": {
+          "name": "ashley hotel"
+        },
+        "reqt": [
+          "phone"
+        ],
+        "fail_info": {}
+      },
+      "attraction": {},
+      "train": {
+        "info": {
+          "leaveAt": "20:15",
+          "destination": "leicester",
+          "day": "sunday",
+          "departure": "cambridge"
+        },
+        "fail_info": {},
+        "book": {
+          "invalid": false,
+          "people": "4"
+        },
+        "fail_book": {}
+      },
+      "message": [
+        "You are planning your trip in Cambridge",
+        "You are looking for a <span class='emphasis'>train</span>. The train should leave on <span class='emphasis'>sunday</span> and should depart from <span class='emphasis'>cambridge</span>",
+        "The train should <span class='emphasis'>leave after 20:15</span> and should go to <span class='emphasis'>leicester</span>",
+        "Once you find the train you want to make a booking for <span class='emphasis'>4 people</span>",
+        "Make sure you get the <span class='emphasis'>reference number</span>",
+        "You are also looking for a <span class='emphasis'>particular hotel</span>. Its name is called <span class='emphasis'>ashley hotel</span>",
+        "Make sure you get <span class='emphasis'>phone number</span>"
+      ],
+      "restaurant": {}
+    },
+    "log": [
+            {
+                "text": "Hi, can you help me find a train departing from Cambridge?",
+                "metadata": {},
+                "dialog_act": {
+                    "Train-Inform": [
+                        [
+                            "Depart",
+                            "cambridge"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Train-Inform",
+                        "Depart",
+                        "cambridge",
+                        11,
+                        11
+                    ]
+                ]
+            },
+            {
+                "text": "What is your destination?",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "",
+                            "area": "",
+                            "parking": "",
+                            "pricerange": "",
+                            "stars": "",
+                            "internet": "",
+                            "type": ""
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [],
+                            "people": ""
+                        },
+                        "semi": {
+                            "leaveAt": "not mentioned",
+                            "destination": "not mentioned",
+                            "day": "not mentioned",
+                            "arriveBy": "not mentioned",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "Train-Request": [
+                        [
+                            "Dest",
+                            "?"
+                        ]
+                    ]
+                },
+                "span_info": []
+            },
+            {
+                "text": "I am going to leicester",
+                "metadata": {},
+                "dialog_act": {
+                    "Train-Inform": [
+                        [
+                            "Dest",
+                            "leicester"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Train-Inform",
+                        "Dest",
+                        "leicester",
+                        4,
+                        4
+                    ]
+                ]
+            },
+            {
+                "text": "It looks like trains run along that route every hour. Is there a certain day and time you'd like to know about?",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "",
+                            "area": "",
+                            "parking": "",
+                            "pricerange": "",
+                            "stars": "",
+                            "internet": "",
+                            "type": ""
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [],
+                            "people": ""
+                        },
+                        "semi": {
+                            "leaveAt": "not mentioned",
+                            "destination": "leicester",
+                            "day": "not mentioned",
+                            "arriveBy": "not mentioned",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "Train-Request": [
+                        [
+                            "Day",
+                            "?"
+                        ],
+                        [
+                            "Leave",
+                            "?"
+                        ]
+                    ]
+                },
+                "span_info": []
+            },
+            {
+                "text": "I'd like to leave after 20:15.",
+                "metadata": {},
+                "dialog_act": {
+                    "Train-Inform": [
+                        [
+                            "Leave",
+                            "20:15"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Train-Inform",
+                        "Leave",
+                        "20:15",
+                        6,
+                        6
+                    ]
+                ]
+            },
+            {
+                "text": "There are 28 trains that leave after 20:15, what time would you like to arrive by or does it matter?",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "",
+                            "area": "",
+                            "parking": "",
+                            "pricerange": "",
+                            "stars": "",
+                            "internet": "",
+                            "type": ""
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [],
+                            "people": ""
+                        },
+                        "semi": {
+                            "leaveAt": "20:15",
+                            "destination": "leicester",
+                            "day": "not mentioned",
+                            "arriveBy": "not mentioned",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "Train-Inform": [
+                        [
+                            "Choice",
+                            "28"
+                        ],
+                        [
+                            "Leave",
+                            "20:15"
+                        ]
+                    ],
+                    "Train-Request": [
+                        [
+                            "Arrive",
+                            "?"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Train-Inform",
+                        "Choice",
+                        "28",
+                        2,
+                        2
+                    ],
+                    [
+                        "Train-Inform",
+                        "Leave",
+                        "20:15",
+                        7,
+                        7
+                    ]
+                ]
+            },
+            {
+                "text": "No, the arrival time does not matter. I need to book 4 tickets.",
+                "metadata": {},
+                "dialog_act": {
+                    "Train-Inform": [
+                        [
+                            "People",
+                            "4"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Train-Inform",
+                        "People",
+                        "4",
+                        13,
+                        13
+                    ]
+                ]
+            },
+            {
+                "text": "Alright, I booked you 4 tickets on TR5159, leaving Cambridge at 20:21 and arriving in Leicester at 22:06 on Friday. Your reference number is VKVT7CTT. ",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "",
+                            "area": "",
+                            "parking": "",
+                            "pricerange": "",
+                            "stars": "",
+                            "internet": "",
+                            "type": ""
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [
+                                {
+                                    "trainID": "TR5159",
+                                    "reference": "VKVT7CTT"
+                                }
+                            ],
+                            "people": "4"
+                        },
+                        "semi": {
+                            "leaveAt": "20:15",
+                            "destination": "leicester",
+                            "day": "not mentioned",
+                            "arriveBy": "dontcare",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "Train-OfferBooked": [
+                        [
+                            "Arrive",
+                            "22:06"
+                        ],
+                        [
+                            "Ref",
+                            "VKVT7CTT"
+                        ],
+                        [
+                            "People",
+                            "4"
+                        ],
+                        [
+                            "Id",
+                            "TR5159"
+                        ],
+                        [
+                            "Choice",
+                            "Cambridge"
+                        ],
+                        [
+                            "Dest",
+                            "Leicester"
+                        ],
+                        [
+                            "Leave",
+                            "20:21"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Train-OfferBooked",
+                        "Arrive",
+                        "22:06",
+                        19,
+                        19
+                    ],
+                    [
+                        "Train-OfferBooked",
+                        "Ref",
+                        "VKVT7CTT",
+                        27,
+                        27
+                    ],
+                    [
+                        "Train-OfferBooked",
+                        "People",
+                        "4",
+                        5,
+                        5
+                    ],
+                    [
+                        "Train-OfferBooked",
+                        "Id",
+                        "TR5159",
+                        8,
+                        8
+                    ],
+                    [
+                        "Train-OfferBooked",
+                        "Choice",
+                        "Cambridge",
+                        11,
+                        11
+                    ],
+                    [
+                        "Train-OfferBooked",
+                        "Dest",
+                        "Leicester",
+                        17,
+                        17
+                    ],
+                    [
+                        "Train-OfferBooked",
+                        "Leave",
+                        "20:21",
+                        13,
+                        13
+                    ]
+                ]
+            },
+            {
+                "text": "Great!  Also, I'm looking for the Ashley Hotel.  Can you give me their phone number please?",
+                "metadata": {},
+                "dialog_act": {
+                    "Hotel-Inform": [
+                        [
+                            "Name",
+                            "ashley hotel"
+                        ]
+                    ],
+                    "Hotel-Request": [
+                        [
+                            "Phone",
+                            "?"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Hotel-Inform",
+                        "Name",
+                        "ashley hotel",
+                        9,
+                        10
+                    ]
+                ]
+            },
+            {
+                "text": "The phone number for the Ashley Hotel is 01223350059.  Is there anything else I can help you with?",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "ashley hotel",
+                            "area": "not mentioned",
+                            "parking": "not mentioned",
+                            "pricerange": "not mentioned",
+                            "stars": "not mentioned",
+                            "internet": "not mentioned",
+                            "type": "not mentioned"
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [
+                                {
+                                    "trainID": "TR5159",
+                                    "reference": "VKVT7CTT"
+                                }
+                            ],
+                            "people": "4"
+                        },
+                        "semi": {
+                            "leaveAt": "20:15",
+                            "destination": "leicester",
+                            "day": "not mentioned",
+                            "arriveBy": "dontcare",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "Hotel-Inform": [
+                        [
+                            "Name",
+                            "the Ashley Hotel"
+                        ],
+                        [
+                            "Phone",
+                            "01223350059"
+                        ]
+                    ],
+                    "general-reqmore": [
+                        [
+                            "none",
+                            "none"
+                        ]
+                    ]
+                },
+                "span_info": [
+                    [
+                        "Hotel-Inform",
+                        "Name",
+                        "the Ashley Hotel",
+                        4,
+                        6
+                    ],
+                    [
+                        "Hotel-Inform",
+                        "Phone",
+                        "01223350059",
+                        8,
+                        8
+                    ]
+                ]
+            },
+            {
+                "text": "Okay. Great. That is all I needed.",
+                "metadata": {},
+                "dialog_act": {},
+                "span_info": []
+            },
+            {
+                "text": "Okay perfect!  Have a great trip and please let us know if you need assistance with anything else!",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "ashley hotel",
+                            "area": "not mentioned",
+                            "parking": "not mentioned",
+                            "pricerange": "not mentioned",
+                            "stars": "not mentioned",
+                            "internet": "not mentioned",
+                            "type": "not mentioned"
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [
+                                {
+                                    "trainID": "TR5159",
+                                    "reference": "VKVT7CTT"
+                                }
+                            ],
+                            "people": "4"
+                        },
+                        "semi": {
+                            "leaveAt": "20:15",
+                            "destination": "leicester",
+                            "day": "not mentioned",
+                            "arriveBy": "dontcare",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "general-bye": [
+                        [
+                            "none",
+                            "none"
+                        ]
+                    ],
+                    "general-welcome": [
+                        [
+                            "none",
+                            "none"
+                        ]
+                    ]
+                },
+                "span_info": []
+            },
+            {
+                "text": "Thank you for your help, have a great day. ",
+                "metadata": {},
+                "dialog_act": {
+                    "general-thank": [
+                        [
+                            "none",
+                            "none"
+                        ]
+                    ]
+                },
+                "span_info": []
+            },
+            {
+                "text": "You are certainly welcome. ",
+                "metadata": {
+                    "taxi": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "leaveAt": "",
+                            "destination": "",
+                            "departure": "",
+                            "arriveBy": ""
+                        }
+                    },
+                    "police": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {}
+                    },
+                    "restaurant": {
+                        "book": {
+                            "booked": [],
+                            "time": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "food": "",
+                            "pricerange": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "hospital": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "department": ""
+                        }
+                    },
+                    "hotel": {
+                        "book": {
+                            "booked": [],
+                            "stay": "",
+                            "day": "",
+                            "people": ""
+                        },
+                        "semi": {
+                            "name": "ashley hotel",
+                            "area": "not mentioned",
+                            "parking": "not mentioned",
+                            "pricerange": "not mentioned",
+                            "stars": "not mentioned",
+                            "internet": "not mentioned",
+                            "type": "not mentioned"
+                        }
+                    },
+                    "attraction": {
+                        "book": {
+                            "booked": []
+                        },
+                        "semi": {
+                            "type": "",
+                            "name": "",
+                            "area": ""
+                        }
+                    },
+                    "train": {
+                        "book": {
+                            "booked": [
+                                {
+                                    "trainID": "TR5159",
+                                    "reference": "VKVT7CTT"
+                                }
+                            ],
+                            "people": "4"
+                        },
+                        "semi": {
+                            "leaveAt": "20:15",
+                            "destination": "leicester",
+                            "day": "not mentioned",
+                            "arriveBy": "dontcare",
+                            "departure": "cambridge"
+                        }
+                    }
+                },
+                "dialog_act": {
+                    "general-welcome": [
+                        [
+                            "none",
+                            "none"
+                        ]
+                    ]
+                },
+                "span_info": []
+            }
+        ]
+  }
+}
