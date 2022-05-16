@@ -24,23 +24,22 @@ import random
 import string
 from typing import Dict, List, Set
 
-from absl import app
 from absl import flags
-from absl import logging
 from state_tracking.utils import multiwoz_utils
 from state_tracking.utils import text_to_text_utils
+import tensorflow as tf
 
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string('multiwoz_dir', None,
-                    'Required. Path to the original MultiWOZ datasets.')
+                       'Required. Path to the original MultiWOZ datasets.')
 flags.DEFINE_string('output_dir', None, 'Required. Output file path.')
 flags.DEFINE_string('schema_file', None,
-                    'Required. MultiWOZ schema file in 2.2/SGD format.')
+                       'Required. MultiWOZ schema file in 2.2/SGD format.')
 flags.DEFINE_enum('multiwoz_version', '2.4', ('2.1', '2.2', '2.3', '2.4'),
-                  'Required. MultiWOZ dataset version.')
+                     'Required. MultiWOZ dataset version.')
 flags.DEFINE_integer('random_seed', None,
-                     'Random seed. If None, random is not seeded.')
+                        'Random seed. If None, random is not seeded.')
 flags.DEFINE_enum(
     'description_type', 'full_desc',
     ('full_desc', 'full_desc_with_domain', 'item_name', 'shuffled_item_name'),
@@ -50,7 +49,7 @@ flags.DEFINE_enum(
     'item_name: The name of the slot. '
     'shuffled_item_name: Random permutation of the slot name.')
 flags.DEFINE_string('delimiter', ':',
-                    'Delimiter between id and slot description.')
+                       'Delimiter between id and slot description.')
 flags.DEFINE_enum(
     'multiple_choice', 'none', ('none', 'a', '1a'),
     'Whether to use multiple choice prompting for categorical slots.'
@@ -65,9 +64,6 @@ flags.DEFINE_list(
     'if set. This is used to run zero-shot '
     'cross-domain experiments as in paper '
     'https://aclanthology.org/2021.naacl-main.448.pdf.')
-flags.DEFINE_bool(
-    'use_target_separators', False,
-    'If true, separate target slot-value pairs using ;.')
 
 Json = multiwoz_utils.Json
 SchemaInfo = multiwoz_utils.SchemaInfo
@@ -82,12 +78,9 @@ class Options:
   multiple_choice: str
   use_active_domains_only: bool
   blocked_domains: Set[str]
-  use_target_separators: bool
 
 
-def create_schemaless_data(dialogs_by_id: Dict[str,
-                                               multiwoz_utils.MultiwozDialog],
-                           schema_info: SchemaInfo,
+def create_schemaless_data(json_data: Json, schema_info: SchemaInfo,
                            slot_descriptions: Dict[str, List[str]],
                            options: Options) -> List[TextToTextExample]:
   """Converts raw MultiWOZ data into schemaless examples."""
@@ -105,15 +98,15 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
       value = 'guesthouse'
 
     if value not in possible_values_shuffled:
-      logging.warning('Value "%s" not in possible values %s', value,
-                      possible_values_shuffled)
+      tf.logging.warning('Value "%s" not in possible values %s', value,
+                         possible_values_shuffled)
       value_nospaces = value.replace(' ', '')
       if value_nospaces in possible_values_shuffled:
         letter = letters[possible_values_shuffled.index(value_nospaces)]
       else:
         # Give up and return unknown as the value.
-        logging.warning('Value "%s" not in possible values %s', value,
-                        possible_values_shuffled)
+        tf.logging.warning('Value "%s" not in possible values %s', value,
+                           possible_values_shuffled)
         return 'unknown'
     else:
       letter = letters[possible_values_shuffled.index(value)]
@@ -216,8 +209,7 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
                        f'len(belief_state): {len(belief_state)}.')
 
     prefix_str = ' '.join(prefix_pieces)
-    state_separator = ' ; ' if options.use_target_separators else ' '
-    state_str = '[states] ' + state_separator.join(state_pieces)
+    state_str = '[states] ' + ' '.join(state_pieces)
 
     return TextToTextExample(
         src=f'{prefix_str} {history_str.strip()}'.strip(),
@@ -225,20 +217,18 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
         # For now add empty "[intents] [req_slots]" to be consistent with SGD.
         tgt=f'{state_str.strip()} [intents] [req_slots]',
         dialog_id=dialog_id,
-        turn=turn,
-        metadata={
-            'slot_ordering': ', '.join(slot_names),
-        })
+        turn=turn)
 
   examples = []
-  for dialog_id, dialog in dialogs_by_id.items():
+  for dialog_id, dialog_json in json_data.items():
     history_str = ''
 
-    for turn_num, turn in enumerate(dialog.turns):
-      is_system = turn_num % 2 == 1
+    for turn, utterance_json in enumerate(dialog_json['log']):
+      is_system = turn % 2 == 1
       speaker = 'system' if is_system else 'user'
-      utterance = turn.utterance.strip().replace('\t', ' ')
-      belief_state = turn.belief_state
+      utterance = utterance_json['text'].strip().replace('\t', ' ')
+      belief_state = multiwoz_utils.extract_belief_state(
+          metadata_json=utterance_json['metadata'], is_trade=False)
 
       # State, action, response only appear at system turns.
       domains_in_turn = multiwoz_utils.extract_domains(belief_state)
@@ -246,7 +236,7 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
         if domains_in_turn & options.blocked_domains:
           continue
         examples.append(
-            _process_one_turn(dialog_id, turn_num, belief_state, history_str,
+            _process_one_turn(dialog_id, turn, belief_state, history_str,
                               domains_in_turn, slot_descriptions))
       history_str += f'[{speaker}] {utterance} '
 
@@ -255,7 +245,7 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
 
 def main(_):
   random.seed(FLAGS.random_seed)
-  multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
+  multiwoz_data = multiwoz_utils.load_data(
       data_path=FLAGS.multiwoz_dir,
       multiwoz_version=FLAGS.multiwoz_version,
       is_trade=False)
@@ -266,18 +256,17 @@ def main(_):
       delimiter=FLAGS.delimiter,
       multiple_choice=FLAGS.multiple_choice,
       use_active_domains_only=FLAGS.use_active_domains_only,
-      blocked_domains=set(FLAGS.blocked_domains),
-      use_target_separators=FLAGS.use_target_separators)
+      blocked_domains=set(FLAGS.blocked_domains))
 
   split_to_examples = {
       'train':
-          create_schemaless_data(multiwoz_data.train_dialogs, schema_info,
+          create_schemaless_data(multiwoz_data.train_json, schema_info,
                                  multiwoz_data.slot_descriptions, options),
       'dev':
-          create_schemaless_data(multiwoz_data.dev_dialogs, schema_info,
+          create_schemaless_data(multiwoz_data.dev_json, schema_info,
                                  multiwoz_data.slot_descriptions, options),
       'test':
-          create_schemaless_data(multiwoz_data.test_dialogs, schema_info,
+          create_schemaless_data(multiwoz_data.test_json, schema_info,
                                  multiwoz_data.slot_descriptions, options)
   }
   split_to_examples['dev_test'] = (
@@ -292,4 +281,4 @@ if __name__ == '__main__':
   flags.mark_flag_as_required('multiwoz_dir')
   flags.mark_flag_as_required('output_dir')
   flags.mark_flag_as_required('schema_file')
-  app.run(main)
+  tf.app.run(main)
