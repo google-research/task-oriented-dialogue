@@ -21,6 +21,7 @@ from typing import Dict, MutableSequence
 from lingvo import compat as tf
 
 
+# TODO(jeffreyzhao): Support extending with multiple fields
 @dataclasses.dataclass
 class TextToTextExample:
   """A single text-to-text dialogue example.
@@ -80,8 +81,8 @@ def write_data(examples: MutableSequence[TextToTextExample],
 def decode_fn(record_bytes: tf.Tensor) -> Dict[str, tf.Tensor]:
   return tf.io.parse_single_example(
       record_bytes, {
-          'input': tf.io.VarLenFeature(dtype=tf.string),
-          'value': tf.io.VarLenFeature(dtype=tf.string),
-          'dialog_id': tf.io.VarLenFeature(dtype=tf.string),
+          'input': tf.io.FixedLenFeature([], dtype=tf.string),
+          'value': tf.io.FixedLenFeature([], dtype=tf.string),
+          'dialog_id': tf.io.FixedLenFeature([], dtype=tf.string),
           'turn': tf.io.FixedLenFeature([], dtype=tf.int64)
       })
