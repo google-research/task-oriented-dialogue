@@ -32,14 +32,14 @@ import tensorflow as tf
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string('multiwoz_dir', None,
-                       'Required. Path to the original MultiWOZ datasets.')
+                    'Required. Path to the original MultiWOZ datasets.')
 flags.DEFINE_string('output_dir', None, 'Required. Output file path.')
 flags.DEFINE_string('schema_file', None,
-                       'Required. MultiWOZ schema file in 2.2/SGD format.')
+                    'Required. MultiWOZ schema file in 2.2/SGD format.')
 flags.DEFINE_enum('multiwoz_version', '2.4', ('2.1', '2.2', '2.3', '2.4'),
-                     'Required. MultiWOZ dataset version.')
+                  'Required. MultiWOZ dataset version.')
 flags.DEFINE_integer('random_seed', None,
-                        'Random seed. If None, random is not seeded.')
+                     'Random seed. If None, random is not seeded.')
 flags.DEFINE_enum(
     'description_type', 'full_desc',
     ('full_desc', 'full_desc_with_domain', 'item_name', 'shuffled_item_name'),
@@ -49,7 +49,7 @@ flags.DEFINE_enum(
     'item_name: The name of the slot. '
     'shuffled_item_name: Random permutation of the slot name.')
 flags.DEFINE_string('delimiter', ':',
-                       'Delimiter between id and slot description.')
+                    'Delimiter between id and slot description.')
 flags.DEFINE_enum(
     'multiple_choice', 'none', ('none', 'a', '1a'),
     'Whether to use multiple choice prompting for categorical slots.'
@@ -80,7 +80,8 @@ class Options:
   blocked_domains: Set[str]
 
 
-def create_schemaless_data(json_data: Json, schema_info: SchemaInfo,
+def create_schemaless_data(dialogs_by_id: Dict[str, multiwoz_utils.MultiwozDialog],
+                           schema_info: SchemaInfo,
                            slot_descriptions: Dict[str, List[str]],
                            options: Options) -> List[TextToTextExample]:
   """Converts raw MultiWOZ data into schemaless examples."""
@@ -220,15 +221,14 @@ def create_schemaless_data(json_data: Json, schema_info: SchemaInfo,
         turn=turn)
 
   examples = []
-  for dialog_id, dialog_json in json_data.items():
+  for dialog_id, dialog in dialogs_by_id.items():
     history_str = ''
 
-    for turn, utterance_json in enumerate(dialog_json['log']):
-      is_system = turn % 2 == 1
+    for turn_num, turn in enumerate(dialog.turns):
+      is_system = turn_num % 2 == 1
       speaker = 'system' if is_system else 'user'
-      utterance = utterance_json['text'].strip().replace('\t', ' ')
-      belief_state = multiwoz_utils.extract_belief_state(
-          metadata_json=utterance_json['metadata'], is_trade=False)
+      utterance = turn.utterance.strip().replace('\t', ' ')
+      belief_state = turn.belief_state
 
       # State, action, response only appear at system turns.
       domains_in_turn = multiwoz_utils.extract_domains(belief_state)
@@ -236,7 +236,7 @@ def create_schemaless_data(json_data: Json, schema_info: SchemaInfo,
         if domains_in_turn & options.blocked_domains:
           continue
         examples.append(
-            _process_one_turn(dialog_id, turn, belief_state, history_str,
+            _process_one_turn(dialog_id, turn_num, belief_state, history_str,
                               domains_in_turn, slot_descriptions))
       history_str += f'[{speaker}] {utterance} '
 

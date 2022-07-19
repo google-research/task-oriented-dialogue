@@ -55,11 +55,11 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     _touch_empty_file(os.path.join(self._temp_dir, 'testListFile.json'))
 
   def test_item_name(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='item_name',
@@ -89,11 +89,11 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_shuffled_item_name(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='shuffled_item_name',
@@ -133,11 +133,11 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_full_desc(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
@@ -173,11 +173,11 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_full_desc_with_domain(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc_with_domain',
@@ -217,11 +217,11 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_delimiter(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
@@ -257,7 +257,7 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_multiple_choice_a(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
@@ -270,7 +270,7 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             is_categorical=True, possible_values=['leicester', 'cambridge']))
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
@@ -294,7 +294,7 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_multiple_choice_1a(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
@@ -307,7 +307,7 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             is_categorical=True, possible_values=['leicester', 'cambridge']))
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
@@ -332,12 +332,12 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_blocked_one_domain(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc_with_domain',
@@ -377,12 +377,12 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].turn, 3)
 
   def test_blocked_many_domains(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info, multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc_with_domain',
