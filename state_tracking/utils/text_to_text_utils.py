@@ -31,12 +31,14 @@ class TextToTextExample:
     tgt: Target text for the model.
     dialog_id: Id of dialog this example was generated from.
     turn: Turn of dialog this example was generated from.
+    metadata: Any other key-value pairs to be included in the output TF Example.
     frame: Frame of the dialog this example was generated from.
   """
   src: str
   tgt: str
   dialog_id: str
   turn: int
+  metadata: Dict[str, str]
   frame: int = 0
 
 
@@ -61,18 +63,17 @@ def write_data(examples: MutableSequence[TextToTextExample],
 
   with tf.io.TFRecordWriter(output_path) as out_file:
     for example in examples:
+      features = {
+          'input': _bytes_feature(example.src.encode('utf-8')),
+          'value': _bytes_feature(example.tgt.encode('utf-8')),
+          'dialog_id': _bytes_feature(example.dialog_id.encode('utf-8')),
+          'turn': _int64_feature(example.turn)
+      }
+      for key, val in example.metadata.items():
+        assert key not in ('input', 'value', 'dialog_id', 'turn')
+        features[key] = _bytes_feature(val.encode('utf-8'))
       tf_example = tf.train.Example(
-          features=tf.train.Features(
-              feature={
-                  'input':
-                      _bytes_feature(example.src.encode('utf-8')),
-                  'value':
-                      _bytes_feature(example.tgt.encode('utf-8')),
-                  'dialog_id':
-                      _bytes_feature(example.dialog_id.encode('utf-8')),
-                  'turn':
-                      _int64_feature(example.turn)
-              }))
+          features=tf.train.Features(feature=features))
       out_file.write(tf_example.SerializeToString())
     tf.logging.info('Wrote %s with %d examples', os.path.basename(output_path),
                     len(examples))

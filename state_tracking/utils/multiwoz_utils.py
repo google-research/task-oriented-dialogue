@@ -227,12 +227,24 @@ def extract_domains(belief_state: Dict[str, str]) -> Set[str]:
 
 @dataclasses.dataclass
 class MultiwozTurn:
+  """A dataclass for one turn of a MultiWOZ dialogue.
+
+  Attributes:
+    utterance: The text utterance from a turn.
+    belief_state: The slot-value pairs of the conversation.
+  """
   utterance: str
   belief_state: Dict[str, str]
 
 
 @dataclasses.dataclass
 class MultiwozDialog:
+  """A dataclass for a MultiWOZ dialogue.
+
+  Attributes:
+    dialog_id: The ID of the dialogue.
+    turns: A list of MultiwozTurn's.
+  """
   dialog_id: str
   turns: List[MultiwozTurn]
 

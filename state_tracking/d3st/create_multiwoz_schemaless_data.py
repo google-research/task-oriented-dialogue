@@ -80,7 +80,8 @@ class Options:
   blocked_domains: Set[str]
 
 
-def create_schemaless_data(dialogs_by_id: Dict[str, multiwoz_utils.MultiwozDialog],
+def create_schemaless_data(dialogs_by_id: Dict[str,
+                                               multiwoz_utils.MultiwozDialog],
                            schema_info: SchemaInfo,
                            slot_descriptions: Dict[str, List[str]],
                            options: Options) -> List[TextToTextExample]:
@@ -218,7 +219,10 @@ def create_schemaless_data(dialogs_by_id: Dict[str, multiwoz_utils.MultiwozDialo
         # For now add empty "[intents] [req_slots]" to be consistent with SGD.
         tgt=f'{state_str.strip()} [intents] [req_slots]',
         dialog_id=dialog_id,
-        turn=turn)
+        turn=turn,
+        metadata={
+            'slot_ordering': ', '.join(slot_names),
+        })
 
   examples = []
   for dialog_id, dialog in dialogs_by_id.items():
