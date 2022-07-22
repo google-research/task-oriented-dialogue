@@ -67,7 +67,8 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -113,7 +114,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='1a',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -170,7 +173,8 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -222,7 +226,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -278,7 +284,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter='=',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -339,7 +347,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='a',
             use_active_domains_only=True,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -381,7 +391,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='1a',
             use_active_domains_only=True,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -395,6 +407,50 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
         'your destination? [user] i am going to leicester')
     self.assertEqual(examples[1].tgt,
                      '[states] 0:0b 5:5a [intents] [req_slots]')
+    self.assertEqual(examples[1].dialog_id, 'mul0708.json')
+    self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'train-departure, train-arriveby, train-people, train-leaveat, '
+        'train-day, train-destination')
+
+  def test_target_separators(self):
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
+        data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
+    schema_info = multiwoz_utils.load_schema(self._schema_file)
+
+    # The testdata example doesn't have any categorical slots, so mock some.
+    schema_info.slots_by_domain['train']['train-departure'] = (
+        multiwoz_utils.SlotInfo(
+            is_categorical=True, possible_values=['leicester', 'cambridge']))
+    schema_info.slots_by_domain['train']['train-destination'] = (
+        multiwoz_utils.SlotInfo(
+            is_categorical=True, possible_values=['leicester', 'cambridge']))
+
+    examples = create_multiwoz_schemaless_data.create_schemaless_data(
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
+        create_multiwoz_schemaless_data.Options(
+            multiwoz_version='2.4',
+            description_type='full_desc',
+            delimiter=':',
+            multiple_choice='1a',
+            use_active_domains_only=True,
+            blocked_domains=set(),
+            use_target_separators=True))
+
+    self.assertLen(examples, 7)
+    self.assertEqual(
+        examples[1].src,
+        '0:departure location of the train 0a) leicester 0b) cambridge '
+        '1:arrival time of the train 2:number of people booking for train '
+        '3:leaving time for the train 4:day of the train 4a) sunday 4b) friday '
+        '4c) tuesday 4d) monday 4e) wednesday 4f) saturday 4g) thursday '
+        '5:destination of the train 5a) leicester 5b) cambridge [user] hi, can '
+        'you help me find a train departing from cambridge? [system] what is '
+        'your destination? [user] i am going to leicester')
+    self.assertEqual(examples[1].tgt,
+                     '[states] 0:0b ; 5:5a [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
     self.assertEqual(
@@ -416,7 +472,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set(['hotel'])))
+            blocked_domains=set(['hotel']),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 4)
     self.assertEqual(
@@ -473,7 +531,9 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set(['hotel', 'train'])))
+            blocked_domains=set(['hotel', 'train']),
+            use_target_separators=False))
+
 
     self.assertEmpty(examples)
 

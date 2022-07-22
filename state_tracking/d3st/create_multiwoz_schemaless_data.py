@@ -64,6 +64,9 @@ flags.DEFINE_list(
     'if set. This is used to run zero-shot '
     'cross-domain experiments as in paper '
     'https://aclanthology.org/2021.naacl-main.448.pdf.')
+flags.DEFINE_bool(
+    'use_target_separators', False,
+    'If true, separate target slot-value pairs using ;.')
 
 Json = multiwoz_utils.Json
 SchemaInfo = multiwoz_utils.SchemaInfo
@@ -78,6 +81,7 @@ class Options:
   multiple_choice: str
   use_active_domains_only: bool
   blocked_domains: Set[str]
+  use_target_separators: bool
 
 
 def create_schemaless_data(dialogs_by_id: Dict[str,
@@ -211,7 +215,8 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
                        f'len(belief_state): {len(belief_state)}.')
 
     prefix_str = ' '.join(prefix_pieces)
-    state_str = '[states] ' + ' '.join(state_pieces)
+    state_separator = ' ; ' if options.use_target_separators else ' '
+    state_str = '[states] ' + state_separator.join(state_pieces)
 
     return TextToTextExample(
         src=f'{prefix_str} {history_str.strip()}'.strip(),
@@ -260,7 +265,8 @@ def main(_):
       delimiter=FLAGS.delimiter,
       multiple_choice=FLAGS.multiple_choice,
       use_active_domains_only=FLAGS.use_active_domains_only,
-      blocked_domains=set(FLAGS.blocked_domains))
+      blocked_domains=set(FLAGS.blocked_domains),
+      use_target_separators=FLAGS.use_target_separators)
 
   split_to_examples = {
       'train':
