@@ -38,7 +38,7 @@ class TextToTextExample:
   tgt: str
   dialog_id: str
   turn: int
-  metadata: Dict[str, str]
+  metadata: Dict[str, str] = dataclasses.field(default_factory=dict)
   frame: int = 0
 
 
