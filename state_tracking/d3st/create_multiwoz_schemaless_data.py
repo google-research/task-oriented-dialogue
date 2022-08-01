@@ -25,6 +25,7 @@ import string
 from typing import Dict, List, Set
 
 from absl import flags
+from absl import logging
 from state_tracking.utils import multiwoz_utils
 from state_tracking.utils import text_to_text_utils
 import tensorflow as tf
@@ -104,15 +105,15 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
       value = 'guesthouse'
 
     if value not in possible_values_shuffled:
-      tf.logging.warning('Value "%s" not in possible values %s', value,
-                         possible_values_shuffled)
+      logging.warning('Value "%s" not in possible values %s', value,
+                      possible_values_shuffled)
       value_nospaces = value.replace(' ', '')
       if value_nospaces in possible_values_shuffled:
         letter = letters[possible_values_shuffled.index(value_nospaces)]
       else:
         # Give up and return unknown as the value.
-        tf.logging.warning('Value "%s" not in possible values %s', value,
-                           possible_values_shuffled)
+        logging.warning('Value "%s" not in possible values %s', value,
+                        possible_values_shuffled)
         return 'unknown'
     else:
       letter = letters[possible_values_shuffled.index(value)]
