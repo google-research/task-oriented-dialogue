@@ -123,10 +123,20 @@ def load_data(data_path: str,
       else:
         train_json[dialog_idx] = dialog_json
 
-  # Load slot descriptions. Note that 2.4 doesn't come with a
-  # slot_descriptions.json file. Copy the 2.1 file to avoid an error
-  with tf.io.gfile.GFile(os.path.join(data_path,
-                                      'slot_descriptions.json')) as f:
+  slot_descriptions = load_slot_descriptions(
+      slot_descriptions_file_path=os.path.join(data_path,
+                                               'slot_descriptions.json'))
+
+  return MultiwozData(train_json, dev_json, test_json, slot_descriptions)
+
+
+def load_slot_descriptions(
+    slot_descriptions_file_path: str) -> Dict[str, List[str]]:
+  """Loads slot descriptions from Json file."""
+
+  # Note that 2.4 doesn't come with a
+  # slot_descriptions.json file. Copy the 2.1 file to avoid an error.
+  with tf.io.gfile.GFile(slot_descriptions_file_path) as f:
     slot_descriptions_raw = json.loads(f.read().lower(), object_pairs_hook=Json)
     slot_descriptions = {}
     for key, val in slot_descriptions_raw.items():
@@ -139,8 +149,7 @@ def load_data(data_path: str,
         continue
 
       slot_descriptions[key] = val
-
-  return MultiwozData(train_json, dev_json, test_json, slot_descriptions)
+  return slot_descriptions
 
 
 def load_schema(schema_path: str) -> SchemaInfo:
