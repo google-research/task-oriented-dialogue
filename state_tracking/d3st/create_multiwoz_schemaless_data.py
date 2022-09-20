@@ -24,11 +24,11 @@ import random
 import string
 from typing import Dict, List, Set
 
+from absl import app
 from absl import flags
 from absl import logging
 from state_tracking.utils import multiwoz_utils
 from state_tracking.utils import text_to_text_utils
-import tensorflow as tf
 
 FLAGS = flags.FLAGS
 
@@ -255,7 +255,7 @@ def create_schemaless_data(dialogs_by_id: Dict[str,
 
 def main(_):
   random.seed(FLAGS.random_seed)
-  multiwoz_data = multiwoz_utils.load_data(
+  multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
       data_path=FLAGS.multiwoz_dir,
       multiwoz_version=FLAGS.multiwoz_version,
       is_trade=False)
@@ -271,13 +271,13 @@ def main(_):
 
   split_to_examples = {
       'train':
-          create_schemaless_data(multiwoz_data.train_json, schema_info,
+          create_schemaless_data(multiwoz_data.train_dialogs, schema_info,
                                  multiwoz_data.slot_descriptions, options),
       'dev':
-          create_schemaless_data(multiwoz_data.dev_json, schema_info,
+          create_schemaless_data(multiwoz_data.dev_dialogs, schema_info,
                                  multiwoz_data.slot_descriptions, options),
       'test':
-          create_schemaless_data(multiwoz_data.test_json, schema_info,
+          create_schemaless_data(multiwoz_data.test_dialogs, schema_info,
                                  multiwoz_data.slot_descriptions, options)
   }
   split_to_examples['dev_test'] = (
@@ -292,4 +292,4 @@ if __name__ == '__main__':
   flags.mark_flag_as_required('multiwoz_dir')
   flags.mark_flag_as_required('output_dir')
   flags.mark_flag_as_required('schema_file')
-  tf.app.run(main)
+  app.run(main)
