@@ -18,7 +18,8 @@ import dataclasses
 import os
 from typing import Dict, MutableSequence
 
-from lingvo import compat as tf
+from absl import logging
+import tensorflow as tf
 
 
 # TODO(jeffreyzhao): Support extending with multiple fields
@@ -75,8 +76,8 @@ def write_data(examples: MutableSequence[TextToTextExample],
       tf_example = tf.train.Example(
           features=tf.train.Features(feature=features))
       out_file.write(tf_example.SerializeToString())
-    tf.logging.info('Wrote %s with %d examples', os.path.basename(output_path),
-                    len(examples))
+    logging.info('Wrote %s with %d examples', os.path.basename(output_path),
+                 len(examples))
 
 
 def decode_fn(record_bytes: tf.Tensor) -> Dict[str, tf.Tensor]:
