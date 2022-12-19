@@ -123,10 +123,20 @@ def load_data(data_path: str,
       else:
         train_json[dialog_idx] = dialog_json
 
-  # Load slot descriptions. Note that 2.4 doesn't come with a
-  # slot_descriptions.json file. Copy the 2.1 file to avoid an error
-  with tf.io.gfile.GFile(os.path.join(data_path,
-                                      'slot_descriptions.json')) as f:
+  slot_descriptions = load_slot_descriptions(
+      slot_descriptions_file_path=os.path.join(data_path,
+                                               'slot_descriptions.json'))
+
+  return MultiwozData(train_json, dev_json, test_json, slot_descriptions)
+
+
+def load_slot_descriptions(
+    slot_descriptions_file_path: str) -> Dict[str, List[str]]:
+  """Loads slot descriptions from Json file."""
+
+  # Note that 2.4 doesn't come with a
+  # slot_descriptions.json file. Copy the 2.1 file to avoid an error.
+  with tf.io.gfile.GFile(slot_descriptions_file_path) as f:
     slot_descriptions_raw = json.loads(f.read().lower(), object_pairs_hook=Json)
     slot_descriptions = {}
     for key, val in slot_descriptions_raw.items():
@@ -139,8 +149,7 @@ def load_data(data_path: str,
         continue
 
       slot_descriptions[key] = val
-
-  return MultiwozData(train_json, dev_json, test_json, slot_descriptions)
+  return slot_descriptions
 
 
 def load_schema(schema_path: str) -> SchemaInfo:
@@ -220,3 +229,74 @@ def extract_belief_state(metadata_json: Json, is_trade: bool) -> Dict[str, str]:
 def extract_domains(belief_state: Dict[str, str]) -> Set[str]:
   """Extracts active domains in the dialogue state."""
   return set([get_domain(slot_name) for slot_name in belief_state.keys()])
+
+
+# Dataclass representations of MultiWOZ dialogues.
+
+
+@dataclasses.dataclass
+class MultiwozTurn:
+  """A dataclass for one turn of a MultiWOZ dialogue.
+
+  Attributes:
+    utterance: The text utterance from a turn.
+    belief_state: The slot-value pairs of the conversation.
+  """
+  utterance: str
+  belief_state: Dict[str, str]
+
+
+@dataclasses.dataclass
+class MultiwozDialog:
+  """A dataclass for a MultiWOZ dialogue.
+
+  Attributes:
+    dialog_id: The ID of the dialogue.
+    turns: A list of MultiwozTurn's.
+  """
+  dialog_id: str
+  turns: List[MultiwozTurn]
+
+
+@dataclasses.dataclass
+class MultiwozDataclassData:
+  train_dialogs: Dict[str, MultiwozDialog]
+  dev_dialogs: Dict[str, MultiwozDialog]
+  test_dialogs: Dict[str, MultiwozDialog]
+  slot_descriptions: Dict[str, List[str]]
+
+
+def load_data_as_dataclasses(data_path: str,
+                             multiwoz_version: str,
+                             is_trade: bool = False) -> MultiwozDataclassData:
+  """Loads MultiWOZ dataset.
+
+  Args:
+    data_path: Path to the multiwoz dataset.
+    multiwoz_version: The version of the multiwoz dataset.
+    is_trade: Whether the data is trade-preprocessed or not.
+
+  Returns:
+    A dataclass object storing the loaded dataset.
+  """
+  multiwoz_data = load_data(data_path, multiwoz_version, is_trade)
+
+  def _dataclass_from_json(json_data: Json) -> Dict[str, MultiwozDialog]:
+    dialogs = {}
+    for dialog_id, dialog_json in json_data.items():
+      turns = []
+      for turn, utterance_json in enumerate(dialog_json['log']):
+        is_system = turn % 2 == 1
+        speaker = 'system' if is_system else 'user'
+        utterance = utterance_json['text'].strip().replace('\t', ' ')
+        belief_state = extract_belief_state(
+            metadata_json=utterance_json['metadata'], is_trade=False)
+        turns.append(MultiwozTurn(utterance, belief_state))
+      dialogs[dialog_id] = MultiwozDialog(dialog_id, turns)
+    return dialogs
+
+  train_dialogs = _dataclass_from_json(multiwoz_data.train_json)
+  dev_dialogs = _dataclass_from_json(multiwoz_data.dev_json)
+  test_dialogs = _dataclass_from_json(multiwoz_data.test_json)
+  return MultiwozDataclassData(train_dialogs, dev_dialogs, test_dialogs,
+                               multiwoz_data.slot_descriptions)

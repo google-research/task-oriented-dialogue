@@ -55,18 +55,20 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     _touch_empty_file(os.path.join(self._temp_dir, 'testListFile.json'))
 
   def test_item_name(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='item_name',
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -87,20 +89,34 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 2:cambridge 28:leicester [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'restaurant-area, bus-destination, train-departure, restaurant-name, '
+        'attraction-name, bus-leaveat, hotel-name, restaurant-time, '
+        'train-people, restaurant-food, taxi-departure, bus-day, train-day, '
+        'hotel-type, train-leaveat, taxi-arriveby, hotel-stay, train-arriveby, '
+        'taxi-leaveat, hotel-stars, hotel-people, hotel-pricerange, '
+        'hotel-parking, hotel-internet, restaurant-day, attraction-type, '
+        'restaurant-pricerange, hotel-area, train-destination, bus-departure, '
+        'hospital-department, hotel-day, attraction-area, restaurant-people, '
+        'taxi-destination')
 
   def test_shuffled_item_name(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='shuffled_item_name',
             delimiter=':',
             multiple_choice='1a',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -131,20 +147,34 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 6:leicester 33:cambridge [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    # Note that order of slots changes due to extra shuffling of item names
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'hotel-pricerange, train-leaveat, attraction-name, hotel-people, '
+        'restaurant-name, train-arriveby, train-destination, hotel-area, '
+        'hotel-internet, hotel-parking, restaurant-area, hospital-department, '
+        'bus-day, hotel-stars, hotel-type, taxi-leaveat, attraction-type, '
+        'restaurant-people, restaurant-time, train-people, bus-departure, '
+        'hotel-stay, restaurant-pricerange, hotel-name, restaurant-food, '
+        'bus-leaveat, hotel-day, train-day, restaurant-day, attraction-area, '
+        'taxi-destination, bus-destination, taxi-arriveby, train-departure, '
+        'taxi-departure')
 
   def test_full_desc(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -171,20 +201,34 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 2:cambridge 28:leicester [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'restaurant-area, bus-destination, train-departure, restaurant-name, '
+        'attraction-name, bus-leaveat, hotel-name, restaurant-time, '
+        'train-people, restaurant-food, taxi-departure, bus-day, train-day, '
+        'hotel-type, train-leaveat, taxi-arriveby, hotel-stay, train-arriveby, '
+        'taxi-leaveat, hotel-stars, hotel-people, hotel-pricerange, '
+        'hotel-parking, hotel-internet, restaurant-day, attraction-type, '
+        'restaurant-pricerange, hotel-area, train-destination, bus-departure, '
+        'hospital-department, hotel-day, attraction-area, restaurant-people, '
+        'taxi-destination')
 
   def test_full_desc_with_domain(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc_with_domain',
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -215,20 +259,34 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 2:cambridge 28:leicester [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'restaurant-area, bus-destination, train-departure, restaurant-name, '
+        'attraction-name, bus-leaveat, hotel-name, restaurant-time, '
+        'train-people, restaurant-food, taxi-departure, bus-day, train-day, '
+        'hotel-type, train-leaveat, taxi-arriveby, hotel-stay, train-arriveby, '
+        'taxi-leaveat, hotel-stars, hotel-people, hotel-pricerange, '
+        'hotel-parking, hotel-internet, restaurant-day, attraction-type, '
+        'restaurant-pricerange, hotel-area, train-destination, bus-departure, '
+        'hospital-department, hotel-day, attraction-area, restaurant-people, '
+        'taxi-destination')
 
   def test_delimiter(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
             delimiter='=',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -255,9 +313,20 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 2=cambridge 28=leicester [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'restaurant-area, bus-destination, train-departure, restaurant-name, '
+        'attraction-name, bus-leaveat, hotel-name, restaurant-time, '
+        'train-people, restaurant-food, taxi-departure, bus-day, train-day, '
+        'hotel-type, train-leaveat, taxi-arriveby, hotel-stay, train-arriveby, '
+        'taxi-leaveat, hotel-stars, hotel-people, hotel-pricerange, '
+        'hotel-parking, hotel-internet, restaurant-day, attraction-type, '
+        'restaurant-pricerange, hotel-area, train-destination, bus-departure, '
+        'hospital-department, hotel-day, attraction-area, restaurant-people, '
+        'taxi-destination')
 
   def test_multiple_choice_a(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
@@ -270,14 +339,17 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             is_categorical=True, possible_values=['leicester', 'cambridge']))
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
             delimiter=':',
             multiple_choice='a',
             use_active_domains_only=True,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -292,9 +364,13 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
     self.assertEqual(examples[1].tgt, '[states] 0:b 5:a [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'train-departure, train-arriveby, train-people, train-leaveat, '
+        'train-day, train-destination')
 
   def test_multiple_choice_1a(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
@@ -307,14 +383,17 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
             is_categorical=True, possible_values=['leicester', 'cambridge']))
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc',
             delimiter=':',
             multiple_choice='1a',
             use_active_domains_only=True,
-            blocked_domains=set()))
+            blocked_domains=set(),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 7)
     self.assertEqual(
@@ -330,21 +409,72 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 0:0b 5:5a [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'train-departure, train-arriveby, train-people, train-leaveat, '
+        'train-day, train-destination')
+
+  def test_target_separators(self):
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
+        data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
+    schema_info = multiwoz_utils.load_schema(self._schema_file)
+
+    # The testdata example doesn't have any categorical slots, so mock some.
+    schema_info.slots_by_domain['train']['train-departure'] = (
+        multiwoz_utils.SlotInfo(
+            is_categorical=True, possible_values=['leicester', 'cambridge']))
+    schema_info.slots_by_domain['train']['train-destination'] = (
+        multiwoz_utils.SlotInfo(
+            is_categorical=True, possible_values=['leicester', 'cambridge']))
+
+    examples = create_multiwoz_schemaless_data.create_schemaless_data(
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
+        create_multiwoz_schemaless_data.Options(
+            multiwoz_version='2.4',
+            description_type='full_desc',
+            delimiter=':',
+            multiple_choice='1a',
+            use_active_domains_only=True,
+            blocked_domains=set(),
+            use_target_separators=True))
+
+    self.assertLen(examples, 7)
+    self.assertEqual(
+        examples[1].src,
+        '0:departure location of the train 0a) leicester 0b) cambridge '
+        '1:arrival time of the train 2:number of people booking for train '
+        '3:leaving time for the train 4:day of the train 4a) sunday 4b) friday '
+        '4c) tuesday 4d) monday 4e) wednesday 4f) saturday 4g) thursday '
+        '5:destination of the train 5a) leicester 5b) cambridge [user] hi, can '
+        'you help me find a train departing from cambridge? [system] what is '
+        'your destination? [user] i am going to leicester')
+    self.assertEqual(examples[1].tgt,
+                     '[states] 0:0b ; 5:5a [intents] [req_slots]')
+    self.assertEqual(examples[1].dialog_id, 'mul0708.json')
+    self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'train-departure, train-arriveby, train-people, train-leaveat, '
+        'train-day, train-destination')
 
   def test_blocked_one_domain(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc_with_domain',
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set(['hotel'])))
+            blocked_domains=set(['hotel']),
+            use_target_separators=False))
+
 
     self.assertLen(examples, 4)
     self.assertEqual(
@@ -375,21 +505,35 @@ class CreateMultiwozSchemalessDataTest(tf.test.TestCase):
                      '[states] 2:cambridge 28:leicester [intents] [req_slots]')
     self.assertEqual(examples[1].dialog_id, 'mul0708.json')
     self.assertEqual(examples[1].turn, 3)
+    self.assertEqual(
+        examples[1].metadata['slot_ordering'],
+        'restaurant-area, bus-destination, train-departure, restaurant-name, '
+        'attraction-name, bus-leaveat, hotel-name, restaurant-time, '
+        'train-people, restaurant-food, taxi-departure, bus-day, train-day, '
+        'hotel-type, train-leaveat, taxi-arriveby, hotel-stay, train-arriveby, '
+        'taxi-leaveat, hotel-stars, hotel-people, hotel-pricerange, '
+        'hotel-parking, hotel-internet, restaurant-day, attraction-type, '
+        'restaurant-pricerange, hotel-area, train-destination, bus-departure, '
+        'hospital-department, hotel-day, attraction-area, restaurant-people, '
+        'taxi-destination')
 
   def test_blocked_many_domains(self):
-    multiwoz_data = multiwoz_utils.load_data(
+    multiwoz_data = multiwoz_utils.load_data_as_dataclasses(
         data_path=self._temp_dir, multiwoz_version='2.4', is_trade=False)
     schema_info = multiwoz_utils.load_schema(self._schema_file)
 
     examples = create_multiwoz_schemaless_data.create_schemaless_data(
-        multiwoz_data.train_json, schema_info, multiwoz_data.slot_descriptions,
+        multiwoz_data.train_dialogs, schema_info,
+        multiwoz_data.slot_descriptions,
         create_multiwoz_schemaless_data.Options(
             multiwoz_version='2.4',
             description_type='full_desc_with_domain',
             delimiter=':',
             multiple_choice='none',
             use_active_domains_only=False,
-            blocked_domains=set(['hotel', 'train'])))
+            blocked_domains=set(['hotel', 'train']),
+            use_target_separators=False))
+
 
     self.assertEmpty(examples)
 
