@@ -45,6 +45,9 @@ _DELIMITER = flags.DEFINE_string(
     'delimiter', '=', 'Delimiter to separate '
     'slot/intent IDs from their descriptions or '
     'values.')
+_EVALUATE_INTENT_ACC = flags.DEFINE_bool(
+    'evaluate_intent_acc', False, 'Whether to evaluate on active intent '
+    'classification task.')
 
 _SDT_CAT_SLOT_IDENTIFIER = 'of possible values'
 
@@ -52,7 +55,8 @@ _SDT_CAT_SLOT_IDENTIFIER = 'of possible values'
 def _create_categorical_slot_to_value_map(
     input_str: str) -> Dict[str, Dict[str, str]]:
   """Creates mappings from letters to values for categorical slots."""
-  slot_values = input_str.split('[slots]')[1].split('[context]')[0].strip()
+  slot_values = input_str.split('[slots]')[1].split('[context]')[0].split(
+      '[intent]')[0].strip()
   slot_to_option_to_value = collections.defaultdict(dict)
   for slot, value in re.findall(
       rf'(\w+){_DELIMITER.value}(.*?)(?=\w+{_DELIMITER.value}|$)', slot_values):
@@ -64,6 +68,20 @@ def _create_categorical_slot_to_value_map(
       slot_to_option_to_value[slot][option] = option_value.strip()
 
   return slot_to_option_to_value
+
+
+def _create_intent_map(input_str: str) -> Dict[str, str]:
+  """Creates mappings from letters to intent names."""
+  intent_str = input_str.split('[intent]')[1].split('[context]')[0].strip()
+  intent_option_to_value = {}
+  if _SDT_CAT_SLOT_IDENTIFIER not in intent_str:
+    raise ValueError('Improperly formatted intent prompt: %s' % intent_str)
+  intent_str = intent_str.split(_SDT_CAT_SLOT_IDENTIFIER)[1].strip()
+  for option, option_value in re.findall(r'([a-z])\) (.*?)(?=[a-z]\)|$)',
+                                         intent_str):
+    intent_option_to_value[option] = option_value.strip()
+
+  return intent_option_to_value
 
 
 def _normalize_value_prediction(
@@ -119,15 +137,26 @@ def populate_json_predictions(
   # Create a dict(slot -> dict(multiple-choice letter -> value)) for cat slots.
   slot_to_option_to_value = _create_categorical_slot_to_value_map(input_str)
 
+  if _EVALUATE_INTENT_ACC.value:
+    # Create a dict(multiple-choice letter -> intent) for intents.
+    option_to_intent = _create_intent_map(input_str)
+
   # Read and populate all slot value predictions.
-  # TODO(harrisonlee): Support intents and requested slots.
-  slot_preds = preds.split('[state]')[1]
+  # TODO(harrisonlee): Support requested slots.
+  slot_preds = preds.split('[state]')[1].split('[intent]')[0].strip()
   for slot_name, value in re.findall(
       rf'(\w+){_DELIMITER.value}(.*?)(?=\w+{_DELIMITER.value}|$)', slot_preds):
     value = _normalize_value_prediction(slot_name, value,
                                         slot_to_option_to_value)
+
     if value:
       frame['state']['slot_values'][slot_name] = [value]
+
+  # Populate intent prediction.
+  if _EVALUATE_INTENT_ACC.value and '[intent]' in preds:
+    # Read and populate intent prediction.
+    intent_pred = preds.split('[intent]')[1].strip()
+    frame['state']['active_intent'] = option_to_intent.get(intent_pred, 'NONE')
 
 
 def main(argv: Sequence[str]) -> None:

@@ -14,6 +14,7 @@
 
 """Tests for convert_sgd_t5x_sdt_preds_to_dstc8."""
 
+import copy
 import json
 import os
 
@@ -26,6 +27,33 @@ import tensorflow as tf
 FLAGS = flags.FLAGS
 
 TEST_DIR = "task-oriented-dialog/testdata"
+
+DIALOG_ID_TO_DIALOGUE = {
+        "1_00000": {
+            "dialogue_id":
+                "1_00000",
+            "services": ["Restaurants_2"],
+            "turns": [{
+                "frames": [{
+                    "service": "Restaurants_2",
+                    "slots": [{
+                        "exclusive_end": 52,
+                        "slot": "date",
+                        "start": 45
+                    }],
+                    "state": {
+                        "active_intent": "",
+                        "requested_slots": [],
+                        "slot_values": {}
+                    }
+                }],
+                "speaker": "USER",
+                "utterance":
+                    "Hi, could you get me a vegetarian restaurant booking on "
+                    "the 8th please?"
+            }]
+        }
+    }
 
 
 class ConvertSgdT5XSdtPredsToDstc8Test(tf.test.TestCase,
@@ -55,7 +83,7 @@ class ConvertSgdT5XSdtPredsToDstc8Test(tf.test.TestCase,
 
     self.assertDictEqual(actual_dialogue_slots, expected_dialogue_slots)
 
-  def test_populate_json_predictions(self):
+  def test_populate_json_slot_predictions(self):
     frame_predictions = {
         "input": {
             "inputs_pretokenized":
@@ -74,8 +102,8 @@ class ConvertSgdT5XSdtPredsToDstc8Test(tf.test.TestCase,
                 "possible values a) cheap b) pricey c) ultra high-end d) "
                 "moderate time=morning 11:15 has_seating_outdoors=b of "
                 "possible values a) false b) true category=latin american "
-                "[context] [user] hi, could you get me a vegarian restaurant "
-                "booking on the 8th please?",
+                "[context] [user] hi, could you get me a "
+                "vegarian restaurant booking on the 8th please?",
             "dialogue_id": "1_00000",
             "turn_id": "0",
             "frame_id": "0"
@@ -85,32 +113,7 @@ class ConvertSgdT5XSdtPredsToDstc8Test(tf.test.TestCase,
             "restaurant_name=none date=the 8th location=none price_range=none "
             "time=none has_seating_outdoors=none category=none",
     }
-    dialog_id_to_dialogue = {
-        "1_00000": {
-            "dialogue_id":
-                "1_00000",
-            "services": ["Restaurants_2"],
-            "turns": [{
-                "frames": [{
-                    "service": "Restaurants_2",
-                    "slots": [{
-                        "exclusive_end": 52,
-                        "slot": "date",
-                        "start": 45
-                    }],
-                    "state": {
-                        "active_intent": "ReserveRestaurant",
-                        "requested_slots": [],
-                        "slot_values": {}
-                    }
-                }],
-                "speaker": "USER",
-                "utterance":
-                    "Hi, could you get me a vegetarian restaurant booking on "
-                    "the 8th please?"
-            }]
-        }
-    }
+    dialog_id_to_dialogue = copy.deepcopy(DIALOG_ID_TO_DIALOGUE)
     convert_sgd_t5x_sdt_preds_to_dstc8.populate_json_predictions(
         dialog_id_to_dialogue, frame_predictions)
     actual_dialogue_slots = dialog_id_to_dialogue["1_00000"]["turns"][0][
@@ -120,6 +123,41 @@ class ConvertSgdT5XSdtPredsToDstc8Test(tf.test.TestCase,
         "date": ["the 8th"]
     }
     self.assertDictEqual(actual_dialogue_slots, expected_dialogue_slots)
+
+
+def test_populate_json_intent_predictions(self):
+  frame_predictions = {
+      "input": {
+          "inputs_pretokenized":
+              "[example] [user] how about finding a place march 3rd? "
+              "somewhere moderate in cost that has vegetarian menu items. "
+              "[system] i assume in novato? [user] novato is correct. "
+              "something serving latin american cuisine and if possible with"
+              " outdoor seating. [system] i found 1 called maya palenque "
+              "restaurant. [user] i bet they have good food. [system] should"
+              " i book you a table? [user] yes for two please. [system] what"
+              " time would you like it for? [user] in the morning 11:15 "
+              "please. [slots] number_of_seats=c of possible values a) 4 b) "
+              "1 c) 2 d) 3 e) 6 f) 5 [intent] a of possible options a) "
+              "reserverestaurant b) findrestaurants [context] [user] hi, "
+              "could you get me a vegarian restaurant booking on the 8th "
+              "please?",
+          "dialogue_id": "1_00000",
+          "turn_id": "0",
+          "frame_id": "0"
+      },
+      "prediction":
+          "[state] number_of_seats=none [intent] a",
+  }
+  dialog_id_to_dialogue = copy.deepcopy(DIALOG_ID_TO_DIALOGUE)
+  convert_sgd_t5x_sdt_preds_to_dstc8.populate_json_predictions(
+      dialog_id_to_dialogue, frame_predictions)
+
+  actual_intent = dialog_id_to_dialogue["1_00000"]["turns"][0]["frames"][0][
+      "state"]["active_intent"]
+  expected_intent = "ReserveRestaurant"
+  self.assertEqual(actual_intent.lower(), expected_intent.lower())
+
 
 
 if __name__ == "__main__":

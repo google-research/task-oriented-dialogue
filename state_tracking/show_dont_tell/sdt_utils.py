@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Utils for processing "Show Don't Tell" dialogue data."""
+"""Utils for processing "Show Don't Tell" dialogue data.
+
+# TODO: Add unit tests
+"""
 
 import collections
 import random
@@ -25,7 +28,7 @@ from state_tracking.utils import sgd_utils
 Prompt = sdt_prompts.Prompt
 Schemas = List[Any]
 SourceToTarget = Dict[str, str]
-SLOT_VALUE_DELIMITER = '='
+INTENT_SLOT_VALUE_DELIMITER = '='
 _MCQ_OPTION_IDS = string.ascii_lowercase
 _IS_CAT_VAL_IDENTIFIER = 'of possible values'
 
@@ -34,34 +37,43 @@ def generate_prompt_str(
     keys: Sequence[str],
     key_to_prompts: Optional[Mapping[str, Sequence[Prompt]]],
     prompt_indices: Optional[Sequence[str]] = None,
+    add_intents: bool = False,
     mcq_cat_vals: bool = True,
+    mcq_intents: bool = True,
     randomize_slots: bool = True,
     randomize_cat_vals: bool = True,
+    randomize_intents: bool = True,
     use_slot_ids: bool = False,
     key_to_schema: Optional[Mapping[str, sgd_utils.Schema]] = None
-) -> Tuple[str, List[str], Optional[Mapping[str, Mapping[str, str]]]]:
+) -> Tuple[str, List[str], Optional[Mapping[str, Mapping[str, str]]],
+           Optional[Mapping[str, str]]]:
   """Generates the prompt string for an example.
 
   Args:
     keys: The keys for looking up relevant prompts. Usually a service/domain
     key_to_prompts: A map from key to a list of prompts
     prompt_indices: The desired indices of prompts to use for each service
+    add_intents: Whether to add intent to prompt
     mcq_cat_vals: If true, enumerate categorical slot values in the form of a
       multiple choice question
+    mcq_intents: If true, enumerate intents in the form of a multiple choice
+      question
     randomize_slots: If true, randomize the slot order
     randomize_cat_vals: If true, randomize the order of categorical values
+    randomize_intents: If true, randomize the order of intents
     use_slot_ids: If true, replace slot names with numeric slot IDs
     key_to_schema: A map from key to schema. If present, use schema to add slot
       descriptions to prompt
 
   Returns:
-    A formatted prompt string, a list of ordered slots, and a dict of slot name
-    to MCQ ID of categorical value to categorical value.
+    A formatted prompt string, a list of ordered slots, a dict of slot name
+    to MCQ ID of categorical value to categorical value, and a dict of intent
+    name to MCQ ID
   """
 
-  def _convert_cat_val_prompt_to_mcq(
-      value_str: str, cat_val_to_id: MutableMapping[str,
-                                                    str]) -> Tuple[str, str]:
+  def _convert_cat_val_prompt_to_mcq(value_str: str,
+                                     cat_val_to_id: MutableMapping[str, str],
+                                     randomize: bool) -> Tuple[str, str]:
     """Convert categorical value string to MCQ format.
 
     Also updates in place the mapping of MCQ option IDs to values if needed.
@@ -72,6 +84,7 @@ def generate_prompt_str(
       cat_val_to_id: Dict of options for categorical value to MCQ ID. This is
         initialized/updated in this function when first called and reused
         thereafter.
+      randomize: Whether to randomize the order of values for schema element.
 
     Returns:
       A multiple-choice letter representing a value and a string of all possible
@@ -84,7 +97,7 @@ def generate_prompt_str(
 
     # Construct mapping of cat val options to IDs if needed.
     if not cat_val_to_id:
-      if randomize_cat_vals:
+      if randomize:
         random.shuffle(options_list)
       for o_idx, option in enumerate(options_list):
         cat_val_to_id[option] = _MCQ_OPTION_IDS[o_idx]
@@ -102,7 +115,7 @@ def generate_prompt_str(
     ])
 
   if not key_to_prompts:
-    return '', [''], None
+    return '', [''], None, None
 
   # Validate prompt_indices
   if prompt_indices and any([not i.isdigit() for i in prompt_indices]):
@@ -119,9 +132,10 @@ def generate_prompt_str(
   if randomize_slots:
     random.shuffle(selected_prompts)
 
-  # Construct mapping from slot to description, for SDT+D3ST combination
+  # Construct mapping from slot/intent to description, for SDT+D3ST combination.
   if key_to_schema:
     slot_to_desc = {}
+    intent_to_desc = {}
     for key in keys:
       for slot_json in key_to_schema[key]['slots']:
         name = slot_json['name']
@@ -132,6 +146,10 @@ def generate_prompt_str(
               f'1-to-1 map of slots to descriptions. slot = {name} '
               f'existing desc = {slot_to_desc[name]} ; new desc = {desc}')
         slot_to_desc[name] = desc
+      for intent_json in key_to_schema[key]['intents']:
+        name = intent_json['name']
+        desc = intent_json['description']
+        intent_to_desc[name] = desc
 
   # Create one string for each prompt example
   prompt_substrs = []
@@ -140,6 +158,10 @@ def generate_prompt_str(
     slot_to_cat_val_to_id = collections.defaultdict(dict)
   else:
     slot_to_cat_val_to_id = None
+  if mcq_intents:
+    intent_to_id = {}
+  else:
+    intent_to_id = None
 
   for prompt in selected_prompts:
     # Fix the slot order for each prompt
@@ -150,19 +172,24 @@ def generate_prompt_str(
 
     # Construct D3ST prompt, if key_to_schema provided
     if key_to_schema:
-      single_d3st_slot_strs = []
+      d3st_element_descs = []
       for idx, slot in enumerate(ordered_slots):
         slot_identifier = idx if use_slot_ids else slot
         desc = slot_to_desc[slot]
         value_str = prompt.slots[slot]
         if mcq_cat_vals and _IS_CAT_VAL_IDENTIFIER in value_str:
           _, possible_mc_vals_str = _convert_cat_val_prompt_to_mcq(
-              value_str, slot_to_cat_val_to_id[slot])
+              value_str, slot_to_cat_val_to_id[slot], randomize_cat_vals)
           desc = f'{desc} {possible_mc_vals_str}'
+        d3st_element_descs.append(
+            f'{slot_identifier}{INTENT_SLOT_VALUE_DELIMITER}{desc}')
+      if add_intents:
+        for intent in prompt.intents:
+          desc = intent_to_desc[intent]
+          d3st_element_descs.append(
+              f'{intent}{INTENT_SLOT_VALUE_DELIMITER}{desc}')
 
-        single_d3st_slot_strs.append(
-            f'{slot_identifier}{SLOT_VALUE_DELIMITER}{desc}')
-      prompt_substrs.append(' '.join(single_d3st_slot_strs))
+      prompt_substrs.append(' '.join(d3st_element_descs))
 
     # Construct SDT prompt, one slot string at a time
     single_sdt_slot_strs = []
@@ -171,17 +198,31 @@ def generate_prompt_str(
       value_str = prompt.slots[slot]
       if mcq_cat_vals and _IS_CAT_VAL_IDENTIFIER in value_str:
         mc_val_str, possible_mc_vals_str = _convert_cat_val_prompt_to_mcq(
-            value_str, slot_to_cat_val_to_id[slot])
+            value_str, slot_to_cat_val_to_id[slot], randomize_cat_vals)
         value_str = f'{mc_val_str} {_IS_CAT_VAL_IDENTIFIER} {possible_mc_vals_str}'
       single_sdt_slot_strs.append(
-          f'{slot_identifier}{SLOT_VALUE_DELIMITER}{value_str}')
+          f'{slot_identifier}{INTENT_SLOT_VALUE_DELIMITER}{value_str}')
+
+    # Add intents to SDT prompt.
+    if add_intents and mcq_intents:
+      orig_intent_value_str = f'{prompt.intents[prompt.intent_idx]} {_IS_CAT_VAL_IDENTIFIER} {", ".join(prompt.intents)}'
+      mc_intent_val_str, possible_mc_intents_str = _convert_cat_val_prompt_to_mcq(
+          orig_intent_value_str, intent_to_id, randomize_intents)
+      intent_str = f'{mc_intent_val_str} {_IS_CAT_VAL_IDENTIFIER} {possible_mc_intents_str}'
+    elif add_intents:
+      intent_str = f'{prompt.intents[prompt.intent_idx]} {_IS_CAT_VAL_IDENTIFIER} {", ".join(prompt.intents)}'
+    else:
+      intent_str = ''
 
     sdt_slot_str = ' '.join(single_sdt_slot_strs)
-    prompt_substrs.append(f'[EXAMPLE] {prompt.utt} [slots] {sdt_slot_str}')
+    prompt_substr = f'[EXAMPLE] {prompt.utt} [slots] {sdt_slot_str}'
+    if intent_str:
+      prompt_substr += f' [intent] {intent_str}'
+    prompt_substrs.append(prompt_substr)
 
   prompt_str = ' '.join(prompt_substrs)
 
-  return prompt_str, global_ordered_slots, slot_to_cat_val_to_id
+  return prompt_str, global_ordered_slots, slot_to_cat_val_to_id, intent_to_id
 
 
 def generate_context_str(history_utterances: List[str],
@@ -196,17 +237,23 @@ def generate_context_str(history_utterances: List[str],
 
 
 def generate_target_str(dialogue_state: Dict[str, List[str]],
+                        active_intent: str,
+                        add_intents: bool,
                         ordered_slots: List[str],
                         slot_to_cat_val_to_id: Mapping[str, Mapping[str, str]],
+                        intent_to_id: Mapping[str, str],
                         target_format: str,
                         use_slot_ids: bool = False) -> str:
   """Generates the target string for an example.
 
   Args:
     dialogue_state: A mapping of slot names to values
+    active_intent: String representing active intent
+    add_intents: Whether to add intent to target
     ordered_slots: A list of ordered slots used to decide the target slot order
     slot_to_cat_val_to_id: Dict of slot names to categorical slot values to
       value IDs as in an MCQ
+    intent_to_id: Dict of intent names to MCQ IDs
     target_format: The desired format for the generated target string
     use_slot_ids: If true, replace slot names with numeric slot IDs
 
@@ -235,8 +282,14 @@ def generate_target_str(dialogue_state: Dict[str, List[str]],
           slot_value in slot_to_cat_val_to_id[slot]):
         slot_value = slot_to_cat_val_to_id[slot][slot_value]
 
-      slot_strs.append(f'{slot_identifier}{SLOT_VALUE_DELIMITER}{slot_value}')
+      slot_strs.append(
+          f'{slot_identifier}{INTENT_SLOT_VALUE_DELIMITER}{slot_value}')
     target_str = '[state] ' + ' '.join(slot_strs)
+
+    if add_intents:
+      if intent_to_id:
+        active_intent = intent_to_id.get(active_intent, 'none')
+      target_str += f' [intent] {active_intent}'
   elif not target_format:
     target_str = ''
   else:
@@ -316,7 +369,7 @@ def create_sgdx_prompts(service_to_prompts: Mapping[str, List[Prompt]],
     sgd_utils.load_schemas_to_dict(sgdx_dir, subdir, var_subdir_to_schemas)
 
   # Create mappings from original to variant schema element names.
-  service_to_name, service_slot_to_name, _ = _create_schema_name_map(
+  service_to_name, service_slot_to_name, service_intent_to_name = _create_schema_name_map(
       orig_subdir_to_schemas, var_subdir_to_schemas)
 
   # Create new service_to_prompts map with SGD-X elements
@@ -328,7 +381,15 @@ def create_sgdx_prompts(service_to_prompts: Mapping[str, List[Prompt]],
       for slot, value in prompt.slots.items():
         sgdx_slot_name = service_slot_to_name[service][slot]
         sgdx_slots[sgdx_slot_name] = value
-      sgdx_prompts.append(Prompt(utt=prompt.utt, slots=sgdx_slots))
+      sgdx_intents = []
+      for intent in prompt.intents:
+        sgdx_intents.append(service_intent_to_name[service][intent])
+      sgdx_prompts.append(
+          Prompt(
+              utt=prompt.utt,
+              slots=sgdx_slots,
+              intents=sgdx_intents,
+              intent_idx=prompt.intent_idx))
     sgdx_service = service_to_name[service]
     sgdx_service_to_prompts[sgdx_service] = sgdx_prompts
 

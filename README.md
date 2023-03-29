@@ -9,6 +9,8 @@ from their use.**
 
 ## Updates
 
+**03/28/2023** - Open source the STARv2 dataset. Code for the AnyTOD paper to be open-sourced soon.
+
 **04/12/2022** - Open source the D3ST and SDT papers.
 
 **04/04/2022** - Generalize this repository for all task-oriented dialogue
@@ -21,6 +23,7 @@ related to the SGD dataset.
  - `state_tracking`:
     - `d3st`: Description-Driven Dialogue State Tracking ([Zhao et. al, 2022](https://arxiv.org/abs/2201.08904))
     - `sdt`: Show Don't Tell ([Gupta et. al, 2022](https://arxiv.org/abs/2204.04327))
+ - `starv2`: STARv2 datset ([Zhao et. al, 2022](https://arxiv.org/abs/2212.09939))
 
 ## Other Work
 

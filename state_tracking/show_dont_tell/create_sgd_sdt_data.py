@@ -16,7 +16,6 @@ r"""Create Show Don't Tell data from SGD Dataset.
 
 Format: [example] <example dialogue> [slots] <slot names and values> \
 [context] <current dialogue> -> [state] <dialogue state>
-
 Example: [example] [user] can you find me a bus to lax? ... \
 [slots] to_location=lax ... [context] [user] i'm looking for a bus to nyc. ... \
 -> [state] to_location=nyc ...
@@ -62,17 +61,27 @@ _TARGET_FORMAT = flags.DEFINE_enum(
     'Format of the target. "all" and '
     '"active" respectively refer to all and only active slots being present in '
     'the target.')
+_ADD_INTENTS = flags.DEFINE_bool('add_intents', False, 'Whether to add '
+                                 'intents.')
 _LOWERCASE = flags.DEFINE_bool('lowercase', True,
                                'Whether to lowercase the generated example.')
 _MCQ_CAT_VALS = flags.DEFINE_bool(
     'mcq_cat_vals', False,
     'Whether to enumerate categorical values in the form of a multiple choice '
     'question in the prompt string.')
+_MCQ_INTENTS = flags.DEFINE_bool(
+    'mcq_intents', False,
+    'Whether to enumerate intents in the form of a multiple choice question in '
+    'the prompt string. Only used if flag add_intents is True.')
 _RANDOMIZE_SLOTS = flags.DEFINE_bool(
     'randomize_slots', True, 'Whether to randomize slot order of the prompt.')
 _RANDOMIZE_CAT_VALS = flags.DEFINE_bool(
     'randomize_cat_vals', True,
     'Whether to randomize order of categorical values in prompt.')
+_RANDOMIZE_INTENTS = flags.DEFINE_bool(
+    'randomize_intents', True,
+    'Whether to randomize order of intents in prompt. Only used if flag '
+    'add_intents is True.')
 _USE_SLOT_IDS = flags.DEFINE_bool(
     'use_slot_ids', False, 'Whether to use '
     'numeric slot IDs in place of slot names in '
@@ -84,8 +93,9 @@ _DATA_PERCENT = flags.DEFINE_float(
 _K_SHOT = flags.DEFINE_integer(
     'k_shot', 0, 'If not 0, sample this many examples from each service. '
     'For data efficiency experiments. Not compatible with data_percent.')
-_USE_SLOT_DESCS = flags.DEFINE_bool(
-    'use_slot_descs', False, 'Whether to add D3ST descriptions to prompt.')
+_USE_INTENT_SLOT_DESCS = flags.DEFINE_bool(
+    'use_intent_slot_descs', False,
+    'Whether to add D3ST descriptions to prompt.')
 
 Prompt = sdt_prompts.Prompt
 
@@ -96,7 +106,7 @@ USER_SPEAKER = 'USER'
 SYSTEM_SPEAKER = 'SYSTEM'
 USER_TOK = '[user]'
 SYS_TOK = '[system]'
-SLOT_VALUE_DELIMITER = '='
+INTENT_SLOT_VALUE_DELIMITER = '='
 INPUT_TARGET_SEP = '\t'
 
 _PROMPTS_MAP = {
@@ -113,9 +123,12 @@ class Options:
   context_format: str
   target_format: str
   lowercase: bool
+  add_intents: bool
   mcq_cat_vals: bool
+  mcq_intents: bool
   randomize_slots: bool
   randomize_cat_vals: bool
+  randomize_intents: bool
   use_slot_ids: bool
   prompt_indices: List[str]
 
@@ -191,13 +204,16 @@ def create_examples_from_dialogue(dialogue: Mapping[
     for frame_idx, frame in enumerate(turn['frames']):
 
       # Create prompt
-      prompt_str, ordered_slots, slot_to_cat_val_to_id = sdt_utils.generate_prompt_str(
+      prompt_str, ordered_slots, slot_to_cat_val_to_id, intent_to_id = sdt_utils.generate_prompt_str(
           keys=[frame['service']],
           key_to_prompts=service_to_prompts,
           prompt_indices=options.prompt_indices,
+          add_intents=options.add_intents,
           mcq_cat_vals=options.mcq_cat_vals,
+          mcq_intents=options.mcq_intents,
           randomize_slots=options.randomize_slots,
           randomize_cat_vals=options.randomize_cat_vals,
+          randomize_intents=options.randomize_intents,
           use_slot_ids=options.use_slot_ids,
           key_to_schema=service_to_schema)
 
@@ -208,8 +224,11 @@ def create_examples_from_dialogue(dialogue: Mapping[
       # Create target
       target_str = sdt_utils.generate_target_str(
           dialogue_state=frame['state']['slot_values'],
+          active_intent=frame['state']['active_intent'],
+          add_intents=options.add_intents,
           ordered_slots=ordered_slots,
           slot_to_cat_val_to_id=slot_to_cat_val_to_id,
+          intent_to_id=intent_to_id,
           target_format=options.target_format,
           use_slot_ids=options.use_slot_ids)
 
@@ -244,9 +263,12 @@ def main(argv: Sequence[str]) -> None:
       prompt_format=_PROMPT_FORMAT.value,
       context_format=_CONTEXT_FORMAT.value,
       target_format=_TARGET_FORMAT.value,
+      add_intents=_ADD_INTENTS.value,
       mcq_cat_vals=_MCQ_CAT_VALS.value,
+      mcq_intents=_MCQ_INTENTS.value,
       randomize_slots=_RANDOMIZE_SLOTS.value,
       randomize_cat_vals=_RANDOMIZE_CAT_VALS.value,
+      randomize_intents=_RANDOMIZE_INTENTS.value,
       lowercase=_LOWERCASE.value,
       use_slot_ids=_USE_SLOT_IDS.value,
       prompt_indices=_PROMPT_INDICES.value)
@@ -257,7 +279,7 @@ def main(argv: Sequence[str]) -> None:
       data_dir=sgd_data_dir, subdirs=_SUBDIRS.value)
 
   # If enabled, create map from service to schema for adding D3ST descriptions
-  if _USE_SLOT_DESCS.value:
+  if _USE_INTENT_SLOT_DESCS.value:
     service_to_schema = sgd_utils.dedupe_and_unnest_schemas(subdir_to_schema)
   else:
     service_to_schema = False

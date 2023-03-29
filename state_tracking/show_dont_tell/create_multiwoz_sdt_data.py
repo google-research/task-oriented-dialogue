@@ -16,8 +16,7 @@ r"""Create Show Don't Tell data from Multiwoz Dataset.
 
 Format: [example] <example dialogue> [slots] <slot names and values> \
 [context] <current dialogue> -> [state] <dialogue state>
-
-Example: `[example] [user] can you find me a train to lax? ... \
+e.g. `[example] [user] can you find me a train to lax? ... \
 [slots] train-destination=lax ... [context] [user] i'm looking for a train
 to nyc. ... \ -> [state] train-destination=nyc ...`
 """
@@ -162,12 +161,15 @@ def _process_one_turn(dialog_id: str, turn: int, belief_state: Dict[str, str],
     domains = list(multiwoz_utils.extract_domains(belief_state))
   else:
     domains = MULTIWOZ_DOMAINS
-  prompt_str, ordered_slots, ordered_slot_to_cat_val_to_id = sdt_utils.generate_prompt_str(
+  prompt_str, ordered_slots, ordered_slot_to_cat_val_to_id, intent_to_id = sdt_utils.generate_prompt_str(
       keys=sorted(domains),
       key_to_prompts=domain_to_prompts,
       prompt_indices=options.prompt_indices,
+      add_intents=False,
       mcq_cat_vals=options.mcq_cat_vals,
+      mcq_intents=False,
       randomize_slots=options.randomize_slots,
+      randomize_intents=False,
       randomize_cat_vals=options.randomize_cat_vals)
 
   # Create context
@@ -177,9 +179,16 @@ def _process_one_turn(dialog_id: str, turn: int, belief_state: Dict[str, str],
   # Create target
   norm_dialogue_state = _normalize_multiwoz_slot_values(
       belief_state, options.multiwoz_version)
-  target_str = sdt_utils.generate_target_str(norm_dialogue_state, ordered_slots,
-                                             ordered_slot_to_cat_val_to_id,
-                                             options.target_format)
+  # MultiWoZ2.1 does not have active intents, hence setting to empty string.
+  target_str = sdt_utils.generate_target_str(
+      dialogue_state=norm_dialogue_state,
+      active_intent='',
+      add_intents=False,
+      ordered_slots=ordered_slots,
+      slot_to_cat_val_to_id=ordered_slot_to_cat_val_to_id,
+      intent_to_id=intent_to_id,
+      target_format=options.target_format,
+      use_slot_ids=False)
 
   # Lowercase
   if options.lowercase:

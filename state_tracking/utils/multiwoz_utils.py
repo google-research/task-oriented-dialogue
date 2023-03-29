@@ -19,9 +19,10 @@
 
 import collections
 import dataclasses
+import itertools
 import json
 import os
-from typing import Dict, List, Set
+from typing import Iterator
 
 import tensorflow as tf
 
@@ -37,12 +38,12 @@ class MultiwozData:
     train_json: JSON for train dialogues.
     dev_json: JSON for dev dialogues.
     test_json: JSON for test dialogues.
-    slot_descriptions: Dict mapping slot name to list of slot descriptions.
+    slot_descriptions: dict mapping slot name to list of slot descriptions.
   """
   train_json: Json
   dev_json: Json
   test_json: Json
-  slot_descriptions: Dict[str, List[str]]
+  slot_descriptions: dict[str, list[str]]
 
 
 @dataclasses.dataclass
@@ -55,7 +56,7 @@ class SlotInfo:
       noncategorical slot.
   """
   is_categorical: bool
-  possible_values: List[str]
+  possible_values: list[str]
 
 
 @dataclasses.dataclass
@@ -66,7 +67,7 @@ class SchemaInfo:
     slots_by_domain: slots_by_domain[domain][slot_name] has a SlotInfo dataclass
       for that particular domain and slot_name.
   """
-  slots_by_domain: Dict[str, Dict[str, SlotInfo]]
+  slots_by_domain: dict[str, dict[str, SlotInfo]]
 
 
 def load_data(data_path: str,
@@ -131,7 +132,7 @@ def load_data(data_path: str,
 
 
 def load_slot_descriptions(
-    slot_descriptions_file_path: str) -> Dict[str, List[str]]:
+    slot_descriptions_file_path: str) -> dict[str, list[str]]:
   """Loads slot descriptions from Json file."""
 
   # Note that 2.4 doesn't come with a
@@ -186,7 +187,7 @@ def get_domain(slot_name: str) -> str:
   return slot_name.split('-')[0]
 
 
-def extract_belief_state(metadata_json: Json, is_trade: bool) -> Dict[str, str]:
+def extract_belief_state(metadata_json: Json, is_trade: bool) -> dict[str, str]:
   """Extracts belief states from data.
 
   Args:
@@ -226,7 +227,7 @@ def extract_belief_state(metadata_json: Json, is_trade: bool) -> Dict[str, str]:
   return state_dict
 
 
-def extract_domains(belief_state: Dict[str, str]) -> Set[str]:
+def extract_domains(belief_state: dict[str, str]) -> set[str]:
   """Extracts active domains in the dialogue state."""
   return set([get_domain(slot_name) for slot_name in belief_state.keys()])
 
@@ -243,7 +244,8 @@ class MultiwozTurn:
     belief_state: The slot-value pairs of the conversation.
   """
   utterance: str
-  belief_state: Dict[str, str]
+  belief_state: dict[str, str]
+  actions: dict[str, list[tuple[str, str]]]
 
 
 @dataclasses.dataclass
@@ -255,15 +257,21 @@ class MultiwozDialog:
     turns: A list of MultiwozTurn's.
   """
   dialog_id: str
-  turns: List[MultiwozTurn]
+  turns: list[MultiwozTurn]
 
 
 @dataclasses.dataclass
 class MultiwozDataclassData:
-  train_dialogs: Dict[str, MultiwozDialog]
-  dev_dialogs: Dict[str, MultiwozDialog]
-  test_dialogs: Dict[str, MultiwozDialog]
-  slot_descriptions: Dict[str, List[str]]
+  train_dialogs: dict[str, MultiwozDialog]
+  dev_dialogs: dict[str, MultiwozDialog]
+  test_dialogs: dict[str, MultiwozDialog]
+  slot_descriptions: dict[str, list[str]]
+
+  def all_dialogs(self) -> Iterator[tuple[str, MultiwozDialog]]:
+    return itertools.chain(self.train_dialogs.items(), self.dev_dialogs.items(), self.test_dialogs.items())
+
+  def dialogs_by_split(self) -> Iterator[tuple[str, dict[str, MultiwozDialog]]]:
+    yield from (('train', self.train_dialogs), ('dev', self.dev_dialogs), ('test', self.test_dialogs))
 
 
 def load_data_as_dataclasses(data_path: str,
@@ -281,7 +289,7 @@ def load_data_as_dataclasses(data_path: str,
   """
   multiwoz_data = load_data(data_path, multiwoz_version, is_trade)
 
-  def _dataclass_from_json(json_data: Json) -> Dict[str, MultiwozDialog]:
+  def _dataclass_from_json(json_data: Json) -> dict[str, MultiwozDialog]:
     dialogs = {}
     for dialog_id, dialog_json in json_data.items():
       turns = []
@@ -291,7 +299,13 @@ def load_data_as_dataclasses(data_path: str,
         utterance = utterance_json['text'].strip().replace('\t', ' ')
         belief_state = extract_belief_state(
             metadata_json=utterance_json['metadata'], is_trade=False)
-        turns.append(MultiwozTurn(utterance, belief_state))
+        actions = {}
+        for act, slotvals in utterance_json['dialog_act'].items():
+          actions[act] = []
+          for slotval in slotvals:
+            assert len(slotval) == 2
+            actions[act].append(tuple(slotval))
+        turns.append(MultiwozTurn(utterance, belief_state, actions))
       dialogs[dialog_id] = MultiwozDialog(dialog_id, turns)
     return dialogs
 
