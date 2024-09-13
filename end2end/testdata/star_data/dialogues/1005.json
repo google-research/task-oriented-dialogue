@@ -1,0 +1,246 @@
+{
+  "AnonymizedUserWorkerID": "1971c304-a0cb-187e-5969-4fa4d850c8e3",
+  "AnonymizedWizardWorkerID": "8829abee-d7b6-d749-1f21-2eee378e34bb",
+  "BatchID": "woz_1590426434",
+  "CompletionLevel": "Complete",
+  "DialogueID": 1005,
+  "Events": [
+    {
+      "Action": "instruct",
+      "Agent": "UserGuide",
+      "Text": "Say hallo to the AI Assistant. [instruction 1 of 6]",
+      "UnixTime": 1590442351
+    },
+    {
+      "Action": "utter",
+      "Agent": "User",
+      "Text": "Hello",
+      "UnixTime": 1590442356
+    },
+    {
+      "Action": "request_suggestions",
+      "Agent": "Wizard",
+      "Text": "hello, how can I help?",
+      "UnixTime": 1590442363
+    },
+    {
+      "Action": "pick_suggestion",
+      "ActionLabel": "hello",
+      "ActionLabelOptions": [
+        "hello",
+        "out_of_scope",
+        "apartment_inform_nothing_found"
+      ],
+      "Agent": "Wizard",
+      "Text": "Hello, how can I help?",
+      "UnixTime": 1590442365
+    },
+    {
+      "Action": "utter",
+      "Agent": "User",
+      "Text": "I would like to schedule a viewing at North HIll Apartments.",
+      "UnixTime": 1590442383
+    },
+    {
+      "Action": "instruct",
+      "Agent": "UserGuide",
+      "Text": "You suddenly remember that you have a friend's wedding on Sunday at 12 pm. [instruction 2 of 6]",
+      "UnixTime": 1590442383
+    },
+    {
+      "Action": "request_suggestions",
+      "Agent": "Wizard",
+      "Text": "What's your name?",
+      "UnixTime": 1590442391
+    },
+    {
+      "Action": "pick_suggestion",
+      "ActionLabel": "ask_name",
+      "ActionLabelOptions": [
+        "ask_name",
+        "apartment_ask_apartment_name",
+        "apartment_ask_start_time"
+      ],
+      "Agent": "Wizard",
+      "Text": "Could you give me your name, please?",
+      "UnixTime": 1590442392
+    },
+    {
+      "Action": "utter",
+      "Agent": "User",
+      "Text": "Ben",
+      "UnixTime": 1590442396
+    },
+    {
+      "Action": "instruct",
+      "Agent": "UserGuide",
+      "Text": "Ask something about the apartment, or engage in smalltalk, or make a joke. [instruction 3 of 6]",
+      "UnixTime": 1590442396
+    },
+    {
+      "Action": "request_suggestions",
+      "Agent": "Wizard",
+      "Text": "What day?",
+      "UnixTime": 1590442406
+    },
+    {
+      "Action": "pick_suggestion",
+      "ActionLabel": "apartment_ask_day",
+      "ActionLabelOptions": [
+        "apartment_ask_day",
+        "hello",
+        "out_of_scope"
+      ],
+      "Agent": "Wizard",
+      "Text": "What day would you like to make the booking for?",
+      "UnixTime": 1590442408
+    },
+    {
+      "Action": "utter",
+      "Agent": "User",
+      "Text": "Let's make it Saturday at 9am",
+      "UnixTime": 1590442466
+    },
+    {
+      "Action": "instruct",
+      "Agent": "UserGuide",
+      "Text": "Once you've scheduled the viewing, say something about your friend's wedding. [instruction 5 of 6]",
+      "UnixTime": 1590442466
+    },
+    {
+      "Action": "request_suggestions",
+      "Agent": "Wizard",
+      "Text": "Do you have any special requests?",
+      "UnixTime": 1590442484
+    },
+    {
+      "Action": "pick_suggestion",
+      "ActionLabel": "apartment_ask_custom_message",
+      "ActionLabelOptions": [
+        "anything_else",
+        "apartment_ask_custom_message",
+        "apartment_inform_viewing_available"
+      ],
+      "Agent": "Wizard",
+      "Text": "Would you like to add a message for the letting agency?",
+      "UnixTime": 1590442489
+    },
+    {
+      "Action": "instruct",
+      "Agent": "UserGuide",
+      "Text": "When you are done with all the instructions, bring the conversation to a natural close.  [instruction 6 of 6]",
+      "UnixTime": 1590442515
+    },
+    {
+      "Action": "utter",
+      "Agent": "User",
+      "Text": "no thanks",
+      "UnixTime": 1590442578
+    },
+    {
+      "APIName": "apartment_schedule",
+      "Action": "query",
+      "Agent": "Wizard",
+      "Constraints": [
+        {
+          "Name": "\"North Hill Apartments\""
+        },
+        {
+          "RenterName": "\"Ben\""
+        },
+        {
+          "Day": "\"Saturday\""
+        },
+        {
+          "StartTimeHour": "\"9 am\""
+        },
+        {
+          "ApplicationFeePaid": "\"No\""
+        },
+        {
+          "RequestType": "\"Check\""
+        }
+      ],
+      "UnixTime": 1590442660
+    },
+    {
+      "APIName": "apartment_schedule",
+      "Action": "return_item",
+      "Agent": "KnowledgeBase",
+      "Item": {
+        "APIName": "apartment_schedule",
+        "Message": "The time slot is available."
+      },
+      "TotalItems": -1
+    },
+    {
+      "Action": "request_suggestions",
+      "Agent": "Wizard",
+      "PrimaryItem": {
+        "APIName": "apartment_schedule",
+        "Message": "The time slot is available."
+      },
+      "Text": "The time slot is available.",
+      "UnixTime": 1590442666
+    },
+    {
+      "Action": "pick_suggestion",
+      "ActionLabel": "apartment_inform_viewing_available",
+      "ActionLabelOptions": [
+        "apartment_inform_viewing_available",
+        "apartment_inform_viewing_unavailable",
+        "apartment_ask_start_time"
+      ],
+      "Agent": "Wizard",
+      "PrimaryItem": {
+        "APIName": "apartment_schedule",
+        "Message": "The time slot is available."
+      },
+      "Text": "Great, there is still a viewing available at that time. Would you like me to book it for you?",
+      "UnixTime": 1590442668
+    },
+    {
+      "Action": "complete",
+      "Agent": "User",
+      "UnixTime": 1590442743
+    }
+  ],
+  "FORMAT-VERSION": 7,
+  "IntroducesConflicts": false,
+  "Scenario": {
+    "Domains": [
+      "apartment"
+    ],
+    "Happy": false,
+    "MultiTask": false,
+    "UserTask": "You are interested in viewing an apartment. Please schedule a viewing at North Hill Apartments for Sunday at 12 pm. Your name is Ben. You cannot remember if you had payed the application fee. ",
+    "WizardCapabilities": [
+      {
+        "Domain": "apartment",
+        "SchemaImage": "apartment_schedule.jpg",
+        "Task": "apartment_schedule"
+      }
+    ],
+    "WizardTask": "Help the user schedule an apartment viewing."
+  },
+  "UserQuestionnaire": [
+    {
+      "Answer": true,
+      "Question": "Did the assistant stay calm and helpful throughout the dialogue?"
+    }
+  ],
+  "WizardQuestionnaire": [
+    {
+      "Answer": false,
+      "Question": "Did the user change their mind about what they want at any time?"
+    },
+    {
+      "Answer": false,
+      "Question": "Did the user become aggressive or annoyed during the dialogue? (Note: some users may be instructed to be annoying.)"
+    },
+    {
+      "Answer": false,
+      "Question": "Where you unsure about what to do at any time? (Feel free to send us an email with details.)"
+    }
+  ]
+}

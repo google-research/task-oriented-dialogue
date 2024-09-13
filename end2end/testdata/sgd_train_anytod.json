@@ -1,0 +1,1911 @@
+[
+  {
+    "dialogue_id": "26_00000",
+    "services": [
+      "Buses_1"
+    ],
+    "turns": [
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "Long Beach"
+                ],
+                "slot": "from_location",
+                "values": [
+                  "Long Beach"
+                ]
+              },
+              {
+                "act": "INFORM_INTENT",
+                "canonical_values": [
+                  "FindBus"
+                ],
+                "slot": "intent",
+                "values": [
+                  "FindBus"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [
+              {
+                "exclusive_end": 50,
+                "slot": "from_location",
+                "start": 40
+              }
+            ],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Long Beach"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "I'm looking for a bus. I'm leaving from Long Beach."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "to_location",
+                "values": []
+              },
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "leaving_date",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "What is your desired destination, and when are you aiming to leave?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "San Diego"
+                ],
+                "slot": "to_location",
+                "values": [
+                  "SD"
+                ]
+              },
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "2019-03-06"
+                ],
+                "slot": "leaving_date",
+                "values": [
+                  "6th of March"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [
+              {
+                "exclusive_end": 27,
+                "slot": "to_location",
+                "start": 25
+              },
+              {
+                "exclusive_end": 57,
+                "slot": "leaving_date",
+                "start": 45
+              }
+            ],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Long Beach"
+                ],
+                "leaving_date": [
+                  "6th of March"
+                ],
+                "to_location": [
+                  "SD"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "I intend on traveling to SD, starting on the 6th of March."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "07:00"
+                ],
+                "slot": "leaving_time",
+                "values": [
+                  "7 am"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "24"
+                ],
+                "slot": "fare",
+                "values": [
+                  "$24"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "0"
+                ],
+                "slot": "transfers",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "service_call": {
+              "method": "FindBus",
+              "parameters": {
+                "from_location": "Long Beach",
+                "leaving_date": "2019-03-06",
+                "to_location": "San Diego"
+              }
+            },
+            "service_results": [
+              {
+                "fare": "24",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "07:00",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "25",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "08:40",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "25",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "10:30",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "22",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "11:30",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "22",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "11:40",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "26",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "11:50",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "26",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "13:00",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "23",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "15:40",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "25",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "15:50",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "24",
+                "from_location": "Long Beach",
+                "from_station": "Downtown Station",
+                "leaving_date": "2019-03-06",
+                "leaving_time": "19:40",
+                "to_location": "San Diego",
+                "to_station": "Santa Fe Depot",
+                "transfers": "0",
+                "travelers": "1"
+              }
+            ],
+            "slots": [
+              {
+                "exclusive_end": 46,
+                "slot": "leaving_time",
+                "start": 42
+              },
+              {
+                "exclusive_end": 68,
+                "slot": "fare",
+                "start": 65
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "The bus, which has 0 transfers, leaves at 7 am and has a cost of $24."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "to_station",
+                "values": []
+              },
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "from_station",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [
+                "from_station",
+                "to_station"
+              ],
+              "slot_values": {
+                "from_location": [
+                  "Long Beach"
+                ],
+                "leaving_date": [
+                  "6th of March"
+                ],
+                "to_location": [
+                  "SD"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "What bus stations will I be leaving from and arriving at, respectively?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "Downtown Station"
+                ],
+                "slot": "from_station",
+                "values": [
+                  "Downtown Station"
+                ]
+              },
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "Santa Fe Depot"
+                ],
+                "slot": "to_station",
+                "values": [
+                  "Santa Fe Depot"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [
+              {
+                "exclusive_end": 51,
+                "slot": "from_station",
+                "start": 35
+              },
+              {
+                "exclusive_end": 104,
+                "slot": "to_station",
+                "start": 90
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "The station you're leaving from is Downtown Station. The station you'll be arriving at is Santa Fe Depot."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "SELECT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Long Beach"
+                ],
+                "leaving_date": [
+                  "6th of March"
+                ],
+                "leaving_time": [
+                  "7 am"
+                ],
+                "to_location": [
+                  "SD"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Sounds good to me."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER_INTENT",
+                "canonical_values": [
+                  "BuyBusTicket"
+                ],
+                "slot": "intent",
+                "values": [
+                  "BuyBusTicket"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Would you like to buy tickets for this bus ride?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "NEGATE_INTENT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              },
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "NONE",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Long Beach"
+                ],
+                "leaving_date": [
+                  "6th of March"
+                ],
+                "leaving_time": [
+                  "7 am"
+                ],
+                "to_location": [
+                  "SD"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "I don't want to buy tickets right now. I don't need anything else."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Have yourself a wonderful day."
+      }
+    ]
+  },
+  {
+    "dialogue_id": "26_00001",
+    "services": [
+      "Buses_1"
+    ],
+    "turns": [
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM_INTENT",
+                "canonical_values": [
+                  "FindBus"
+                ],
+                "slot": "intent",
+                "values": [
+                  "FindBus"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {}
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "I need to book a bus ticket, can you find me a seat?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "leaving_date",
+                "values": []
+              },
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "to_location",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Sure. Where are you going? When are you leaving?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "Sacramento"
+                ],
+                "slot": "to_location",
+                "values": [
+                  "Sacramento, CA"
+                ]
+              },
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "2019-03-12"
+                ],
+                "slot": "leaving_date",
+                "values": [
+                  "12th of March"
+                ]
+              },
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "4"
+                ],
+                "slot": "travelers",
+                "values": [
+                  "4"
+                ]
+              },
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "San Francisco"
+                ],
+                "slot": "from_location",
+                "values": [
+                  "San Fran"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [
+              {
+                "exclusive_end": 60,
+                "slot": "to_location",
+                "start": 46
+              },
+              {
+                "exclusive_end": 81,
+                "slot": "leaving_date",
+                "start": 68
+              },
+              {
+                "exclusive_end": 42,
+                "slot": "from_location",
+                "start": 34
+              }
+            ],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "San Fran"
+                ],
+                "leaving_date": [
+                  "12th of March"
+                ],
+                "to_location": [
+                  "Sacramento, CA"
+                ],
+                "travelers": [
+                  "4"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "I'd like to get four tickets from San Fran to Sacramento, CA on the 12th of March."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "07:20"
+                ],
+                "slot": "leaving_time",
+                "values": [
+                  "7:20 am"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "22"
+                ],
+                "slot": "fare",
+                "values": [
+                  "$22"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "0"
+                ],
+                "slot": "transfers",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "service_call": {
+              "method": "FindBus",
+              "parameters": {
+                "from_location": "San Francisco",
+                "leaving_date": "2019-03-12",
+                "to_location": "Sacramento",
+                "travelers": "4"
+              }
+            },
+            "service_results": [
+              {
+                "fare": "22",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "07:20",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "20",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "09:40",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "23",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "10:00",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "23",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "11:40",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "21",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "12:30",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "20",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "13:20",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "24",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "14:10",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "23",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "16:40",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "22",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "17:30",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              },
+              {
+                "fare": "23",
+                "from_location": "San Francisco",
+                "from_station": "Salesforce Transit Center",
+                "leaving_date": "2019-03-12",
+                "leaving_time": "18:10",
+                "to_location": "Sacramento",
+                "to_station": "Sacramento Valley Station",
+                "transfers": "0",
+                "travelers": "4"
+              }
+            ],
+            "slots": [
+              {
+                "exclusive_end": 31,
+                "slot": "leaving_time",
+                "start": 24
+              },
+              {
+                "exclusive_end": 45,
+                "slot": "fare",
+                "start": 42
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Okay, the bus leaves at 7:20 am and costs $22 per person, it has 0 transfers."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "SELECT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              },
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "San Fran"
+                ],
+                "leaving_date": [
+                  "12th of March"
+                ],
+                "leaving_time": [
+                  "7:20 am"
+                ],
+                "to_location": [
+                  "Sacramento, CA"
+                ],
+                "travelers": [
+                  "4"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "That's great, I'm done now."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Okay, enjoy your trip."
+      }
+    ]
+  },
+  {
+    "dialogue_id": "26_00002",
+    "services": [
+      "Buses_1"
+    ],
+    "turns": [
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM_INTENT",
+                "canonical_values": [
+                  "FindBus"
+                ],
+                "slot": "intent",
+                "values": [
+                  "FindBus"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {}
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Would you help me find a bus?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "from_location",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Where do you want to leave from?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "Fresno"
+                ],
+                "slot": "from_location",
+                "values": [
+                  "Fresno, CA"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [
+              {
+                "exclusive_end": 10,
+                "slot": "from_location",
+                "start": 0
+              }
+            ],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Fresno, CA"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Fresno, CA."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "to_location",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Where do you want to go?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "San Francisco"
+                ],
+                "slot": "to_location",
+                "values": [
+                  "SF"
+                ]
+              },
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "2019-03-10"
+                ],
+                "slot": "leaving_date",
+                "values": [
+                  "the 10th"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [
+              {
+                "exclusive_end": 18,
+                "slot": "to_location",
+                "start": 16
+              },
+              {
+                "exclusive_end": 30,
+                "slot": "leaving_date",
+                "start": 22
+              }
+            ],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Fresno, CA"
+                ],
+                "leaving_date": [
+                  "the 10th"
+                ],
+                "to_location": [
+                  "SF"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "I want to go to SF on the 10th."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "07:00"
+                ],
+                "slot": "leaving_time",
+                "values": [
+                  "7 am"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "36"
+                ],
+                "slot": "fare",
+                "values": [
+                  "$36"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "0"
+                ],
+                "slot": "transfers",
+                "values": [
+                  "0"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "service_call": {
+              "method": "FindBus",
+              "parameters": {
+                "from_location": "Fresno",
+                "leaving_date": "2019-03-10",
+                "to_location": "San Francisco"
+              }
+            },
+            "service_results": [
+              {
+                "fare": "36",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "07:00",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "33",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "07:50",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "30",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "09:00",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "32",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "10:20",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "37",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "11:20",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "30",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "12:20",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "35",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "13:10",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "30",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "13:30",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              },
+              {
+                "fare": "33",
+                "from_location": "Fresno",
+                "from_station": "Fresno Station",
+                "leaving_date": "2019-03-10",
+                "leaving_time": "16:50",
+                "to_location": "San Francisco",
+                "to_station": "Salesforce Transit Center",
+                "transfers": "0",
+                "travelers": "1"
+              }
+            ],
+            "slots": [
+              {
+                "exclusive_end": 22,
+                "slot": "leaving_time",
+                "start": 18
+              },
+              {
+                "exclusive_end": 53,
+                "slot": "fare",
+                "start": 50
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "The bus leaves at 7 am and has 0 transfers. It is $36."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "SELECT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "FindBus",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Fresno, CA"
+                ],
+                "leaving_date": [
+                  "the 10th"
+                ],
+                "leaving_time": [
+                  "7 am"
+                ],
+                "to_location": [
+                  "SF"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Sounds good."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER_INTENT",
+                "canonical_values": [
+                  "BuyBusTicket"
+                ],
+                "slot": "intent",
+                "values": [
+                  "BuyBusTicket"
+                ]
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Should I buy tickets on this bus?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "NEGATE_INTENT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              },
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": [],
+            "state": {
+              "active_intent": "NONE",
+              "requested_slots": [],
+              "slot_values": {
+                "from_location": [
+                  "Fresno, CA"
+                ],
+                "leaving_date": [
+                  "the 10th"
+                ],
+                "leaving_time": [
+                  "7 am"
+                ],
+                "to_location": [
+                  "SF"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "No, that is all I want."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Buses_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Have a good day."
+      }
+    ]
+  },
+  {
+    "dialogue_id": "32_00011",
+    "services": [
+      "Banks_1"
+    ],
+    "turns": [
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM_INTENT",
+                "canonical_values": [
+                  "CheckBalance"
+                ],
+                "slot": "intent",
+                "values": [
+                  "CheckBalance"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [],
+            "state": {
+              "active_intent": "CheckBalance",
+              "requested_slots": [],
+              "slot_values": {}
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "What's my balance?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [
+                  "checking",
+                  "savings"
+                ],
+                "slot": "account_type",
+                "values": [
+                  "checking",
+                  "savings"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "In checking or savings?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "checking"
+                ],
+                "slot": "account_type",
+                "values": [
+                  "checking"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [],
+            "state": {
+              "active_intent": "CheckBalance",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "In checking."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "5118.77"
+                ],
+                "slot": "balance",
+                "values": [
+                  "$5,118.77"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "checking"
+                ],
+                "slot": "account_type",
+                "values": [
+                  "checking"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "service_call": {
+              "method": "CheckBalance",
+              "parameters": {
+                "account_type": "checking"
+              }
+            },
+            "service_results": [
+              {
+                "account_type": "checking",
+                "balance": "5118.77"
+              }
+            ],
+            "slots": [
+              {
+                "exclusive_end": 35,
+                "slot": "balance",
+                "start": 26
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Your checking account has $5,118.77."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM_INTENT",
+                "canonical_values": [
+                  "TransferMoney"
+                ],
+                "slot": "intent",
+                "values": [
+                  "TransferMoney"
+                ]
+              },
+              {
+                "act": "SELECT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [],
+            "state": {
+              "active_intent": "TransferMoney",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Ok, I want to transfer some money."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "recipient_account_name",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "To whom?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "Amir"
+                ],
+                "slot": "recipient_account_name",
+                "values": [
+                  "Amir"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [
+              {
+                "exclusive_end": 7,
+                "slot": "recipient_account_name",
+                "start": 3
+              }
+            ],
+            "state": {
+              "active_intent": "TransferMoney",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ],
+                "recipient_account_name": [
+                  "Amir"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "To Amir."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "REQUEST",
+                "canonical_values": [],
+                "slot": "amount",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "And what amount would you like to transfer?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM",
+                "canonical_values": [
+                  "1630"
+                ],
+                "slot": "amount",
+                "values": [
+                  "$1,630"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [
+              {
+                "exclusive_end": 11,
+                "slot": "amount",
+                "start": 5
+              }
+            ],
+            "state": {
+              "active_intent": "TransferMoney",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ],
+                "amount": [
+                  "$1,630"
+                ],
+                "recipient_account_name": [
+                  "Amir"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Send $1,630."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "CONFIRM",
+                "canonical_values": [
+                  "checking"
+                ],
+                "slot": "account_type",
+                "values": [
+                  "checking"
+                ]
+              },
+              {
+                "act": "CONFIRM",
+                "canonical_values": [
+                  "1630"
+                ],
+                "slot": "amount",
+                "values": [
+                  "$1,630"
+                ]
+              },
+              {
+                "act": "CONFIRM",
+                "canonical_values": [
+                  "Amir"
+                ],
+                "slot": "recipient_account_name",
+                "values": [
+                  "Amir"
+                ]
+              },
+              {
+                "act": "CONFIRM",
+                "canonical_values": [
+                  "checking"
+                ],
+                "slot": "recipient_account_type",
+                "values": [
+                  "checking"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [
+              {
+                "exclusive_end": 31,
+                "slot": "amount",
+                "start": 25
+              },
+              {
+                "exclusive_end": 66,
+                "slot": "recipient_account_name",
+                "start": 62
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Please confirm: Transfer $1,630 from your checking account to Amir's checking account."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "AFFIRM",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [],
+            "state": {
+              "active_intent": "TransferMoney",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ],
+                "amount": [
+                  "$1,630"
+                ],
+                "recipient_account_name": [
+                  "Amir"
+                ],
+                "recipient_account_type": [
+                  "checking"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Confirmed."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "NOTIFY_SUCCESS",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "service_call": {
+              "method": "TransferMoney",
+              "parameters": {
+                "account_type": "checking",
+                "amount": "1630",
+                "recipient_account_name": "Amir",
+                "recipient_account_type": "checking"
+              }
+            },
+            "service_results": [
+              {
+                "account_type": "checking",
+                "amount": "1630",
+                "recipient_account_name": "Amir",
+                "recipient_account_type": "checking"
+              }
+            ],
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Your transfer is complete."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "INFORM_INTENT",
+                "canonical_values": [
+                  "CheckBalance"
+                ],
+                "slot": "intent",
+                "values": [
+                  "CheckBalance"
+                ]
+              },
+              {
+                "act": "THANK_YOU",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [],
+            "state": {
+              "active_intent": "CheckBalance",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Thanks, what's my balance?"
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "3488.77"
+                ],
+                "slot": "balance",
+                "values": [
+                  "$3,488.77"
+                ]
+              },
+              {
+                "act": "OFFER",
+                "canonical_values": [
+                  "checking"
+                ],
+                "slot": "account_type",
+                "values": [
+                  "checking"
+                ]
+              }
+            ],
+            "service": "Banks_1",
+            "service_call": {
+              "method": "CheckBalance",
+              "parameters": {
+                "account_type": "checking"
+              }
+            },
+            "service_results": [
+              {
+                "account_type": "checking",
+                "balance": "3488.77"
+              }
+            ],
+            "slots": [
+              {
+                "exclusive_end": 35,
+                "slot": "balance",
+                "start": 26
+              }
+            ]
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Your checking account has $3,488.77."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "SELECT",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              },
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": [],
+            "state": {
+              "active_intent": "CheckBalance",
+              "requested_slots": [],
+              "slot_values": {
+                "account_type": [
+                  "checking"
+                ]
+              }
+            }
+          }
+        ],
+        "speaker": "USER",
+        "utterance": "Ok, bye."
+      },
+      {
+        "frames": [
+          {
+            "actions": [
+              {
+                "act": "GOODBYE",
+                "canonical_values": [],
+                "slot": "",
+                "values": []
+              }
+            ],
+            "service": "Banks_1",
+            "slots": []
+          }
+        ],
+        "speaker": "SYSTEM",
+        "utterance": "Have a nice day."
+      }
+    ]
+  }
+]
