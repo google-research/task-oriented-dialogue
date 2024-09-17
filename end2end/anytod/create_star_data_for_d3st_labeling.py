@@ -15,16 +15,12 @@
 r"""Create STARv2 data for labeling by D3ST.
 
 To generate exemplars to be hand-labeled:
-blaze-local run -c opt \
-  //learning/brain/research/babelfish/dialog/tools/starv2:create_star_d3st_data
-  \
-  -- --num_exs_per_task=5 --use_cat_slots --include_target_string=true
+python -m zero_shot_task_oriented_dialog.create_star_data_for_d3st_labeling \
+  --num_exs_per_task=5 --use_cat_slots --include_target_string=true
 
 To generate examples for all of the STAR dataset:
-blaze-local run -c opt \
-  //learning/brain/research/babelfish/dialog/tools/starv2:create_star_d3st_data
-  \
-  -- --num_exs_per_task=1000000 --use_cat_slots --include_target_string=false
+python -m zero_shot_task_oriented_dialog.create_star_data_for_d3st_labeling \
+  --num_exs_per_task=1000000 --use_cat_slots --include_target_string=false
 """
 import collections
 import dataclasses
