@@ -341,7 +341,7 @@ def _process_agent_turn(actions: List[Dict[str, Any]], turn_info: TurnInfo,
 
 def process_turn(turn: Dict[str, Any], turn_info: TurnInfo,
                  cumu_slots: collections.OrderedDict, item_desc: SchemaInfo,
-                 prefix: str, turn_id: int) -> str:
+                 prefix: str, turn_id: int) -> Tuple[str, List[TurnInfo]]:
   """Collects information from a single turn.
 
   Args:
@@ -409,7 +409,7 @@ def process_turn(turn: Dict[str, Any], turn_info: TurnInfo,
     turn_info.out_intent_str += ''.join(state_dict['intent_ids'])
     turn_info.out_intent_str += ' [req_slots] '
     turn_info.out_intent_str += ' '.join(state_dict['req_slots'])
-    turn_info_per_frame.append(turn_info)
+    turn_info_per_frame.append(copy.deepcopy(turn_info))
 
   return user_turn_prefix, turn_info_per_frame
 
@@ -535,7 +535,7 @@ def generate_data(ordered_slots, item_desc):
             prefix, per_frame_turn_info = process_turn(turn, turn_info,
                                                        cumu_slots, item_desc,
                                                        prefix, turn_idx)
-            all_turns_per_frame.extend(copy.deepcopy(per_frame_turn_info))
+            all_turns_per_frame.extend(per_frame_turn_info)
 
         write_examples(example_filter(all_turns_per_frame), out_file)
 
